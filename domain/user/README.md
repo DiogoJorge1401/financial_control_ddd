@@ -20,7 +20,7 @@
 ## Structure
 - User: Aggregate
   - id: Value Object
-  - email: Value Object
+  - email: Value Object - OK
   - password: Value Object
   - terms:
     - ip: Value Object
