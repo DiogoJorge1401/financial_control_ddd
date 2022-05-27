@@ -21,7 +21,7 @@
 - User: Aggregate
   - id: Value Object
   - email: Value Object - OK
-  - password: Value Object
+  - password: Value Object - OK
   - terms:
     - ip: Value Object
     - acceptedAt: Value Object
