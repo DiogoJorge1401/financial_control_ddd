@@ -23,5 +23,5 @@
   - email: Value Object - OK
   - password: Value Object - OK
   - terms:
-    - ip: Value Object
+    - ip: Value Object - OK
     - acceptedAt: Value Object
