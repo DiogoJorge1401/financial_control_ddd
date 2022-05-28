@@ -6,20 +6,20 @@ interface AcceptedAtValueObjectProps {
 }
 
 export class AcceptedAtValueObject extends ValueObject<AcceptedAtValueObjectProps>{
-  private constructor(props: AcceptedAtValueObjectProps) { super(props) }
+	private constructor (props: AcceptedAtValueObjectProps) { super(props); }
 
-  get value(): string {
-    return format(this.props.value, 'yyyy-MM-dd HH:mm:ss')
-  }
+	get value (): string {
+		return format(this.props.value, 'yyyy-MM-dd HH:mm:ss');
+	}
 
-  static create(date: Date): Result<AcceptedAtValueObject> {
-    try {
-      const isValidAcceptedAt = isDate(date);
-      if (!isValidAcceptedAt)
-        return Result.fail('Invalid AcceptedAt');
-      return Result.ok(new AcceptedAtValueObject({ value: date }));
-    } catch (err) {
-      return Result.fail('Invalid AcceptedAt');
-    }
-  }
+	static create (date: Date): Result<AcceptedAtValueObject> {
+		try {
+			const isValidAcceptedAt = isDate(date);
+			if (!isValidAcceptedAt)
+				return Result.fail('Invalid AcceptedAt');
+			return Result.ok(new AcceptedAtValueObject({ value: date }));
+		} catch (err) {
+			return Result.fail('Invalid AcceptedAt');
+		}
+	}
 }
