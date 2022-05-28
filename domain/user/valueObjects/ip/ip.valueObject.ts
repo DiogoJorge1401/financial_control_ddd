@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '../../../shared';
+import { Result, ValueObject } from '@/domain/shared/';
 import isIP from 'validator/lib/isIP';
 
 interface IpValueObjectProps {

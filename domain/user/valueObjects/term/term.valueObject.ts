@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '../../../shared';
+import { Result, ValueObject } from '@/domain/shared/';
 import { AcceptedAtValueObject } from '../acceptedAt/acceptedAt.valueObject';
 import { IpValueObject } from '../ip/ip.valueObject';
 

@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '../../../shared';
+import { Result, ValueObject } from '@/domain/shared/';
 
 interface PasswordValueObjectProps {
   value: string
