@@ -32,6 +32,7 @@
   - budgetBoxIds: Array
   - totalBalanceAvailable: Number
   - terms:
-    - ip: Value Object - OK
-    - acceptedAt: Value Object - OK
-    - userAgent: Object
+    - term: Value Object - OK
+      - ip: Value Object - OK
+      - acceptedAt: Value Object - OK
+      - userAgent: Object - Ok
