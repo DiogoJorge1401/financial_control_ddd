@@ -9,6 +9,6 @@ describe('userId.valueObject', () => {
 	it('should create a valid userId with provided value', () => {
 		const userId = UserIdValueObject.create(new UniqueEntityID('valid_id'));
 		expect(userId.isSuccess).toBe(true);
-		expect(userId.getResult().id.toValue()).toBe('valid_id');
+		expect(userId.getResult().id.value).toBe('valid_id');
 	});
 });
