@@ -25,7 +25,7 @@
 }
 ```
 ## Structure
-- User: Aggregate
+- User: Aggregate - OK
   - id: Value Object - OK
   - email: Value Object - OK
   - password: Value Object - OK
