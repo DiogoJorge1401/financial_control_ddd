@@ -22,7 +22,28 @@
     "paths": {
       "@/*": [
         "*"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@shared/*": [
+        "modules/shared/*"
+      ],
+      "@shared-common/*": [
+        "modules/shared/common/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@app/*": [
+        "*"
       ]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipDefaultLibCheck": true,
   }
 }
