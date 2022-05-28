@@ -44,6 +44,6 @@
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "skipDefaultLibCheck": true,
+    "skipDefaultLibCheck": true
   }
 }
