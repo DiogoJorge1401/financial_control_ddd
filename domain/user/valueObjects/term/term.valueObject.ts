@@ -2,21 +2,28 @@ import { Result, ValueObject } from 'types-ddd';
 import { AcceptedAtValueObject } from '../acceptedAt/acceptedAt.valueObject';
 import { IpValueObject } from '../ip/ip.valueObject';
 
-export enum IOs{
-  LINUX='LINUX',WINDOWS='WINDOWS',MACOS='MACOS'
+export enum IOs {
+	LINUX = 'LINUX', 
+	WINDOWS = 'WINDOWS',
+	MACOS = 'MAC',
+	IPHONE = 'IPHONE',
+	APPLE = 'APPLE',
+	MACINTOSH = 'MACINTOSH',
+	ANDROID = 'ANDROID',
+	IPAD = 'IPAD'
 }
 
 export interface IUserAgent {
-  name: string,
-  version: string,
-  os:  keyof typeof IOs,
-  type: string
+	name: string,
+	version: string,
+	os: keyof typeof IOs,
+	type: string
 }
 
 export interface TermValueObjectProps {
-  ip: IpValueObject,
-  acceptedAt: AcceptedAtValueObject,
-  userAgent: IUserAgent,
+	ip: IpValueObject,
+	acceptedAt: AcceptedAtValueObject,
+	userAgent: IUserAgent,
 }
 
 export class TermValueObject extends ValueObject<TermValueObjectProps>{
@@ -29,8 +36,9 @@ export class TermValueObject extends ValueObject<TermValueObjectProps>{
 	}
 
 	static create (props: TermValueObjectProps): Result<TermValueObject> {
-		const isValidOS = Object.values(IOs).includes(props.userAgent.os.toUpperCase() as any);
-		if(!isValidOS)
+		const isValidOS = Object.values(IOs)
+			.includes(props.userAgent.os.toUpperCase() as any);
+		if (!isValidOS)
 			return Result.fail('Invalid Os');
 		return Result.ok<TermValueObject>(new TermValueObject(props));
 	}
