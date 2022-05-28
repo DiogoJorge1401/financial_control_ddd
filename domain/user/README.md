@@ -24,4 +24,4 @@
   - password: Value Object - OK
   - terms:
     - ip: Value Object - OK
-    - acceptedAt: Value Object
+    - acceptedAt: Value Object - OK
