@@ -1,4 +1,4 @@
-import { Result, ValueObject } from 'types-ddd';
+import { Result, ValueObject } from '../../../shared';
 import isIP from 'validator/lib/isIP';
 
 interface IpValueObjectProps {

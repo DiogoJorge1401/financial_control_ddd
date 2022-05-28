@@ -1,5 +1,5 @@
 import { format, isDate } from 'date-fns';
-import { Result, ValueObject } from 'types-ddd';
+import { Result, ValueObject } from '../../../shared';
 
 interface AcceptedAtValueObjectProps {
   value: Date

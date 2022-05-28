@@ -1,4 +1,4 @@
-import { Result, ValueObject } from 'types-ddd';
+import { Result, ValueObject } from '../../../shared';
 import { AcceptedAtValueObject } from '../acceptedAt/acceptedAt.valueObject';
 import { IpValueObject } from '../ip/ip.valueObject';
 

@@ -1,19 +1,15 @@
-import { Entity, Result, UniqueEntityID } from 'types-ddd';
-
-interface UserIdValueObjectProps {
-	ID?: UniqueEntityID
-}
+import { Entity, Result, UniqueEntityID } from '../../../shared';
 
 export class UserIdValueObject extends Entity<any>{
-	private constructor (props: UserIdValueObjectProps) {
-		super({ ID: props?.ID ?? new UniqueEntityID() }, UserIdValueObject.name);
+	private constructor (id?: UniqueEntityID) {
+		super(null, id);
 	}
 
 	get id () {
 		return this._id;
 	}
 
-	static create (ID?: UniqueEntityID): Result<UserIdValueObject> {
-		return Result.ok<UserIdValueObject>(new UserIdValueObject({ ID }));
+	static create (id?: UniqueEntityID): Result<UserIdValueObject> {
+		return Result.ok<UserIdValueObject>(new UserIdValueObject(id));
 	}
 }
