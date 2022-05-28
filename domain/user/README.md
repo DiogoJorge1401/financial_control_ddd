@@ -26,7 +26,7 @@
 ```
 ## Structure
 - User: Aggregate
-  - id: Value Object
+  - id: Value Object - OK
   - email: Value Object - OK
   - password: Value Object - OK
   - budgetBoxIds: Array
