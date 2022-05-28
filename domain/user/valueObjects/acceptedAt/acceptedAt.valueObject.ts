@@ -1,21 +1,25 @@
+import { format, isDate } from 'date-fns';
 import { Result, ValueObject } from 'types-ddd';
-import isISO8601 from 'validator/lib/isISO8601'
 
 interface AcceptedAtValueObjectProps {
-  value: string
+  value: Date
 }
 
 export class AcceptedAtValueObject extends ValueObject<AcceptedAtValueObjectProps>{
   private constructor(props: AcceptedAtValueObjectProps) { super(props) }
 
-  get value() {
-    return this.props.value
+  get value(): string {
+    return format(this.props.value, 'yyyy-MM-dd HH:mm:ss')
   }
 
-  static create(acceptedAt: string): Result<AcceptedAtValueObject> {
-    const isValidAcceptedAt = isISO8601(acceptedAt);
-    if (!isValidAcceptedAt)
+  static create(date: Date): Result<AcceptedAtValueObject> {
+    try {
+      const isValidAcceptedAt = isDate(date);
+      if (!isValidAcceptedAt)
+        return Result.fail('Invalid AcceptedAt');
+      return Result.ok(new AcceptedAtValueObject({ value: date }));
+    } catch (err) {
       return Result.fail('Invalid AcceptedAt');
-    return Result.ok(new AcceptedAtValueObject({ value: acceptedAt }));
+    }
   }
 }
