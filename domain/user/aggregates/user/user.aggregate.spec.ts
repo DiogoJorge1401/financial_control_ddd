@@ -1,5 +1,5 @@
 import { AcceptedAtValueObject, EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@/domain/user/value-objects';
-import { BudgetIdValueObject } from '@/domain/budgetBox/value-objects';
+import { BudgetIdValueObject } from '@/domain/budget-box/value-objects';
 import { UniqueEntityID } from '@/domain/shared';
 import { UserAggregate } from './user.aggregate';
 
