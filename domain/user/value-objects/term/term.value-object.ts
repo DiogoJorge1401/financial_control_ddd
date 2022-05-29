@@ -22,7 +22,7 @@ export interface IUserAgent {
 
 export interface TermValueObjectProps {
 	ip: IpValueObject,
-	date: DateValueObject,
+	acceptedAt: DateValueObject,
 	userAgent: IUserAgent,
 }
 

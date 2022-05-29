@@ -15,7 +15,7 @@ interface MakeFakeProps {
 }
 interface MakeFakeResult {
   ip: IpValueObject,
-  date: DateValueObject,
+  acceptedAt: DateValueObject,
   userAgent: IUserAgent,
 }
 const makeFakeTerm = ({
@@ -26,23 +26,23 @@ const makeFakeTerm = ({
 	}
 }: MakeFakeProps): MakeFakeResult => {
 	const ip = IpValueObject.create(ipData).getResult();
-	const date = DateValueObject.create(acceptedAtData).getResult();
+	const acceptedAt = DateValueObject.create(acceptedAtData).getResult();
 	const userAgent = { name, version, os: os as any, type };
-	return { date, ip, userAgent };
+	return { acceptedAt, ip, userAgent };
 };
 
 describe('term.value-object', () => {
 	it('should create a valid term', () => {
-		const { date, ip, userAgent } = makeFakeTerm({userAgent:{}});
-		const term = TermValueObject.create({ ip, date, userAgent });
+		const { acceptedAt, ip, userAgent } = makeFakeTerm({userAgent:{}});
+		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isSuccess).toBe(true);
-		expect(term.getResult().value).toEqual({ date, ip, userAgent });
+		expect(term.getResult().value).toEqual({ acceptedAt, ip, userAgent });
 	});
 	it('should fail if provide an invalid os', () => {
-		const { date, ip, userAgent } = makeFakeTerm(
+		const { acceptedAt, ip, userAgent } = makeFakeTerm(
 			{ userAgent: { os: 'Blah', } }
 		);
-		const term = TermValueObject.create({ ip, date, userAgent });
+		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isFailure).toBe(true);
 		expect(term.error).toBe('Invalid Os');
 	});

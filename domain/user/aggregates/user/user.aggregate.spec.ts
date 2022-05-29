@@ -16,7 +16,7 @@ describe('user.aggregate', () => {
 			budgetBoxIds,
 			terms: [
 				TermValueObject.create({
-					date: DateValueObject.create(new Date()).getResult(),
+					acceptedAt: DateValueObject.create(new Date()).getResult(),
 					ip: IpValueObject.create('45.192.110.42').getResult(),
 					userAgent: {
 						name: 'firefox',
@@ -41,7 +41,7 @@ describe('user.aggregate', () => {
 			budgetBoxIds,
 			terms: [
 				TermValueObject.create({
-					date: DateValueObject.create(new Date()).getResult(),
+					acceptedAt: DateValueObject.create(new Date()).getResult(),
 					ip: IpValueObject.create('45.192.110.42').getResult(),
 					userAgent: {
 						name: 'firefox',
@@ -71,7 +71,7 @@ describe('user.aggregate', () => {
 			totalBalanceAvailable: 0,
 			terms: [
 				TermValueObject.create({
-					date: DateValueObject.create(new Date()).getResult(),
+					acceptedAt: DateValueObject.create(new Date()).getResult(),
 					ip: IpValueObject.create('45.192.110.42').getResult(),
 					userAgent: {
 						name: 'firefox',
@@ -96,7 +96,7 @@ describe('user.aggregate', () => {
 			budgetBoxIds,
 			terms: [
 				TermValueObject.create({
-					date: DateValueObject.create(new Date()).getResult(),
+					acceptedAt: DateValueObject.create(new Date()).getResult(),
 					ip: IpValueObject.create('45.192.110.42').getResult(),
 					userAgent: {
 						name: 'firefox',
