@@ -1,12 +1,12 @@
 # Caixa de orçamento - Aggregate Root
 
 ```json
-  {
+{
   "id": "uuid",
   "ownerId": "uuid",
   "description": "valid_description",
   "balanceAvailable": 1000,
-  "isPercentual": true,
+  "isPercentage": true,
   "budgetPercentage": 80,
   "transactionsIds": [
     "uuid",
@@ -21,7 +21,7 @@
 }
 ```
 ## Structure
-- BudgetBox: Aggregate
+- BudgetBox: Aggregate - OK
   - budgetId: Value Object - OK
   - reasonId: Value Object - OK
   - reasonDescription: Value Object - OK
