@@ -1,6 +1,6 @@
-import { PasswordValueObject } from './password.valueObject';
+import { PasswordValueObject } from './password.value-object';
 
-describe('password.valueObject', () => {
+describe('password.value-object', () => {
 	it('should create a valid password', () => {
 		const password = PasswordValueObject.create('password1234');
 		expect(password.isSuccess).toBe(true);

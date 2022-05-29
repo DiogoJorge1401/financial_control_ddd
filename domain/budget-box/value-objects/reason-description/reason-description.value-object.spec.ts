@@ -1,6 +1,6 @@
-import { ReasonDescriptionValueObject } from './reason-description.valueObject';
+import { ReasonDescriptionValueObject } from './reason-description.value-object';
 
-describe('reasonDescription.valueObject', () => {
+describe('reasonDescription.value-object', () => {
 	it('should create a valid reasonDescription value object', () => {
 		const reasonDescription = ReasonDescriptionValueObject.create('reasonDescription');
 		expect(reasonDescription.isSuccess).toBe(true);

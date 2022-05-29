@@ -1,4 +1,4 @@
-import { AggregateRoot, UniqueEntityID, Result } from "@/domain/shared";
+import { AggregateRoot, UniqueEntityID, Result } from "@/domain/shared/";
 import { UserIdValueObject } from '@/domain/user/value-objects';
 import { ReasonDomainEntity } from '../../entities';
 import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '../../value-objects';

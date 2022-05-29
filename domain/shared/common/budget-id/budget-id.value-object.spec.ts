@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/domain/shared/';
-import { BudgetIdValueObject } from './budget-id.valueObject';
+import { BudgetIdValueObject } from './budget-id.value-object';
 
-describe('budgetId.valueObject', () => {
+describe('budgetId.value-object', () => {
 	it('should create a valid budget id', () => {
 		const budgetId = BudgetIdValueObject.create();
 		expect(budgetId.isSuccess).toBe(true);

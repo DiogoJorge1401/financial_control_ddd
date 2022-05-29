@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/domain/shared/';
-import { UserIdValueObject } from './user-id.valueObject';
+import { UserIdValueObject } from './user-id.value-object';
 
-describe('userId.valueObject', () => {
+describe('userId.value-object', () => {
 	it('should create a valid userId', () => {
 		const userId = UserIdValueObject.create();
 		expect(userId.isSuccess).toBe(true);

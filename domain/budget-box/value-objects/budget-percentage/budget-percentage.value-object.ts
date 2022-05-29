@@ -1,4 +1,4 @@
-import { ValueObject,Result} from '@/domain/shared';
+import { ValueObject,Result} from '@/domain/shared/';
 
 interface BudgetPercentageValueObjectProps{
   value:number

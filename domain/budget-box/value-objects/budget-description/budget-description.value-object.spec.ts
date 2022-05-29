@@ -1,6 +1,6 @@
-import { BudgetDescriptionValueObject } from './budget-description.valueObject';
+import { BudgetDescriptionValueObject } from './budget-description.value-object';
 
-describe('budgetDescription.valueObject', () => {
+describe('budgetDescription.value-object', () => {
 	it('should create a valid budgetDescription value object', () => {
 		const budgetDescription = BudgetDescriptionValueObject.create('valid budgetDescription');
 		expect(budgetDescription.isSuccess).toBe(true);

@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/domain/shared/';
-import { ReasonIdValueObject } from './reason-id.valueObject';
+import { ReasonIdValueObject } from './reason-id.value-object';
 
-describe('reasonId.valueObject', () => {
+describe('reasonId.value-object', () => {
 	it('should create a valid budget id', () => {
 		const reasonId = ReasonIdValueObject.create();
 		expect(reasonId.isSuccess).toBe(true);

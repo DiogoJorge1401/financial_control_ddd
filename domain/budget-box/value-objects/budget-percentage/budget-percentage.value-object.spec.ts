@@ -1,6 +1,6 @@
-import { BudgetPercentageValueObject } from './budget-percentage.valueObject';
+import { BudgetPercentageValueObject } from './budget-percentage.value-object';
 
-describe('budgetPercentage.valueObject', () => {
+describe('budgetPercentage.value-object', () => {
 	it('should create a valid budget percentage', () => {
 		const budgetPercentage = BudgetPercentageValueObject.create(55);
 		expect(budgetPercentage.isSuccess).toBe(true);

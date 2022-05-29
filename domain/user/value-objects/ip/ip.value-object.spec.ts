@@ -1,6 +1,6 @@
-import { IpValueObject } from './ip.valueObject';
+import { IpValueObject } from './ip.value-object';
 
-describe('ip.valueObject', () => {
+describe('ip.value-object', () => {
 	it('should create a valid ip', () => {
 		const ip = IpValueObject.create('127.0.0.1');
 		expect(ip.isSuccess).toBe(true);

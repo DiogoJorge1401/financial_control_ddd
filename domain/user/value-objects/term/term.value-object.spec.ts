@@ -1,6 +1,6 @@
-import { AcceptedAtValueObject } from '../accepted-at/accepted-at.valueObject';
-import { IpValueObject } from '../ip/ip.valueObject';
-import { IUserAgent, TermValueObject } from './term.valueObject';
+import { DateValueObject } from '@/domain/shared';
+import { IpValueObject } from '../ip/ip.value-object';
+import { IUserAgent, TermValueObject } from './term.value-object';
 
 interface IFakeUserAgent {
   name?: string,
@@ -15,7 +15,7 @@ interface MakeFakeProps {
 }
 interface MakeFakeResult {
   ip: IpValueObject,
-  acceptedAt: AcceptedAtValueObject,
+  date: DateValueObject,
   userAgent: IUserAgent,
 }
 const makeFakeTerm = ({
@@ -26,23 +26,23 @@ const makeFakeTerm = ({
 	}
 }: MakeFakeProps): MakeFakeResult => {
 	const ip = IpValueObject.create(ipData).getResult();
-	const acceptedAt = AcceptedAtValueObject.create(acceptedAtData).getResult();
+	const date = DateValueObject.create(acceptedAtData).getResult();
 	const userAgent = { name, version, os: os as any, type };
-	return { acceptedAt, ip, userAgent };
+	return { date, ip, userAgent };
 };
 
-describe('term.valueObject', () => {
+describe('term.value-object', () => {
 	it('should create a valid term', () => {
-		const { acceptedAt, ip, userAgent } = makeFakeTerm({userAgent:{}});
-		const term = TermValueObject.create({ ip, acceptedAt, userAgent });
+		const { date, ip, userAgent } = makeFakeTerm({userAgent:{}});
+		const term = TermValueObject.create({ ip, date, userAgent });
 		expect(term.isSuccess).toBe(true);
-		expect(term.getResult().value).toEqual({ acceptedAt, ip, userAgent });
+		expect(term.getResult().value).toEqual({ date, ip, userAgent });
 	});
 	it('should fail if provide an invalid os', () => {
-		const { acceptedAt, ip, userAgent } = makeFakeTerm(
+		const { date, ip, userAgent } = makeFakeTerm(
 			{ userAgent: { os: 'Blah', } }
 		);
-		const term = TermValueObject.create({ ip, acceptedAt, userAgent });
+		const term = TermValueObject.create({ ip, date, userAgent });
 		expect(term.isFailure).toBe(true);
 		expect(term.error).toBe('Invalid Os');
 	});

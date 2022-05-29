@@ -1,6 +1,6 @@
-import { EmailValueObject } from './email.valueObject';
+import { EmailValueObject } from './email.value-object';
 
-describe('email.valueObject', () => {
+describe('email.value-object', () => {
 	it('should return a valid email', () => {
 		const email = EmailValueObject.create("validemail@mail.com");
 
