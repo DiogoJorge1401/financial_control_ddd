@@ -1,5 +1,5 @@
 import { Result, ValueObject } from '@/domain/shared/';
-import { AcceptedAtValueObject } from '../accepted-at/acceptedAt.valueObject';
+import { AcceptedAtValueObject } from '../accepted-at/accepted-at.valueObject';
 import { IpValueObject } from '../ip/ip.valueObject';
 
 export enum IOs {

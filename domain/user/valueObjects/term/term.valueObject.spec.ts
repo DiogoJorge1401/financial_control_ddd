@@ -1,4 +1,4 @@
-import { AcceptedAtValueObject } from '../accepted-at/acceptedAt.valueObject';
+import { AcceptedAtValueObject } from '../accepted-at/accepted-at.valueObject';
 import { IpValueObject } from '../ip/ip.valueObject';
 import { IUserAgent, TermValueObject } from './term.valueObject';
 
