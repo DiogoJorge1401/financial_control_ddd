@@ -1,6 +1,6 @@
 import { AggregateRoot, Result, UniqueEntityID } from '@/domain/shared';
-import { EmailValueObject, PasswordValueObject, TermValueObject } from '@/domain/user/valueObjects';
-import { BudgetIdValueObject } from '@/domain/budgetBox/valueObjects';
+import { EmailValueObject, PasswordValueObject, TermValueObject } from '@/domain/user/value-objects';
+import { BudgetIdValueObject } from '@/domain/budgetBox/value-objects';
 
 interface UserAggregateProps {
 	email: EmailValueObject

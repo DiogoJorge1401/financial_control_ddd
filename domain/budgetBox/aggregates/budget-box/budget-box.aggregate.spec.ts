@@ -1,6 +1,6 @@
-import { UserIdValueObject } from '@/domain/user/valueObjects';
+import { UserIdValueObject } from '@/domain/user/value-objects';
 import { ReasonDomainEntity } from '../../entities';
-import { BudgetDescriptionValueObject, BudgetPercentageValueObject, ReasonDescriptionValueObject } from '../../valueObjects';
+import { BudgetDescriptionValueObject, BudgetPercentageValueObject, ReasonDescriptionValueObject } from '../../value-objects';
 import { BudgetBoxAggregate } from './budget-box.aggregate';
 
 
