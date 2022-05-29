@@ -7,7 +7,7 @@
   "reasonId": "uuid",
   "paymentDate": "2021-01-01 10:00:00",
   "transactionType": ["ENTRADA","SAIDA"],
-  "status": ["Pendente","Concluído"],
+  "status": ["PENDENTE","CONCLUIDO"],
   "note": "valid_description",
   "attachment": "url",
   "calculations": [
@@ -28,7 +28,7 @@
     - paymentDate: Value Object - OK
     - reasonId: Value Object - OK
     - transactionType: Value Object (enum) - OK
-    - status: Value Object (enum)
+    - transactionStatus: Value Object (enum) - OK
     - note: Value Object
     - attachment: Value Object
     - calculations: Calculation[]
