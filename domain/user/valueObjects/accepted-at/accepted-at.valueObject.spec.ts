@@ -1,4 +1,4 @@
-import { AcceptedAtValueObject } from './acceptedAt.valueObject';
+import { AcceptedAtValueObject } from './accepted-at.valueObject';
 
 describe('acceptedAt.valueObject', () => {
 	it('should create a valid acceptedAt', () => {

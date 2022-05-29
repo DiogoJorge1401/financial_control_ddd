@@ -1,5 +1,5 @@
 import { UniqueEntityID } from '@/domain/shared/';
-import { ReasonIdValueObject } from './reasonId.valueObject';
+import { ReasonIdValueObject } from './reason-id.valueObject';
 
 describe('reasonId.valueObject', () => {
 	it('should create a valid budget id', () => {

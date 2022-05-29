@@ -1,4 +1,4 @@
-import { ReasonDescriptionValueObject } from './reasonDescription.valueObject';
+import { ReasonDescriptionValueObject } from './reason-description.valueObject';
 
 describe('reasonDescription.valueObject', () => {
 	it('should create a valid reasonDescription value object', () => {

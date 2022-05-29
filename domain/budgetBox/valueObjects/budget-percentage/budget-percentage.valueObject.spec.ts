@@ -1,4 +1,4 @@
-import { BudgetPercentageValueObject } from './budgetPercentage.valueObject';
+import { BudgetPercentageValueObject } from './budget-percentage.valueObject';
 
 describe('budgetPercentage.valueObject', () => {
 	it('should create a valid budget percentage', () => {

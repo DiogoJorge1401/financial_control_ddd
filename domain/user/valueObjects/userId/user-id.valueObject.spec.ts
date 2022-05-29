@@ -1,5 +1,5 @@
 import { UniqueEntityID } from '@/domain/shared/';
-import { UserIdValueObject } from './userId.valueObject';
+import { UserIdValueObject } from './user-id.valueObject';
 
 describe('userId.valueObject', () => {
 	it('should create a valid userId', () => {

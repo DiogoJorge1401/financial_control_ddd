@@ -1,4 +1,4 @@
-import { BudgetDescriptionValueObject } from './budgetDescription.valueObject';
+import { BudgetDescriptionValueObject } from './budget-description.valueObject';
 
 describe('budgetDescription.valueObject', () => {
 	it('should create a valid budgetDescription value object', () => {
