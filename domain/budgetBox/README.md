@@ -24,7 +24,7 @@
 - BudgetBox: Aggregate
   - budgetId: Value Object - OK
   - reasonId: Value Object - OK
-  - reasondescription: Value Object - OK
+  - reasonDescription: Value Object - OK
   - budgetDescription: Value Object - OK
   - budgetPercentage: Value Object - OK
-  - reasons: Entity
+  - reasons: Entity - OK
