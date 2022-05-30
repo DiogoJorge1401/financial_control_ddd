@@ -1,4 +1,4 @@
-import { TransactionTypeValueObject } from './transaciton-type.value-object';
+import { TransactionTypeValueObject } from './transaction-type.value-object';
 
 describe('transaction-type.value-object', () => {
   it('should create a valid transaction type', () => {
