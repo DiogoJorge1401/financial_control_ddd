@@ -1,10 +1,10 @@
 import { PasswordValueObject } from './password.value-object';
-
 describe('password.value-object', () => {
 	it('should create a valid password', () => {
 		const password = PasswordValueObject.create('password1234');
 		expect(password.isSuccess).toBe(true);
 		expect(password.getResult().value).toBe('password1234');
+		expect(password.getResult().isEncrypted).toBe(false);
 	});
 	it('should fail if password is not on range min 3 and max 20 chars ', () => {
 		const message = 'Password must have minimum 3 and max 20 characters';
@@ -15,5 +15,11 @@ describe('password.value-object', () => {
 		const passwordGreaterThan20 = PasswordValueObject.create('qwserfoiu1qwserfoiu11');
 		expect(passwordGreaterThan20.isFailure).toBe(true);
 		expect(passwordGreaterThan20.error).toBe(message);
+	});
+	it('should create a valid encrypted password', async () => {
+		const password = PasswordValueObject.create('password1234').getResult();
+		expect(password.isEncrypted).toBe(false);
+		await password.encryptPassword()
+		expect(password.isEncrypted).toBe(true);
 	});
 });
