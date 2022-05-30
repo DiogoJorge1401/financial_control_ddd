@@ -1,5 +1,5 @@
 import { format, isDate } from 'date-fns';
-import { Result, ValueObject } from '@/domain/shared/';
+import { Result, ValueObject } from '@/domain/shared/core';
 
 interface DateObjectProps {
   value: Date

@@ -1,27 +1,27 @@
-import { DateValueObject } from '@/domain/shared';
+import { DateValueObject } from '@/domain/shared/common';
 import { IpValueObject } from '../ip/ip.value-object';
 import { IUserAgent, TermValueObject } from './term.value-object';
 
 interface IFakeUserAgent {
-  name?: string,
-  version?: string,
-  os?: string,
-  type?: string
+	name?: string,
+	version?: string,
+	os?: string,
+	type?: string
 }
 interface MakeFakeProps {
-  ipData?: string,
-  acceptedAtData?: Date,
-  userAgent: IFakeUserAgent,
+	ipData?: string,
+	acceptedAtData?: Date,
+	userAgent: IFakeUserAgent,
 }
 interface MakeFakeResult {
-  ip: IpValueObject,
-  acceptedAt: DateValueObject,
-  userAgent: IUserAgent,
+	ip: IpValueObject,
+	acceptedAt: DateValueObject,
+	userAgent: IUserAgent,
 }
 const makeFakeTerm = ({
 	acceptedAtData = new Date('2022-05-28T20:55:00'),
 	ipData = '127.0.0.1',
-	userAgent:{
+	userAgent: {
 		name = "firefox", os = 'LINUX', type = "browser", version = "86.0.0"
 	}
 }: MakeFakeProps): MakeFakeResult => {
@@ -33,7 +33,7 @@ const makeFakeTerm = ({
 
 describe('term.value-object', () => {
 	it('should create a valid term', () => {
-		const { acceptedAt, ip, userAgent } = makeFakeTerm({userAgent:{}});
+		const { acceptedAt, ip, userAgent } = makeFakeTerm({ userAgent: {} });
 		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isSuccess).toBe(true);
 		expect(term.getResult().value).toEqual({ acceptedAt, ip, userAgent });

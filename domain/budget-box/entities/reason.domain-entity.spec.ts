@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@/domain/shared/';
+import { UniqueEntityID } from '@/domain/shared/core';
 import { ReasonDescriptionValueObject } from '../value-objects';
 import { ReasonDomainEntity } from './reason.domain-entity';
 

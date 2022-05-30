@@ -1,4 +1,4 @@
-import { BaseDomainEntity, Entity, Result, UniqueEntityID } from '@/domain/shared/';
+import { BaseDomainEntity, Entity, Result, UniqueEntityID } from '@/domain/shared/core';
 import { ReasonDescriptionValueObject } from '../value-objects';
 
 export interface ReasonProps extends BaseDomainEntity {

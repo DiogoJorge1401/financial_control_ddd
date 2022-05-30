@@ -1,4 +1,4 @@
-import { Entity, Result, UniqueEntityID } from '@/domain/shared/';
+import { Entity, Result, UniqueEntityID } from '@/domain/shared/core';
 
 export class BudgetIdValueObject extends Entity<any>{
 	private constructor (id?: UniqueEntityID) {

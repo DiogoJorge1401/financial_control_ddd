@@ -1,6 +1,6 @@
-import {  EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@/domain/user/value-objects';
-import { BudgetIdValueObject } from '@/domain/shared';
-import { UniqueEntityID,DateValueObject } from '@/domain/shared/';
+import { EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@/domain/user/value-objects';
+import { UniqueEntityID } from '@/domain/shared/core';
+import { DateValueObject, BudgetIdValueObject } from '@/domain/shared/common';
 import { UserAggregate } from './user.aggregate';
 
 describe('user.aggregate', () => {
@@ -55,7 +55,7 @@ describe('user.aggregate', () => {
 		expect(user.email.value).toBe('valid_mail@domain.com');
 		expect(user.password.value).toBe('valid_password');
 		expect(user.totalBalanceAvailable).toBe(0);
-		expect(user.budgetBoxIds.map(el=>el.id.toValue())).toEqual(['valid-id-1','valid-id-2']);
+		expect(user.budgetBoxIds.map(el => el.id.toValue())).toEqual(['valid-id-1', 'valid-id-2']);
 		expect(user.terms[0].value.ip.value).toBe('45.192.110.42');
 		expect(user.terms[0].value.userAgent).toEqual({
 			name: 'firefox',
@@ -106,7 +106,7 @@ describe('user.aggregate', () => {
 					},
 				}).getResult(),
 			]
-		},new UniqueEntityID('valid_id'));
+		}, new UniqueEntityID('valid_id'));
 		expect(user.isSuccess).toBe(true);
 		expect(user.getResult().id.toValue()).toBe('valid_id');
 	});

@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '@/domain/shared/';
+import { Result, ValueObject } from '@/domain/shared/core';
 import isEmail from 'validator/lib/isEmail';
 export interface EmailValueObjectProps {
   value: string

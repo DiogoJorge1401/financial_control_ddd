@@ -1,5 +1,5 @@
-import { AggregateRoot, UniqueEntityID, Result } from "@/domain/shared/";
-import { UserIdValueObject } from '@/domain/user/value-objects';
+import { AggregateRoot, UniqueEntityID, Result } from "@/domain/shared/core";
+import { UserIdValueObject } from '@/domain/shared/common';
 import { ReasonDomainEntity } from '../../entities';
 import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '../../value-objects';
 

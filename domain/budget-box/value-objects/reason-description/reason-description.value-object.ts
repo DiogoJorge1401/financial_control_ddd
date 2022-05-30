@@ -1,23 +1,23 @@
-import { ValueObject,Result} from '@/domain/shared/';
+import { ValueObject, Result } from '@/domain/shared/core';
 
-interface ReasonDescriptionValueObjectProps{
-  value:string
+interface ReasonDescriptionValueObjectProps {
+	value: string
 }
 
 export class ReasonDescriptionValueObject extends ValueObject<ReasonDescriptionValueObjectProps>{
-	private constructor (props:ReasonDescriptionValueObjectProps){
+	private constructor (props: ReasonDescriptionValueObjectProps) {
 		super(props);
 	}
 
-	get value (){
+	get value () {
 		return this.props.value;
 	}
 
-	static create (description:string):Result<ReasonDescriptionValueObject>{
+	static create (description: string): Result<ReasonDescriptionValueObject> {
 		const descriptionSanitized = description.trim();
 		const isValidDescriptionLength = descriptionSanitized.length >= 1 && descriptionSanitized.length <= 20;
 		if (!isValidDescriptionLength)
 			return Result.fail<ReasonDescriptionValueObject>('Description must have minimum 1 and max 20 characters');
-		return Result.ok<ReasonDescriptionValueObject>(new ReasonDescriptionValueObject({value:descriptionSanitized.toLowerCase()}));
+		return Result.ok<ReasonDescriptionValueObject>(new ReasonDescriptionValueObject({ value: descriptionSanitized.toLowerCase() }));
 	}
 }

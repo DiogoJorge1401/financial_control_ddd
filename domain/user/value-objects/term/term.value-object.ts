@@ -1,5 +1,5 @@
-import { Result, ValueObject } from '@/domain/shared/';
-import { DateValueObject } from '@/domain/shared';
+import { Result, ValueObject } from '@/domain/shared/core';
+import { DateValueObject } from '@/domain/shared/common';
 import { IpValueObject } from '../ip/ip.value-object';
 
 export enum IOs {
