@@ -8,7 +8,7 @@
   "paymentDate": "2021-01-01 10:00:00",
   "transactionType": ["ENTRADA","SAIDA"],
   "status": ["PENDENTE","CONCLUIDO"],
-  "note": "valid_description",
+  "transactionNote": "valid_description",
   "attachment": "url",
   "calculations": [
     {
@@ -29,7 +29,7 @@
     - reasonId: Value Object - OK
     - transactionType: Value Object (enum) - OK
     - transactionStatus: Value Object (enum) - OK
-    - note: Value Object
+    - transactionNote: Value Object - OK
     - attachment: Value Object
     - calculations: Calculation[]
       - calculation: Value Object
