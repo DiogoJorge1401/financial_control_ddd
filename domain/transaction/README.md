@@ -10,14 +10,14 @@
   "status": ["PENDENTE","CONCLUIDO"],
   "transactionNote": "valid_description",
   "attachment": "url",
-  "calculations": [
+  "transactionCalculations": [
     {
       "budgetBoxId": "uuid",
-      "value": 50
+      "monetaryValue": 50
     },
     {
       "budgetBoxId": "uuid",
-      "value": 50
+      "monetaryValue": 50
     }
   ]
 }
@@ -31,5 +31,5 @@
     - transactionStatus: Value Object (enum) - OK
     - transactionNote: Value Object - OK
     - attachment: Value Object - OK
-    - calculations: Calculation[]
-      - calculation: Value Object
+    - transactioCalculations: TransactioncCalculation[]
+      - transactionCalculation: Value Object - OK
