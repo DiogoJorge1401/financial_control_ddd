@@ -1,16 +1,15 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { EmailValueObject } from './email.value-object';
 
 describe('email.value-object', () => {
 	it('should return a valid email', () => {
 		const email = EmailValueObject.create("validemail@mail.com");
-
 		expect(email.isSuccess).toBe(true);
-		expect(email.isFailure).toBe(false);
 	});
 	it('should return fail if provide an invalid email', () => {
 		const email = EmailValueObject.create("validEmail");
 
-		expect(email.error).toBe("Invalid Email");
+		expect(email.error).toBe(ERROR_MESSAGES.USER_INVALID_EMAIL_FORMAT);
 		expect(email.isFailure).toBe(true);
 	});
 

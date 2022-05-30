@@ -1,4 +1,4 @@
-import { BudgetIdValueObject } from '@/domain/shared/common';
+import { BudgetIdValueObject, ERROR_MESSAGES } from '@/domain/shared/common';
 import { UniqueEntityID } from '@/domain/shared/core';
 import { TransactionCalculationValueObject } from './transaction-calculation.value-object';
 
@@ -40,6 +40,6 @@ describe('transaction-calculation.value-object', () => {
 		);
 
 		expect(calculation.isFailure).toBe(true);
-		expect(calculation.error).toEqual('Invalid monetay value, must be greater than 0');
+		expect(calculation.error).toEqual(ERROR_MESSAGES.TRANSACTION_INVALID_CALCULATION_MONETARY_AMOUNT);
 	});
 });

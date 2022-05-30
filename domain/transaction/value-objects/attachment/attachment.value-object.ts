@@ -1,5 +1,6 @@
 import { ValueObject, Result } from '@/domain/shared/core';
 import isURL from 'validator/lib/isURL';
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 
 interface AttachmentValueObjectProps {
   value: string
@@ -19,7 +20,7 @@ export class AttachmentValueObject extends ValueObject<AttachmentValueObjectProp
 		const isValidPath = regexValidation.test(path);
 		const isValidurl = isURL(path);
 		if (!isValidPath && !isValidurl)
-			return Result.fail('Invalid path');
+			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_ATTACHMENT_PATH);
 		return Result.ok(new AttachmentValueObject({ value: path }));
 	}
 }

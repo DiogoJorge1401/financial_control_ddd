@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { AttachmentValueObject } from './attachment.value-object';
 
 describe('attachment.value-object', () => {
@@ -15,6 +16,6 @@ describe('attachment.value-object', () => {
 	it('should fail if provide an invalid url', () => {
 		const attachment = AttachmentValueObject.create('invalid_url');
 		expect(attachment.isFailure).toBe(true);
-		expect(attachment.error).toBe('Invalid path');
+		expect(attachment.error).toBe(ERROR_MESSAGES.TRANSACTION_INVALID_ATTACHMENT_PATH);
 	});
 });

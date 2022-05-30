@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { TransactionTypeValueObject } from './transaction-type.value-object';
 
 describe('transaction-type.value-object', () => {
@@ -9,6 +10,6 @@ describe('transaction-type.value-object', () => {
 	it('should fail if the provided value is not valid', () => {
 		const transactionType = TransactionTypeValueObject.create('Blah' as any);
 		expect(transactionType.isFailure).toBe(true);
-		expect(transactionType.error).toBe('Invalid transaction type');
+		expect(transactionType.error).toBe(ERROR_MESSAGES.TRANSACTION_INVALID_TYPE);
 	});
 });

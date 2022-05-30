@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '../error-messages';
 import { DateValueObject } from './date.value-object';
 
 
@@ -10,6 +11,6 @@ describe('date.value-object', () => {
 	it('should fail if provide an invalid date', () => {
 		const date = DateValueObject.create('2022-05-2720:55:00' as any);
 		expect(date.isFailure).toBe(true);
-		expect(date.error).toBe('Invalid date');
+		expect(date.error).toBe(ERROR_MESSAGES.DATE_INVALID_FORMAT);
 	});
 });

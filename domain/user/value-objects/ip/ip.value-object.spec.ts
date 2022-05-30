@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { IpValueObject } from './ip.value-object';
 
 describe('ip.value-object', () => {
@@ -9,6 +10,6 @@ describe('ip.value-object', () => {
 	it('should fail if provide an invalid ip', () => { 
 		const ip = IpValueObject.create('127.02.01.21');
 		expect(ip.isFailure).toBe(true);
-		expect(ip.error).toBe('Invalid IP');
+		expect(ip.error).toBe(ERROR_MESSAGES.USER_INVALID_TERM_IP_FORMAT);
 	});
 });

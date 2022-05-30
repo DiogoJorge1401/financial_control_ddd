@@ -1,4 +1,4 @@
-import { DateValueObject } from '@/domain/shared/common';
+import { DateValueObject, ERROR_MESSAGES } from '@/domain/shared/common';
 import { IpValueObject } from '../ip/ip.value-object';
 import { IUserAgent, TermValueObject } from './term.value-object';
 
@@ -44,6 +44,6 @@ describe('term.value-object', () => {
 		);
 		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isFailure).toBe(true);
-		expect(term.error).toBe('Invalid Os');
+		expect(term.error).toBe(ERROR_MESSAGES.USER_INVALID_TERM_AGENT_OS);
 	});
 });

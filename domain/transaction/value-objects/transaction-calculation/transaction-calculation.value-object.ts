@@ -1,5 +1,5 @@
 import { ValueObject, Result } from '@/domain/shared/core';
-import { BudgetIdValueObject } from '@/domain/shared/common';
+import { BudgetIdValueObject, ERROR_MESSAGES } from '@/domain/shared/common';
 
 interface TransactionCalculation {
   budgetBoxId: BudgetIdValueObject
@@ -22,7 +22,7 @@ export class TransactionCalculationValueObject extends ValueObject<TransactionCa
 	static create (calculation: TransactionCalculation): Result<TransactionCalculationValueObject> {
 		const isValidMonetaryValue = calculation.monetaryValue > 0;
 		if(!isValidMonetaryValue)
-			return Result.fail("Invalid monetay value, must be greater than 0");
+			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_CALCULATION_MONETARY_AMOUNT);
 		return Result.ok(new TransactionCalculationValueObject({
 			value: calculation
 		}));

@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { ReasonDescriptionValueObject } from './reason-description.value-object';
 
 describe('reasonDescription.value-object', () => {
@@ -14,7 +15,7 @@ describe('reasonDescription.value-object', () => {
 	it('should fail creation if value length is less than 1',()=>{
 		const reasonDescription = ReasonDescriptionValueObject.create(' ');
 		expect(reasonDescription.isFailure).toBe(true);
-		expect(reasonDescription.error).toBe('Description must have minimum 1 and max 20 characters');
+		expect(reasonDescription.error).toBe(ERROR_MESSAGES.BUDGET_INVALID_REASON_DESCRIPTION_LENGTH);
 	});
 	it('should fail creation if value length is greater than 20',()=>{
     	const reasonDescription = ReasonDescriptionValueObject.create(
@@ -23,6 +24,6 @@ describe('reasonDescription.value-object', () => {
       `
 		);
 		expect(reasonDescription.isFailure).toBe(true);
-		expect(reasonDescription.error).toBe('Description must have minimum 1 and max 20 characters');
+		expect(reasonDescription.error).toBe(ERROR_MESSAGES.BUDGET_INVALID_REASON_DESCRIPTION_LENGTH);
 	});
 });

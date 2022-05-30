@@ -1,5 +1,5 @@
 import { Result, ValueObject } from '@/domain/shared/core';
-import { DateValueObject } from '@/domain/shared/common';
+import { DateValueObject, ERROR_MESSAGES } from '@/domain/shared/common';
 import { IpValueObject } from '../ip/ip.value-object';
 
 export enum IOs {
@@ -39,7 +39,7 @@ export class TermValueObject extends ValueObject<TermValueObjectProps>{
 		const isValidOS = Object.values(IOs)
 			.includes(props.userAgent.os.toUpperCase() as any);
 		if (!isValidOS)
-			return Result.fail('Invalid Os');
+			return Result.fail(ERROR_MESSAGES.USER_INVALID_TERM_AGENT_OS);
 		return Result.ok<TermValueObject>(new TermValueObject(props));
 	}
 }

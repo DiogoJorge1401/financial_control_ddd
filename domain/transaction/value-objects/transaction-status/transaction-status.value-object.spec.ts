@@ -1,3 +1,4 @@
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 import { TransactionStatusValueObject } from './transaction-status.value-object';
 
 describe('transaction-status.value-object', () => {
@@ -9,6 +10,6 @@ describe('transaction-status.value-object', () => {
 	it('should fail if the provided value is not valid', () => {
 		const status = TransactionStatusValueObject.create('Blah' as any);
 		expect(status.isFailure).toBe(true);
-		expect(status.error).toBe('Invalid transaction status');
+		expect(status.error).toBe(ERROR_MESSAGES.TRANSACTION_INVALID_STATUS);
 	});
 });

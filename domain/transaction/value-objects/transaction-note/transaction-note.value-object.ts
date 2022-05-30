@@ -1,7 +1,8 @@
 import { ValueObject, Result } from '@/domain/shared/core';
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 
 interface TransactionNoteValueObjectProps {
-  value: string
+	value: string
 }
 
 export class TransactionNoteValueObject extends ValueObject<TransactionNoteValueObjectProps>{
@@ -16,8 +17,8 @@ export class TransactionNoteValueObject extends ValueObject<TransactionNoteValue
 	static create (value: string): Result<TransactionNoteValueObject> {
 		const valueLength = value.length;
 		const isValidValueLength = valueLength >= 4 && valueLength <= 144;
-		if(!isValidValueLength)
-			return Result.fail('Note must have minimum 4 and max 144 characters');
+		if (!isValidValueLength)
+			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_NOTE_LENGTH);
 		return Result.ok(new TransactionNoteValueObject({ value }));
 	}
 }

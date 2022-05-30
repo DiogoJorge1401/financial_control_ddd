@@ -1,4 +1,5 @@
 import { ValueObject, Result } from "@/domain/shared/core";
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 
 enum ETransactionType { ENTRADA, SAIDA }
 type TransactionType = keyof typeof ETransactionType;
@@ -16,7 +17,7 @@ export class TransactionTypeValueObject extends ValueObject<TransactionTypeValue
 	static create (value: TransactionType): Result<TransactionTypeValueObject> {
 		const isValidValue = Object.keys(ETransactionType).includes(value);
 		if (!isValidValue)
-			return Result.fail('Invalid transaction type');
+			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_TYPE);
 		return Result.ok(new TransactionTypeValueObject({ value }));
 	}
 }

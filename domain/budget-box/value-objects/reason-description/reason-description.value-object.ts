@@ -1,4 +1,5 @@
 import { ValueObject, Result } from '@/domain/shared/core';
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 
 interface ReasonDescriptionValueObjectProps {
 	value: string
@@ -17,7 +18,7 @@ export class ReasonDescriptionValueObject extends ValueObject<ReasonDescriptionV
 		const descriptionSanitized = description.trim();
 		const isValidDescriptionLength = descriptionSanitized.length >= 1 && descriptionSanitized.length <= 20;
 		if (!isValidDescriptionLength)
-			return Result.fail<ReasonDescriptionValueObject>('Description must have minimum 1 and max 20 characters');
+			return Result.fail<ReasonDescriptionValueObject>(ERROR_MESSAGES.BUDGET_INVALID_REASON_DESCRIPTION_LENGTH);
 		return Result.ok<ReasonDescriptionValueObject>(new ReasonDescriptionValueObject({ value: descriptionSanitized.toLowerCase() }));
 	}
 }

@@ -1,4 +1,5 @@
 import { ValueObject, Result } from '@/domain/shared/core';
+import { ERROR_MESSAGES } from '@/domain/shared/common';
 
 enum ETransactionStatus { PENDENTE, CONCLUIDO }
 type TransactionStatus = keyof typeof ETransactionStatus;
@@ -16,7 +17,7 @@ export class TransactionStatusValueObject extends ValueObject<TransactionStatusV
 	static create (value: TransactionStatus): Result<TransactionStatusValueObject> {
 		const isValidValue = Object.keys(ETransactionStatus).includes(value);
 		if (!isValidValue)
-			return Result.fail('Invalid transaction status');
+			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_STATUS);
 		return Result.ok(new TransactionStatusValueObject({ value }));
 	}
 }
