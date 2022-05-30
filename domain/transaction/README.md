@@ -30,6 +30,6 @@
     - transactionType: Value Object (enum) - OK
     - transactionStatus: Value Object (enum) - OK
     - transactionNote: Value Object - OK
-    - attachment: Value Object
+    - attachment: Value Object - OK
     - calculations: Calculation[]
       - calculation: Value Object
