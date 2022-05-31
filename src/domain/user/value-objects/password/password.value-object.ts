@@ -1,12 +1,13 @@
 import { Result, ValueObject } from '@shared/core';
 import { compare, hash } from 'bcrypt';
 import { ERROR_MESSAGES } from '@shared/common';
+import { IPassword } from './interfaces/password.interface';
 
 interface PasswordValueObjectProps {
 	value: string
 }
 
-export class PasswordValueObject extends ValueObject<PasswordValueObjectProps>{
+export class PasswordValueObject extends ValueObject<PasswordValueObjectProps> implements IPassword{
 	private _isEncrypted: boolean;
 
 	private constructor (props: PasswordValueObjectProps) {
