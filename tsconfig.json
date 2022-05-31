@@ -32,7 +32,7 @@
       ],
       "@repositories/*": [
         "infra/repositories/*"
-      ],
+      ]
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,
