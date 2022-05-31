@@ -13,10 +13,12 @@ export enum IOs {
 	IPAD = 'IPAD'
 }
 
+export type operationalSystem = keyof typeof IOs;
+
 export interface IUserAgent {
 	name: string,
 	version: string,
-	os: keyof typeof IOs,
+	os: operationalSystem,
 	type: string
 }
 
