@@ -24,15 +24,15 @@
       "@domain/*": [
         "domain/*"
       ],
-      "@shared-core/*": [
-        "domain/shared/core/*"
-      ],
-      "@shared-common/*": [
-        "domain/shared/common/*"
-      ],
       "@shared/*": [
         "domain/shared/*"
-      ]
+      ],
+      "@infra/*": [
+        "infra/*"
+      ],
+      "@repositories/*": [
+        "infra/repositories/*"
+      ],
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,
