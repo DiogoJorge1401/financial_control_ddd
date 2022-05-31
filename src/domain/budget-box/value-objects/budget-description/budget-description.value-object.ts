@@ -1,4 +1,4 @@
-import { ValueObject, Result } from 'types-ddd'
+import { ValueObject, Result } from 'types-ddd';
 import { ERROR_MESSAGES } from '@shared/common';
 
 interface BudgetDescriptionValueObjectProps {
@@ -6,15 +6,15 @@ interface BudgetDescriptionValueObjectProps {
 }
 
 export class BudgetDescriptionValueObject extends ValueObject<BudgetDescriptionValueObjectProps>{
-	private constructor(props: BudgetDescriptionValueObjectProps) {
+	private constructor (props: BudgetDescriptionValueObjectProps) {
 		super(props);
 	}
 
-	get value() {
+	get value () {
 		return this.props.value;
 	}
 
-	static create(description: string): Result<BudgetDescriptionValueObject> {
+	static create (description: string): Result<BudgetDescriptionValueObject> {
 		const descriptionSanitized = description.trim();
 		const isValidDescriptionLength = descriptionSanitized.length >= 1 && descriptionSanitized.length <= 30;
 		if (!isValidDescriptionLength)

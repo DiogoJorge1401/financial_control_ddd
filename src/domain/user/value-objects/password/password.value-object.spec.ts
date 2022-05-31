@@ -24,20 +24,20 @@ describe('password.value-object', () => {
 	});
 	it(`should return true on 'compare' if passwords match`, async () => {
 		const password = PasswordValueObject.create('password1234').getResult();
-		let isSamePassword = await password.compare('password1234')
-		expect(isSamePassword).toBe(true)
+		let isSamePassword = await password.compare('password1234');
+		expect(isSamePassword).toBe(true);
 
 		await password.encryptPassword();
-		isSamePassword = await password.compare('password1234')
-		expect(isSamePassword).toBe(true)
+		isSamePassword = await password.compare('password1234');
+		expect(isSamePassword).toBe(true);
 	});
 	it(`should fail coparison if passwords don't match`, async () => {
 		const password = PasswordValueObject.create('password1234').getResult();
-		let isSamePassword = await password.compare('banana')
-		expect(isSamePassword).toBe(false)
+		let isSamePassword = await password.compare('banana');
+		expect(isSamePassword).toBe(false);
 
 		await password.encryptPassword();
-		isSamePassword = await password.compare('blah')
-		expect(isSamePassword).toBe(false)
+		isSamePassword = await password.compare('blah');
+		expect(isSamePassword).toBe(false);
 	});
 });

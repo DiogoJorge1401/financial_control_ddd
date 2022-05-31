@@ -1,4 +1,4 @@
-import { ValueObject, Result } from 'types-ddd'
+import { ValueObject, Result } from 'types-ddd';
 import { ERROR_MESSAGES } from '@shared/common';
 
 interface ReasonDescriptionValueObjectProps {
