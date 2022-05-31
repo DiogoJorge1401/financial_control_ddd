@@ -1,4 +1,4 @@
-import { ValueObject, Result } from '@shared/core';
+import { ValueObject, Result } from 'types-ddd'
 import { BudgetIdValueObject, ERROR_MESSAGES } from '@shared/common';
 
 interface TransactionCalculation {

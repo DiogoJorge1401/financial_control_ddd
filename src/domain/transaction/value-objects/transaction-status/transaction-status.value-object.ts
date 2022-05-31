@@ -1,4 +1,4 @@
-import { ValueObject, Result } from '@shared/core';
+import { ValueObject, Result } from 'types-ddd'
 import { ERROR_MESSAGES } from '@shared/common';
 
 enum ETransactionStatus { PENDENTE, CONCLUIDO }
