@@ -11,10 +11,10 @@ import { UserMapper } from './user.mapper';
 export class UserRepository implements IUserRepository {
 
 	constructor (
-    @InjectModel(User.name)
-    private readonly connection: Model<User>,
-    @Inject(UserMapper)
-    private readonly mapper: UserMapper
+		@InjectModel(User.name)
+		private readonly connection: Model<User>,
+		@Inject('UserMapper')
+		private readonly mapper: UserMapper
 	) { }
 
 	async find (filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
