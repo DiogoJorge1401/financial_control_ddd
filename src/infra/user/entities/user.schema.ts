@@ -11,7 +11,7 @@ interface IUserAgent {
   type: string
 }
 
-interface Term {
+export interface Term {
   ip: string,
   acceptedAt: Date,
   userAgent: IUserAgent,
@@ -20,22 +20,34 @@ interface Term {
 @Schema({ autoCreate: true, timestamps: true, autoIndex: true })
 export class User {
 
+  @Prop({ immutable: true, required: true, index: true, unique: true })
+	readonly id!: string;
+  
   @Prop({ required: true, unique: true, index: true })
-  email: string;
+  	email!: string;
 
   @Prop({ required: true })
-  password: string;
+  	password!: string;
 
   @Prop({ default: [] })
-  budgetBoxIds?: Array<string>;
+  	budgetBoxIds?: Array<string>;
 
   @Prop({ default: 0 })
-  totalBalanceAvailable: number;
+  	totalBalanceAvailable!: number;
 
   @Prop({ required: true })
-  terms: Array<Term>;
+  	terms: Array<Term>;
+
+  @Prop({ type: Date, required: true, default: new Date() })
+  	createdAt!: Date;
+
+  @Prop({ type: Date, required: true, default: new Date() })
+  	updatedAt!: Date;
+
+  @Prop({ type: Boolean, default: false })
+  	isDeleted?: boolean;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User)
+export const UserSchema = SchemaFactory.createForClass(User);
 
-export type UserDocument = User & Document
+export type UserDocument = User & Document;
