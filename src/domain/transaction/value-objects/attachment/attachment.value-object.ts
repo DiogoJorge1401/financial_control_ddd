@@ -1,6 +1,6 @@
 import { ValueObject, Result } from 'types-ddd';
 import isURL from 'validator/lib/isURL';
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 
 interface AttachmentValueObjectProps {
   value: string

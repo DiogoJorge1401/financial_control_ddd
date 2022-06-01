@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { TransactionStatusValueObject } from './transaction-status.value-object';
 
 describe('transaction-status.value-object', () => {

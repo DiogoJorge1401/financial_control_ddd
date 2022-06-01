@@ -1,5 +1,5 @@
 import { ValueObject, Result } from "types-ddd";
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 
 enum ETransactionType { ENTRADA, SAIDA }
 type TransactionType = keyof typeof ETransactionType;

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { ReasonDescriptionValueObject } from './reason-description.value-object';
 
 describe('reasonDescription.value-object', () => {

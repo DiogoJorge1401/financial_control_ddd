@@ -1,8 +1,8 @@
-import { ValueObject, Result } from 'types-ddd';
-import { BudgetIdValueObject, ERROR_MESSAGES } from '@shared/common';
+import { ValueObject, Result, DomainId } from 'types-ddd';
+import { ERROR_MESSAGES } from '@shared/utils';
 
 interface TransactionCalculation {
-  budgetBoxId: BudgetIdValueObject
+  budgetBoxId: DomainId
   monetaryValue: number
 }
 

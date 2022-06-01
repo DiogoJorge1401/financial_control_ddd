@@ -1,6 +1,6 @@
 import { Result, ValueObject } from 'types-ddd';
 import isIP from 'validator/lib/isIP';
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 
 interface IpValueObjectProps {
 	value: string

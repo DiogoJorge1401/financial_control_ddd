@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { PasswordValueObject } from './password.value-object';
 describe('password.value-object', () => {
 	it('should create a valid password', () => {

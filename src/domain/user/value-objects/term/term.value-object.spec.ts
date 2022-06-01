@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { DateValueObject } from 'types-ddd';
 import { IpValueObject } from '../ip/ip.value-object';
 import { IUserAgent, TermValueObject } from './term.value-object';

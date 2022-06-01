@@ -1,6 +1,6 @@
 import { Result, ValueObject } from 'types-ddd';
 import { compare, hash } from 'bcrypt';
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { IPassword } from './interfaces/password.interface';
 
 interface PasswordValueObjectProps {

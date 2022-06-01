@@ -1,8 +1,5 @@
-import {
-	BudgetIdValueObject, ReasonIdValueObject, UserIdValueObject
-} from '@shared/common';
-import { UniqueEntityID } from 'types-ddd';
-import { DateValueObject } from 'types-ddd';
+import { DateValueObject, DomainId } from 'types-ddd';
+import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import {
 	AttachmentValueObject,
 	TransactionCalculationValueObject,
@@ -15,10 +12,9 @@ import { TransactionAggregate } from './transaction.aggregate';
 describe('transaction.aggregate', () => {
 	it('should create a valid transaction', () => {
 		const transaction = TransactionAggregate.create({
-			userId: UserIdValueObject.create()
-				.getResult(),
-			reasonId: ReasonIdValueObject.create()
-				.getResult(),
+			ID: DomainId.create(),
+			userId: DomainId.create(),
+			reason: ReasonDescriptionValueObject.create('valid_description').getResult(),
 			paymentDate: DateValueObject.create(new Date())
 				.getResult(),
 			transactionType: TransactionTypeValueObject.create('ENTRADA')
@@ -31,11 +27,11 @@ describe('transaction.aggregate', () => {
 				.getResult(),
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
-					budgetBoxId: BudgetIdValueObject.create().getResult(),
+					budgetBoxId: DomainId.create(),
 					monetaryValue: 100
 				}).getResult(),
 				TransactionCalculationValueObject.create({
-					budgetBoxId: BudgetIdValueObject.create().getResult(),
+					budgetBoxId: DomainId.create(),
 					monetaryValue: 200
 				}).getResult(),
 			]
@@ -44,11 +40,11 @@ describe('transaction.aggregate', () => {
 		expect(transaction.getResult().totalAmount).toBe(300);
 	});
 	it('should create a valid transaction with a provided id', () => {
+		const ID = DomainId.create();
 		const transaction = TransactionAggregate.create({
-			userId: UserIdValueObject.create()
-				.getResult(),
-			reasonId: ReasonIdValueObject.create()
-				.getResult(),
+			ID,
+			userId: DomainId.create(),
+			reason: ReasonDescriptionValueObject.create('valid_description').getResult(),
 			paymentDate: DateValueObject.create(new Date())
 				.getResult(),
 			transactionType: TransactionTypeValueObject.create('ENTRADA')
@@ -61,15 +57,15 @@ describe('transaction.aggregate', () => {
 				.getResult(),
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
-					budgetBoxId: BudgetIdValueObject.create().getResult(),
+					budgetBoxId: DomainId.create(),
 					monetaryValue: 100
 				}).getResult(),
 				TransactionCalculationValueObject.create({
-					budgetBoxId: BudgetIdValueObject.create().getResult(),
+					budgetBoxId: DomainId.create(),
 					monetaryValue: 200
 				}).getResult(),
 			]
-		}, new UniqueEntityID('valid_id'));
-		expect(transaction.getResult().id.toValue()).toBe('valid_id');
+		});
+		expect(transaction.getResult().id.toValue()).toBe(ID.toValue());
 	});
 });

@@ -1,37 +1,35 @@
-import { AggregateRoot } from '@shared/core';
 import { EmailValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
-import { BudgetIdValueObject } from '@shared/common';
-import { Result, UniqueEntityID } from 'types-ddd';
+import { AggregateRoot, BaseDomainEntity, DomainId, Result } from 'types-ddd';
 
-interface UserAggregateProps {
+interface UserAggregateProps extends BaseDomainEntity {
 	email: EmailValueObject
 	password: PasswordValueObject
-	budgetBoxIds?: BudgetIdValueObject[]
+	budgetBoxIds?: DomainId[]
 	totalBalanceAvailable: number
 	terms: TermValueObject[]
 }
 
 export class UserAggregate extends AggregateRoot<UserAggregateProps>{
-	private constructor (props: UserAggregateProps, id?: UniqueEntityID) {
-		super(props, id);
+	private constructor (props: UserAggregateProps) {
+		super(props, UserAggregate.name);
 	}
-	get email (){
+	get email () {
 		return this.props.email;
 	}
-	get password (){
+	get password () {
 		return this.props.password;
 	}
-	get budgetBoxIds (){
+	get budgetBoxIds () {
 		return this.props.budgetBoxIds ?? [];
 	}
-	get totalBalanceAvailable ():number{
+	get totalBalanceAvailable (): number {
 		return this.props.totalBalanceAvailable;
 	}
-	get terms (){
+	get terms () {
 		return this.props.terms;
 	}
 
-	static create (props: UserAggregateProps, id?: UniqueEntityID): Result<UserAggregate> {
-		return Result.ok(new UserAggregate(props, id));
+	static create (props: UserAggregateProps): Result<UserAggregate> {
+		return Result.ok(new UserAggregate(props));
 	}
 }

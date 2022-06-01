@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { EmailValueObject } from './email.value-object';
 
 describe('email.value-object', () => {

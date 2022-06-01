@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { AttachmentValueObject } from './attachment.value-object';
 
 describe('attachment.value-object', () => {

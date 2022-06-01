@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { IpValueObject } from './ip.value-object';
 
 describe('ip.value-object', () => {

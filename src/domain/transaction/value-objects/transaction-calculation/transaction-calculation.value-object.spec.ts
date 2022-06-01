@@ -1,12 +1,10 @@
-import { BudgetIdValueObject, ERROR_MESSAGES } from '@shared/common';
-import { UniqueEntityID } from 'types-ddd';
+import { ERROR_MESSAGES } from '@shared/utils';
+import { DomainId } from 'types-ddd';
 import { TransactionCalculationValueObject } from './transaction-calculation.value-object';
 
 describe('transaction-calculation.value-object', () => {
 	it('should create a valid transaction calculation', () => {
-		const budgetBoxId = BudgetIdValueObject
-			.create(new UniqueEntityID('valid_id'))
-			.getResult();
+		const budgetBoxId = DomainId.create('valid_id');
 		const value = 50;
 		const calculation = TransactionCalculationValueObject.create(
 			{
@@ -21,16 +19,13 @@ describe('transaction-calculation.value-object', () => {
 				.getResult()
 				.value
 				.budgetBoxId
-				.id
 				.toValue()
 		)
 			.toEqual('valid_id');
 		expect(calculation.getResult().value.monetaryValue).toBe(50);
 	});
 	it('should fail if provide a monetary value less than or equal 0', () => {
-		const budgetBoxId = BudgetIdValueObject
-			.create(new UniqueEntityID('valid_id'))
-			.getResult();
+		const budgetBoxId = DomainId.create('valid_id');
 		const value = 0;
 		const calculation = TransactionCalculationValueObject.create(
 			{

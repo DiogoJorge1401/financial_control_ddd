@@ -1,16 +1,16 @@
 import { EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
-import { UniqueEntityID } from 'types-ddd';
-import {  BudgetIdValueObject } from '@shared/common';
+import { DateValueObject, DomainId } from 'types-ddd';
 import { UserAggregate } from './user.aggregate';
-import { DateValueObject } from 'types-ddd';
+;
 
 describe('user.aggregate', () => {
 	it('should create a valid user', () => {
 		const budgetBoxIds = [
-			BudgetIdValueObject.create().getResult(),
-			BudgetIdValueObject.create().getResult()
+			DomainId.create(),
+			DomainId.create()
 		];
 		const user = UserAggregate.create({
+			ID: DomainId.create(),
 			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
 			password: PasswordValueObject.create('valid_password').getResult(),
 			totalBalanceAvailable: 0,
@@ -32,10 +32,11 @@ describe('user.aggregate', () => {
 	});
 	it('should be able get valid values', () => {
 		const budgetBoxIds = [
-			BudgetIdValueObject.create(new UniqueEntityID('valid-id-1')).getResult(),
-			BudgetIdValueObject.create(new UniqueEntityID('valid-id-2')).getResult()
+			DomainId.create('valid-id-1'),
+			DomainId.create('valid-id-2')
 		];
 		const user = UserAggregate.create({
+			ID: DomainId.create(),
 			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
 			password: PasswordValueObject.create('valid_password').getResult(),
 			totalBalanceAvailable: 0,
@@ -56,7 +57,7 @@ describe('user.aggregate', () => {
 		expect(user.email.value).toBe('valid_mail@domain.com');
 		expect(user.password.value).toBe('valid_password');
 		expect(user.totalBalanceAvailable).toBe(0);
-		expect(user.budgetBoxIds.map(el => el.id.toValue())).toEqual(['valid-id-1', 'valid-id-2']);
+		expect(user.budgetBoxIds.map(el => el.toValue())).toEqual(['valid-id-1', 'valid-id-2']);
 		expect(user.terms[0].value.ip.value).toBe('45.192.110.42');
 		expect(user.terms[0].value.userAgent).toEqual({
 			name: 'firefox',
@@ -67,6 +68,7 @@ describe('user.aggregate', () => {
 	});
 	it('should returs an empty array if not provide budgetBoxIds', () => {
 		const user = UserAggregate.create({
+			ID: DomainId.create(),
 			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
 			password: PasswordValueObject.create('valid_password').getResult(),
 			totalBalanceAvailable: 0,
@@ -86,11 +88,13 @@ describe('user.aggregate', () => {
 		expect(user.getResult().budgetBoxIds).toEqual([]);
 	});
 	it('should create a valid user with provided id', () => {
+		const ID = DomainId.create();
 		const budgetBoxIds = [
-			BudgetIdValueObject.create().getResult(),
-			BudgetIdValueObject.create().getResult()
+			DomainId.create(),
+			DomainId.create()
 		];
 		const user = UserAggregate.create({
+			ID,
 			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
 			password: PasswordValueObject.create('valid_password').getResult(),
 			totalBalanceAvailable: 0,
@@ -107,8 +111,8 @@ describe('user.aggregate', () => {
 					},
 				}).getResult(),
 			]
-		}, new UniqueEntityID('valid_id'));
+		});
 		expect(user.isSuccess).toBe(true);
-		expect(user.getResult().id.toValue()).toBe('valid_id');
+		expect(user.getResult().id.toValue()).toBe(ID.toValue());
 	});
 });

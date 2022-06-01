@@ -1,5 +1,5 @@
 import { ValueObject, Result } from 'types-ddd';
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 
 interface TransactionNoteValueObjectProps {
 	value: string

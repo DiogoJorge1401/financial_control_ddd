@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { BudgetPercentageValueObject } from './budget-percentage.value-object';
 
 describe('budgetPercentage.value-object', () => {
