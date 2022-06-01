@@ -10,26 +10,26 @@ import { UserMapper } from './user.mapper';
 
 export class UserRepository implements IUserRepository {
 
-  constructor(
+	constructor (
     @InjectModel(User.name)
     private readonly connection: Model<User>,
     @Inject(UserMapper)
     private readonly mapper: UserMapper
-  ) { }
+	) { }
 
-  async find(filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
-    throw new Error('method not implemented!')
-  }
-  async findOne(filter: Filter<Partial<User>>): Promise<UserAggregate> {
-    throw new Error('method not implemented!')
-  }
-  async delete(filter: Filter<Partial<User>>): Promise<void> {
-    throw new Error('method not implemented!')
-  }
-  async exists(filter: Filter<Partial<User>>): Promise<boolean> {
-    throw new Error('method not implemented!')
-  }
-  async save(target: UserAggregate): Promise<void> {
-    throw new Error('method not implemented!')
-  }
+	async find (filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
+		throw new Error('method not implemented!');
+	}
+	async findOne (filter: Filter<Partial<User>>): Promise<UserAggregate> {
+		throw new Error('method not implemented!');
+	}
+	async delete (filter: Filter<Partial<User>>): Promise<void> {
+		throw new Error('method not implemented!');
+	}
+	async exists (filter: Filter<Partial<User>>): Promise<boolean> {
+		throw new Error('method not implemented!');
+	}
+	async save (target: UserAggregate): Promise<void> {
+		throw new Error('method not implemented!');
+	}
 }

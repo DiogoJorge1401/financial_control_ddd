@@ -1,6 +1,6 @@
 import { UserAggregate } from '@domain/user/aggregates';
-import { IpValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
-import { DateValueObject, DomainId, EmailValueObject } from 'types-ddd';
+import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
+import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
 import { Term, User } from '../entities/user.schema';
 import { UserMapper } from './user.mapper';
 

@@ -1,5 +1,5 @@
-import { EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
-import { DateValueObject, DomainId } from 'types-ddd';
+import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
+import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
 import { UserAggregate } from './user.aggregate';
 ;
 
