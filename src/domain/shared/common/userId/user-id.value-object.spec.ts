@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@shared/core';
+import { UniqueEntityID } from 'types-ddd';
 import { UserIdValueObject } from './user-id.value-object';
 
 describe('userId.value-object', () => {

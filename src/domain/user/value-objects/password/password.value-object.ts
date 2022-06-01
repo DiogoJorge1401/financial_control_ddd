@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '@shared/core';
+import { Result, ValueObject } from 'types-ddd';
 import { compare, hash } from 'bcrypt';
 import { ERROR_MESSAGES } from '@shared/common';
 import { IPassword } from './interfaces/password.interface';

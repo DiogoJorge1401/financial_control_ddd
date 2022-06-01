@@ -1,7 +1,8 @@
 import {
-	BudgetIdValueObject, DateValueObject, ReasonIdValueObject, UserIdValueObject
+	BudgetIdValueObject, ReasonIdValueObject, UserIdValueObject
 } from '@shared/common';
-import { UniqueEntityID } from '@shared/core';
+import { UniqueEntityID } from 'types-ddd';
+import { DateValueObject } from 'types-ddd';
 import {
 	AttachmentValueObject,
 	TransactionCalculationValueObject,
@@ -68,7 +69,7 @@ describe('transaction.aggregate', () => {
 					monetaryValue: 200
 				}).getResult(),
 			]
-		},new UniqueEntityID('valid_id'));
+		}, new UniqueEntityID('valid_id'));
 		expect(transaction.getResult().id.toValue()).toBe('valid_id');
 	});
 });

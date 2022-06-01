@@ -1,7 +1,8 @@
-import { AggregateRoot, UniqueEntityID, Result } from "@shared/core";
+import { AggregateRoot } from "@shared/core";
 import { UserIdValueObject } from '@shared/common';
 import { ReasonDomainEntity } from '../../entities';
 import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '../../value-objects';
+import { Result, UniqueEntityID } from 'types-ddd';
 
 interface BudgetBoxAggregateProps {
   ownerId: UserIdValueObject

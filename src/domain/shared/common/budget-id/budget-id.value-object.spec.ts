@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@shared/core';
+import { UniqueEntityID } from 'types-ddd';
 import { BudgetIdValueObject } from './budget-id.value-object';
 
 describe('budgetId.value-object', () => {

@@ -1,22 +1,23 @@
-import { DateValueObject, ERROR_MESSAGES } from '@shared/common';
+import { ERROR_MESSAGES } from '@shared/common';
+import { DateValueObject } from 'types-ddd';
 import { IpValueObject } from '../ip/ip.value-object';
 import { IUserAgent, TermValueObject } from './term.value-object';
 
 interface IFakeUserAgent {
-	name?: string,
-	version?: string,
-	os?: string,
+	name?: string
+	version?: string
+	os?: string
 	type?: string
 }
 interface MakeFakeProps {
-	ipData?: string,
-	acceptedAtData?: Date,
-	userAgent: IFakeUserAgent,
+	ipData?: string
+	acceptedAtData?: Date
+	userAgent: IFakeUserAgent
 }
 interface MakeFakeResult {
-	ip: IpValueObject,
-	acceptedAt: DateValueObject,
-	userAgent: IUserAgent,
+	ip: IpValueObject
+	acceptedAt: DateValueObject
+	userAgent: IUserAgent
 }
 const makeFakeTerm = ({
 	acceptedAtData = new Date('2022-05-28T20:55:00'),

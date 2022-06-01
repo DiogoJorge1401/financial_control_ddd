@@ -1,5 +1,5 @@
 import { BudgetIdValueObject, ERROR_MESSAGES } from '@shared/common';
-import { UniqueEntityID } from '@shared/core';
+import { UniqueEntityID } from 'types-ddd';
 import { TransactionCalculationValueObject } from './transaction-calculation.value-object';
 
 describe('transaction-calculation.value-object', () => {

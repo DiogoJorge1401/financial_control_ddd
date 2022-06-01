@@ -1,5 +1,6 @@
-import { DateValueObject, ReasonIdValueObject, UserIdValueObject } from '@shared/common';
-import { AggregateRoot, UniqueEntityID, Result } from '@shared/core';
+import { ReasonIdValueObject, UserIdValueObject } from '@shared/common';
+import { AggregateRoot } from '@shared/core';
+import { DateValueObject, Result, UniqueEntityID } from 'types-ddd';
 import {
 	AttachmentValueObject,
 	TransactionCalculationValueObject,

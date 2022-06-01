@@ -1,4 +1,4 @@
-import { Result, ValueObject } from '@shared/core';
+import { Result, ValueObject } from 'types-ddd';
 import isIP from 'validator/lib/isIP';
 import { ERROR_MESSAGES } from '@shared/common';
 

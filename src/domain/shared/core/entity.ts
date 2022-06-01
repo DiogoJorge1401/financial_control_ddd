@@ -1,4 +1,4 @@
-import { UniqueEntityID } from './unique-entity-id';
+import { UniqueEntityID } from 'types-ddd';
 import { BaseDomainEntity } from './base-domain-entity';
 
 const isEntity = (v: any): v is Entity<any> => {

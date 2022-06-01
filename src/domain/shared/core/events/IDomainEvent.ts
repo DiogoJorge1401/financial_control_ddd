@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '../unique-entity-id';
+import { UniqueEntityID } from 'types-ddd';
 
 export interface IDomainEvent {
   dateTimeOccurred: Date;

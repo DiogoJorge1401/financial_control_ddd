@@ -1,7 +1,8 @@
 import { EmailValueObject, IpValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
-import { UniqueEntityID } from '@shared/core';
-import { DateValueObject, BudgetIdValueObject } from '@shared/common';
+import { UniqueEntityID } from 'types-ddd';
+import {  BudgetIdValueObject } from '@shared/common';
 import { UserAggregate } from './user.aggregate';
+import { DateValueObject } from 'types-ddd';
 
 describe('user.aggregate', () => {
 	it('should create a valid user', () => {

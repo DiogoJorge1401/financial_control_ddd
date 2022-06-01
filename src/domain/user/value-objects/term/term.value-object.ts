@@ -1,5 +1,5 @@
-import { Result, ValueObject } from '@shared/core';
-import { DateValueObject, ERROR_MESSAGES } from '@shared/common';
+import { DateValueObject, Result, ValueObject } from 'types-ddd';
+import {  ERROR_MESSAGES } from '@shared/common';
 import { IpValueObject } from '../ip/ip.value-object';
 
 export enum IOs {
