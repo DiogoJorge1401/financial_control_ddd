@@ -1,4 +1,4 @@
-import { EmailValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
+import { PasswordValueObject, TermValueObject, EmailValueObject } from '@domain/user/value-objects';
 import { AggregateRoot, BaseDomainEntity, DomainId, Result } from 'types-ddd';
 
 interface UserAggregateProps extends BaseDomainEntity {
