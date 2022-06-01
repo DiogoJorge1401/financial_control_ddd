@@ -21,8 +21,6 @@ describe('user.mapper', () => {
 			}
 		}
 	];
-	const totalBalanceAvailable = 100;
-	const budgetBoxIds = ['valid_id_1', 'valid_id_2'];
 
 	const domain: UserAggregate = UserAggregate.create({
 		ID: DomainId.create(id),
@@ -33,8 +31,6 @@ describe('user.mapper', () => {
 			ip: IpValueObject.create(ip).getResult(),
 			userAgent
 		}).getResult()),
-		totalBalanceAvailable,
-		budgetBoxIds: budgetBoxIds.map(el => DomainId.create(el)),
 		createdAt: currentDate,
 		updatedAt: currentDate,
 	}).getResult();
@@ -45,8 +41,6 @@ describe('user.mapper', () => {
 		id,
 		password,
 		terms,
-		totalBalanceAvailable,
-		budgetBoxIds,
 		updatedAt: currentDate,
 		createdAt: currentDate,
 	};

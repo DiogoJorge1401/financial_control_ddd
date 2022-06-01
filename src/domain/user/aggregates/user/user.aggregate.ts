@@ -1,11 +1,9 @@
-import { PasswordValueObject, TermValueObject, EmailValueObject } from '@domain/user/value-objects';
-import { AggregateRoot, BaseDomainEntity, DomainId, Result } from 'types-ddd';
+import { EmailValueObject, PasswordValueObject, TermValueObject } from '@domain/user/value-objects';
+import { AggregateRoot, BaseDomainEntity, Result } from 'types-ddd';
 
 interface UserAggregateProps extends BaseDomainEntity {
 	email: EmailValueObject
 	password: PasswordValueObject
-	budgetBoxIds?: DomainId[]
-	totalBalanceAvailable: number
 	terms: TermValueObject[]
 }
 
@@ -18,12 +16,6 @@ export class UserAggregate extends AggregateRoot<UserAggregateProps>{
 	}
 	get password () {
 		return this.props.password;
-	}
-	get budgetBoxIds () {
-		return this.props.budgetBoxIds ?? [];
-	}
-	get totalBalanceAvailable (): number {
-		return this.props.totalBalanceAvailable;
 	}
 	get terms () {
 		return this.props.terms;

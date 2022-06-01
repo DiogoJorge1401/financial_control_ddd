@@ -4,7 +4,7 @@ import { DateValueObject, DomainId, Result, TMapper } from 'types-ddd';
 import { User } from '../entities/user.schema';
 
 export class UserMapper implements TMapper<User, UserAggregate>{
-	map ({ id, email, password, terms, totalBalanceAvailable, budgetBoxIds, createdAt, updatedAt }: User): Result<UserAggregate, string> {
+	map ({ id, email, password, terms, createdAt, updatedAt }: User): Result<UserAggregate, string> {
 		return UserAggregate.create({
 			ID: DomainId.create(id),
 			email: EmailValueObject.create(email).getResult(),
@@ -14,8 +14,6 @@ export class UserMapper implements TMapper<User, UserAggregate>{
 				ip: IpValueObject.create(ip).getResult(),
 				userAgent
 			}).getResult()),
-			totalBalanceAvailable,
-			budgetBoxIds: budgetBoxIds.map(el => DomainId.create(el)),
 			createdAt,
 			updatedAt
 		});

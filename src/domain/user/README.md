@@ -5,11 +5,6 @@
   "id": "uuid",
   "email": "example@mail.com",
   "password": "password1234",
-  "budgetBoxIds": [
-    "uuid",
-    "uuid"
-  ],
-  "totalBalanceAvailable": 10.0,
   "terms": [
     {
       "ip": "127.0.0.1",
@@ -29,8 +24,6 @@
   - id: Value Object - OK
   - email: Value Object - OK
   - password: Value Object - OK
-  - budgetBoxIds: Array
-  - totalBalanceAvailable: Number
   - terms:
     - term: Value Object - OK
       - ip: Value Object - OK

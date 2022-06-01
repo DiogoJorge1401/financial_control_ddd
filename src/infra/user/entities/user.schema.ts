@@ -29,12 +29,6 @@ export class User {
   @Prop({ required: true })
   	password!: string;
 
-  @Prop({ default: [] })
-  	budgetBoxIds?: Array<string>;
-
-  @Prop({ default: 0 })
-  	totalBalanceAvailable!: number;
-
   @Prop({ required: true })
   	terms: Array<Term>;
 
