@@ -1,8 +1,8 @@
 import { operationalSystem } from '@domain/user/value-objects';
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType } from '@nestjs/graphql';
 
-@ObjectType()
-export class UserAgentType {
+@InputType()
+export class UserAgentInput {
   @Field()
   	name: string;
 

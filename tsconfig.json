@@ -35,6 +35,9 @@
       ],
       "@repository/*": [
         "repository/*"
+      ],
+      "@app/*": [
+        "app/*"
       ]
     },
     "noUnusedLocals": true,

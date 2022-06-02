@@ -1,37 +1,34 @@
 import { UserAggregate } from '@domain/user/aggregates';
-import { Inject } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from '@nestjs/common';
 import { IUserRepository } from '@repository/user.repository.interface';
 import { Model } from 'mongoose';
-import { Filter } from 'types-ddd';
 import { User } from '../entities/user.schema';
 import { UserMapper } from './user.mapper';
 
-
+@Injectable()
 export class UserRepository implements IUserRepository {
 
 	constructor (
-		@InjectModel(User.name)
 		private readonly connection: Model<User>,
-		@Inject('UserMapper')
 		private readonly mapper: UserMapper
-	) { }
-
-	async find (_filter: Filter<Partial<User>>): Promise<Array<UserAggregate>> {
+	) {
 		this.connection;
 		this.mapper;
+	}
+
+	async find (): Promise<Array<UserAggregate>> {
 		throw new Error('method not implemented!');
 	}
-	async findOne (_filter: Filter<Partial<User>>): Promise<UserAggregate> {
+	async findOne (): Promise<UserAggregate> {
 		throw new Error('method not implemented!');
 	}
-	async delete (_filter: Filter<Partial<User>>): Promise<void> {
+	async delete (): Promise<void> {
 		throw new Error('method not implemented!');
 	}
-	async exists (_filter: Filter<Partial<User>>): Promise<boolean> {
+	async exists (): Promise<boolean> {
 		throw new Error('method not implemented!');
 	}
-	async save (_target: UserAggregate): Promise<void> {
+	async save (): Promise<void> {
 		throw new Error('method not implemented!');
 	}
 }

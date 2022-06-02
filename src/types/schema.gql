@@ -5,19 +5,8 @@
 type UserAgentType {
   name: String!
   version: String!
-  os: IOs!
+  os: String!
   type: String!
-}
-
-enum IOs {
-  LINUX
-  WINDOWS
-  MACOS
-  IPHONE
-  APPLE
-  MACINTOSH
-  ANDROID
-  IPAD
 }
 
 type TermType {
@@ -39,4 +28,13 @@ type UserType {
 
 type Query {
   users: [UserType!]!
+}
+
+type Mutation {
+  signup(UserInput: UserInput!): Boolean!
+}
+
+input UserInput {
+  email: String!
+  password: String!
 }

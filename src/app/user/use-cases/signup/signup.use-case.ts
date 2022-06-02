@@ -1,18 +1,19 @@
 import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
 import { DateValueObject, DomainId, EmailValueObject, IUseCase, PasswordValueObject, Result } from 'types-ddd';
 import { UserAggregate } from '@domain/user/aggregates';
-import { SignupDTO } from './signup.dto';
-import { Inject } from '@nestjs/common';
+import { SignUpDTO } from './signup.dto';
+import { Inject, Injectable } from '@nestjs/common';
 import { IUserRepository } from '@repository/user.repository.interface';
 
-export class SignupUseCase implements IUseCase<SignupDTO, Result<void>>{
+@Injectable()
+export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
 	constructor (
     @Inject('UserRepository')
     private readonly userRepository: IUserRepository
 	) { }
 
-	async execute (dto: SignupDTO): Promise<Result<void, string>> {
+	async execute (dto: SignUpDTO): Promise<Result<void, string>> {
 		const emailOnError = EmailValueObject.create(dto.email);
 		const passwordOnError = PasswordValueObject.create(dto.password);
 		const acceptedAtOnError = DateValueObject.create(dto.term.acceptedAt);

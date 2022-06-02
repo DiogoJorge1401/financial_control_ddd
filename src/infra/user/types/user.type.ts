@@ -4,11 +4,11 @@ import { TermType } from './term.type';
 @ObjectType()
 export class UserType {
   @Field(() => ID)
-  	id: string;
+  	id!: string;
 
   @Field()
-  	email: string;
+  	email!: string;
 
   @Field(() => [TermType])
-  	terms: Array<TermType>;
+  	terms!: Array<TermType>;
 }
