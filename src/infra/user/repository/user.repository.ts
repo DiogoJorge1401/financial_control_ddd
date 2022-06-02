@@ -17,19 +17,21 @@ export class UserRepository implements IUserRepository {
 		private readonly mapper: UserMapper
 	) { }
 
-	async find (filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
+	async find (_filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
+		this.connection;
+		this.mapper
 		throw new Error('method not implemented!');
 	}
-	async findOne (filter: Filter<Partial<User>>): Promise<UserAggregate> {
+	async findOne (_filter: Filter<Partial<User>>): Promise<UserAggregate> {
 		throw new Error('method not implemented!');
 	}
-	async delete (filter: Filter<Partial<User>>): Promise<void> {
+	async delete (_filter: Filter<Partial<User>>): Promise<void> {
 		throw new Error('method not implemented!');
 	}
-	async exists (filter: Filter<Partial<User>>): Promise<boolean> {
+	async exists (_filter: Filter<Partial<User>>): Promise<boolean> {
 		throw new Error('method not implemented!');
 	}
-	async save (target: UserAggregate): Promise<void> {
+	async save (_target: UserAggregate): Promise<void> {
 		throw new Error('method not implemented!');
 	}
 }

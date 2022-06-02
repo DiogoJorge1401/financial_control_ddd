@@ -2,7 +2,7 @@ import { IUserRepository } from '@repository/user.repository.interface';
 import { SignupUseCase } from './signup.use-case';
 
 describe('signup.use-case', () => {
-	let userRepository: IUserRepository
+	let userRepository: IUserRepository;
 	beforeEach(() => {
 		userRepository = {
 			delete: jest.fn(),
@@ -10,8 +10,8 @@ describe('signup.use-case', () => {
 			find: jest.fn(),
 			findOne: jest.fn(),
 			save: jest.fn(),
-		}
-	})
+		};
+	});
 	it('should be defined', () => {
 		const signupUseCase = new SignupUseCase(userRepository);
 		expect(signupUseCase).toBeDefined();
