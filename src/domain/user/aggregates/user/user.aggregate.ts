@@ -4,7 +4,7 @@ import { AggregateRoot, BaseDomainEntity, EmailValueObject, PasswordValueObject,
 interface UserAggregateProps extends BaseDomainEntity {
 	email: EmailValueObject
 	password: PasswordValueObject
-	terms: TermValueObject[]
+	terms: Array<TermValueObject>
 }
 
 export class UserAggregate extends AggregateRoot<UserAggregateProps>{

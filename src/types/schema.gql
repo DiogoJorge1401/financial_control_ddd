@@ -1,0 +1,42 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserAgentType {
+  name: String!
+  version: String!
+  os: IOs!
+  type: String!
+}
+
+enum IOs {
+  LINUX
+  WINDOWS
+  MACOS
+  IPHONE
+  APPLE
+  MACINTOSH
+  ANDROID
+  IPAD
+}
+
+type TermType {
+  ip: String!
+  acceptedAt: DateTime!
+  userAgent: UserAgentType!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserType {
+  id: ID!
+  email: String!
+  terms: [TermType!]!
+}
+
+type Query {
+  users: [UserType!]!
+}

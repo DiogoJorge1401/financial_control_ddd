@@ -17,9 +17,9 @@ export class UserRepository implements IUserRepository {
 		private readonly mapper: UserMapper
 	) { }
 
-	async find (_filter: Filter<Partial<User>>): Promise<UserAggregate[]> {
+	async find (_filter: Filter<Partial<User>>): Promise<Array<UserAggregate>> {
 		this.connection;
-		this.mapper
+		this.mapper;
 		throw new Error('method not implemented!');
 	}
 	async findOne (_filter: Filter<Partial<User>>): Promise<UserAggregate> {
