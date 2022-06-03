@@ -1,24 +1,11 @@
 import { DateValueObject, Result, ValueObject } from 'types-ddd';
-import {  ERROR_MESSAGES } from '@shared/utils';
 import { IpValueObject } from '../ip/ip.value-object';
 
-export enum IOs {
-	LINUX = 'LINUX', 
-	WINDOWS = 'WINDOWS',
-	MACOS = 'MAC',
-	IPHONE = 'IPHONE',
-	APPLE = 'APPLE',
-	MACINTOSH = 'MACINTOSH',
-	ANDROID = 'ANDROID',
-	IPAD = 'IPAD'
-}
-
-export type operationalSystem = keyof typeof IOs;
 
 export interface IUserAgent {
 	name: string,
 	version: string,
-	os: operationalSystem,
+	os: string,
 	type: string
 }
 
@@ -38,10 +25,6 @@ export class TermValueObject extends ValueObject<TermValueObjectProps>{
 	}
 
 	static create (props: TermValueObjectProps): Result<TermValueObject> {
-		const isValidOS = Object.values(IOs)
-			.includes(props.userAgent.os.toUpperCase() as any);
-		if (!isValidOS)
-			return Result.fail(ERROR_MESSAGES.USER_INVALID_TERM_AGENT_OS);
 		return Result.ok<TermValueObject>(new TermValueObject(props));
 	}
 }

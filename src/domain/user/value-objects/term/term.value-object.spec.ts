@@ -1,4 +1,3 @@
-import { ERROR_MESSAGES } from '@shared/utils';
 import { DateValueObject } from 'types-ddd';
 import { IpValueObject } from '../ip/ip.value-object';
 import { IUserAgent, TermValueObject } from './term.value-object';
@@ -38,13 +37,5 @@ describe('term.value-object', () => {
 		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isSuccess).toBe(true);
 		expect(term.getResult().value).toEqual({ acceptedAt, ip, userAgent });
-	});
-	it('should fail if provide an invalid os', () => {
-		const { acceptedAt, ip, userAgent } = makeFakeTerm(
-			{ userAgent: { os: 'Blah', } }
-		);
-		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
-		expect(term.isFailure).toBe(true);
-		expect(term.error).toBe(ERROR_MESSAGES.USER_INVALID_TERM_AGENT_OS);
 	});
 });
