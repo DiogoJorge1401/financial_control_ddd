@@ -56,6 +56,6 @@ export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
 		await this.userRepository.save(user);
 
-		return Result.ok(user);
+		return Result.ok(null);
 	}
 }

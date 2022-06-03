@@ -1,4 +1,4 @@
-import {  TermValueObject } from '@domain/user/value-objects';
+import { TermValueObject } from '@domain/user/value-objects';
 import { AggregateRoot, BaseDomainEntity, EmailValueObject, PasswordValueObject, Result } from 'types-ddd';
 
 interface UserAggregateProps extends BaseDomainEntity {
@@ -19,6 +19,19 @@ export class UserAggregate extends AggregateRoot<UserAggregateProps>{
 	}
 	get terms () {
 		return this.props.terms;
+	}
+
+	ToObject (){
+		return {
+			id:this.id,
+			email: this.email.value,
+			password: this.password.value,
+			terms: this.terms.map(({ value: { acceptedAt, ip, userAgent } }) => ({
+				acceptedAt: acceptedAt.value,
+				ip: ip.value,
+				userAgent: userAgent
+			}))
+		};
 	}
 
 	static create (props: UserAggregateProps): Result<UserAggregate> {

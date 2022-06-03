@@ -33,13 +33,26 @@ export class UserResolver {
 		];
 	}
 
-	@Mutation(() => Boolean)
+	@Mutation(() => String)
 	async signup (@Args(UserInput.name) user: UserInput): Promise<boolean> {
 		try {
-			const result = (await this.userService.signup({ ...user, term: null })).getResult();
-			return result;
-		} catch (err) {
-			return false;
+			await this.userService.signup({
+				...user, 
+				term: {
+					acceptedAt: new Date(),
+					ip: "176.64.184.75",
+					userAgent: {
+						name: "firefox",
+						os: "LINUX",
+						type: "browser",
+						version: "80.0.1",
+					}
+				}
+			});
+			return true;
+		} catch (err: any) {
+			console.log(err);
+			return err.message;
 		}
 	}
 
