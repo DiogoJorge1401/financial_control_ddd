@@ -31,10 +31,11 @@ type Query {
 }
 
 type Mutation {
-  signup(UserInput: UserInput!): String!
+  signup(SignUpInput: SignUpInput!): String!
 }
 
-input UserInput {
+input SignUpInput {
   email: String!
   password: String!
+  acceptedTerms: Boolean!
 }

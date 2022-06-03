@@ -1,5 +1,8 @@
+import { NotAcceptableException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { UserInput } from '../inputs/user.input';
+import { SignUpInput } from '../inputs/user.input';
+import { GetUserAgent } from '../services/decorators/get-user-agent.decorator';
+import { UserAgentType } from '../types/user-agent.type';
 import { UserType } from '../types/user.type';
 import { UserService } from '../user.service';
 
@@ -34,24 +37,24 @@ export class UserResolver {
 	}
 
 	@Mutation(() => String)
-	async signup (@Args(UserInput.name) user: UserInput): Promise<boolean> {
+	async signup (
+		@Args(SignUpInput.name)
+			{ email, password, acceptedTerms }: SignUpInput,
+		@GetUserAgent() userAgent: UserAgentType
+	): Promise<boolean> {
 		try {
+			if (!acceptedTerms) throw new NotAcceptableException;
 			await this.userService.signup({
-				...user, 
+				email,
+				password,
 				term: {
 					acceptedAt: new Date(),
-					ip: "176.64.184.75",
-					userAgent: {
-						name: "firefox",
-						os: "LINUX",
-						type: "browser",
-						version: "80.0.1",
-					}
+					ip: '127.0.0.1',
+					userAgent
 				}
 			});
 			return true;
 		} catch (err: any) {
-			console.log(err);
 			return err.message;
 		}
 	}

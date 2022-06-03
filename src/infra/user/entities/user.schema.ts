@@ -1,5 +1,4 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { operationalSystem } from '@domain/user/value-objects';
 import { Document } from 'mongoose';
 
 
@@ -7,7 +6,7 @@ import { Document } from 'mongoose';
 interface IUserAgent {
   name: string,
   version: string,
-  os: operationalSystem,
+  os: string,
   type: string
 }
 

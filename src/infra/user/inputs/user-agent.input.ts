@@ -1,4 +1,3 @@
-import { operationalSystem } from '@domain/user/value-objects';
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
@@ -10,7 +9,7 @@ export class UserAgentInput {
   	version: string;
 
   @Field()
-  	os: operationalSystem;
+  	os: string;
 
   @Field()
   	type: string;
