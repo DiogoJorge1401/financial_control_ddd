@@ -13,7 +13,7 @@ describe('transaction.aggregate', () => {
 	it('should create a valid transaction', () => {
 		const transaction = TransactionAggregate.create({
 			ID: DomainId.create(),
-			userId: DomainId.create(),
+			userID: DomainId.create(),
 			reason: ReasonDescriptionValueObject.create('valid_description').getResult(),
 			paymentDate: DateValueObject.create(new Date())
 				.getResult(),
@@ -43,7 +43,7 @@ describe('transaction.aggregate', () => {
 		const ID = DomainId.create();
 		const transaction = TransactionAggregate.create({
 			ID,
-			userId: DomainId.create(),
+			userID: DomainId.create(),
 			reason: ReasonDescriptionValueObject.create('valid_description').getResult(),
 			paymentDate: DateValueObject.create(new Date())
 				.getResult(),

@@ -9,7 +9,7 @@ import {
 } from '@domain/transaction/value-objects';
 
 interface TransactionAggregateProps extends BaseDomainEntity {
-	userId: DomainId
+	userID: DomainId
 	reason: ReasonDescriptionValueObject
 	paymentDate: DateValueObject
 	transactionType: TransactionTypeValueObject
@@ -25,7 +25,7 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 		super(props, TransactionAggregate.name);
 		this._totalAmount = this.calculateTotalAmount();
 	}
-	get userId (): DomainId { return this.props.userId; }
+	get userID (): DomainId { return this.props.userID; }
 	get reason (): ReasonDescriptionValueObject { return this.props.reason; }
 	get paymentDate (): DateValueObject { return this.props.paymentDate; }
 	get transactionType (): TransactionTypeValueObject {

@@ -2,7 +2,7 @@
 
 ```json
 {
-  "userId": "uuid",
+  "userID": "uuid",
   "totalAmount": 100,
   "reasonId": "uuid",
   "paymentDate": "2021-01-01 10:00:00",
