@@ -1,5 +1,5 @@
 import { DomainId } from 'types-ddd';
-import { ReasonDescriptionValueObject } from '../value-objects';
+import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import { ReasonDomainEntity } from './reason.domain-entity';
 
 describe('reason.domain-entity', () => {

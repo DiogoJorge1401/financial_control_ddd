@@ -1,6 +1,6 @@
 import { DomainId } from 'types-ddd';
-import { ReasonDomainEntity } from '../../entities';
-import { BudgetDescriptionValueObject, BudgetPercentageValueObject, ReasonDescriptionValueObject } from '../../value-objects';
+import { ReasonDomainEntity } from '@domain/budget-box/entities';
+import { BudgetDescriptionValueObject, BudgetPercentageValueObject, ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import { BudgetBoxAggregate } from './budget-box.aggregate';
 
 

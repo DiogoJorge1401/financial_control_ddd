@@ -6,7 +6,7 @@ import {
 	TransactionNoteValueObject,
 	TransactionStatusValueObject,
 	TransactionTypeValueObject
-} from '../../value-objects';
+} from '@domain/transaction/value-objects';
 import { TransactionAggregate } from './transaction.aggregate';
 
 describe('transaction.aggregate', () => {

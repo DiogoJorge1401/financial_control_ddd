@@ -1,9 +1,9 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { SignUpInput } from '../inputs/user.input';
-import { GetUserAgent } from '../services/decorators/get-user-agent.decorator';
-import { UserAgentType } from '../types/user-agent.type';
-import { UserType } from '../types/user.type';
-import { UserService } from '../user.service';
+import { SignUpInput } from '@infra/user/inputs/user.input';
+import { GetUserAgent } from '@infra/user/services/decorators/get-user-agent.decorator';
+import { UserAgentType } from '@infra/user/types/user-agent.type';
+import { UserType } from '@infra/user/types/user.type';
+import { UserService } from '@infra/user/user.service';
 
 @Resolver(() => UserType)
 export class UserResolver {

@@ -1,5 +1,5 @@
 import { DateValueObject } from 'types-ddd';
-import { IpValueObject } from '../ip/ip.value-object';
+import { IpValueObject } from '@domain/user/value-objects';
 import { IUserAgent, TermValueObject } from './term.value-object';
 
 interface IFakeUserAgent {

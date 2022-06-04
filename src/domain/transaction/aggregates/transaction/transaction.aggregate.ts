@@ -1,12 +1,12 @@
 import { AggregateRoot, BaseDomainEntity, DateValueObject, DomainId, Result } from 'types-ddd';
-import { ReasonDescriptionValueObject } from '../../../budget-box/value-objects';
+import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import {
 	AttachmentValueObject,
 	TransactionCalculationValueObject,
 	TransactionNoteValueObject,
 	TransactionStatusValueObject,
 	TransactionTypeValueObject
-} from '../../value-objects';
+} from '@domain/transaction/value-objects';
 
 interface TransactionAggregateProps extends BaseDomainEntity {
 	userId: DomainId

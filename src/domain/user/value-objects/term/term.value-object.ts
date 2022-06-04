@@ -1,5 +1,5 @@
 import { DateValueObject, Result, ValueObject } from 'types-ddd';
-import { IpValueObject } from '../ip/ip.value-object';
+import { IpValueObject } from '@domain/user/value-objects';
 
 
 export interface IUserAgent {

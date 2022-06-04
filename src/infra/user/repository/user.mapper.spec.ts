@@ -1,7 +1,7 @@
 import { UserAggregate } from '@domain/user/aggregates';
 import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { Term, User } from '../entities/user.schema';
+import { User, Term } from '@infra/user/entities/user.schema';
 import { UserMapper } from './user.mapper';
 
 describe('user.mapper', () => {
@@ -44,7 +44,7 @@ describe('user.mapper', () => {
 		updatedAt: currentDate,
 		createdAt: currentDate,
 	};
-  
+
 	it('should be defined', () => {
 		const mapper = new UserMapper();
 		expect(mapper).toBeDefined();

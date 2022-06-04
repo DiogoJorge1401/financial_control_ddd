@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { IUserRepository } from '@repository/user.repository.interface';
 import { Model } from 'mongoose';
 import { Filter } from 'types-ddd';
-import { User } from '../entities/user.schema';
+import { User } from '@infra/user/entities/user.schema';
 import { UserMapper } from './user.mapper';
 
 @Injectable()

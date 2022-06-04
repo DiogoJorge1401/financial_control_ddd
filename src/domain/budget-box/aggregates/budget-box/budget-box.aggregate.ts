@@ -1,6 +1,6 @@
 import { AggregateRoot, BaseDomainEntity, DomainId, Result } from 'types-ddd';
-import { ReasonDomainEntity } from '../../entities';
-import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '../../value-objects';
+import { ReasonDomainEntity } from '@domain/budget-box/entities';
+import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '@domain/budget-box/value-objects';
 
 interface BudgetBoxAggregateProps extends BaseDomainEntity{
   ownerId: DomainId

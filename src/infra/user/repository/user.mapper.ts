@@ -1,7 +1,7 @@
 import { UserAggregate } from '@domain/user/aggregates';
 import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject, Result, TMapper } from 'types-ddd';
-import { User } from '../entities/user.schema';
+import { User } from '@infra/user/entities/user.schema';
 
 export class UserMapper implements TMapper<User, UserAggregate>{
 	map ({ id, email, password, terms, createdAt, updatedAt }: User): Result<UserAggregate, string> {

@@ -1,5 +1,5 @@
 import { BaseDomainEntity, Entity, Result } from 'types-ddd';
-import { ReasonDescriptionValueObject } from '../value-objects';
+import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 
 export interface ReasonProps extends BaseDomainEntity {
 	description: ReasonDescriptionValueObject;
