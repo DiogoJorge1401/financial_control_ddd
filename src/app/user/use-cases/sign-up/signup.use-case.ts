@@ -9,12 +9,12 @@ import { IUserRepository } from '@repository/user.repository.interface';
 export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
 	constructor (
-    @Inject('UserRepository')
-    private readonly userRepository: IUserRepository
+		@Inject('UserRepository')
+		private readonly userRepository: IUserRepository
 	) { }
 
 	async execute (dto: SignUpDTO): Promise<Result<void, string>> {
-		if(!dto.acceptedTerms) return Result.fail('Unaccepted terms');
+		if (!dto.acceptedTerms) return Result.fail('Unaccepted terms');
 
 		const emailOnError = EmailValueObject.create(dto.email);
 		const passwordOnError = PasswordValueObject.create(dto.password);
@@ -28,7 +28,7 @@ export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 			ipOnError
 		]);
 
-		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.error as string);
+		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.errorValue());
 
 		const term = TermValueObject.create({
 			acceptedAt: acceptedAtOnError.getResult(),
@@ -37,7 +37,7 @@ export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 		});
 
 		if (term.isFailure)
-			return Result.fail(term.error);
+			return Result.fail(term.errorValue());
 
 		const password = passwordOnError.getResult();
 
