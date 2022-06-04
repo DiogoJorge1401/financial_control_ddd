@@ -1,4 +1,3 @@
-import { NotAcceptableException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { SignUpInput } from '../inputs/user.input';
 import { GetUserAgent } from '../services/decorators/get-user-agent.decorator';
@@ -43,8 +42,8 @@ export class UserResolver {
 		@GetUserAgent() userAgent: UserAgentType
 	): Promise<boolean> {
 		try {
-			if (!acceptedTerms) throw new NotAcceptableException;
 			await this.userService.signup({
+				acceptedTerms,
 				email,
 				password,
 				term: {

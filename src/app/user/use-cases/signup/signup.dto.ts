@@ -4,4 +4,5 @@ export interface SignUpDTO {
   email: string
   password: string
   term: Term
+  acceptedTerms: boolean;
 }
