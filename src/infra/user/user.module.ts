@@ -6,6 +6,7 @@ import { UserRepository } from './repository/user.repository';
 import { UserMapper } from './repository/user.mapper';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './entities/user.schema';
+import { SignInUseCase } from '../../app/user/use-cases/sign-in/signin.use-case';
 
 @Module({
 	providers: [
@@ -15,6 +16,7 @@ import { User, UserSchema } from './entities/user.schema';
 			useClass: UserRepository
 		},
 		SignupUseCase,
+		SignInUseCase,
 		UserService,
 		UserResolver
 	],
