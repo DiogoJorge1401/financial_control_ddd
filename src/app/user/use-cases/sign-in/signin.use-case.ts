@@ -11,7 +11,7 @@ export class SignInUseCase implements IUseCase<SignInDTO, Result<JWTPayload>>{
 	constructor (
 		@Inject('UserRepository')
 		private readonly userRepository: IUserRepository,
-		@Inject()
+		@Inject(JwtService)
 		private readonly jwt: JwtService
 	) {
 		this.userRepository;
@@ -27,26 +27,28 @@ export class SignInUseCase implements IUseCase<SignInDTO, Result<JWTPayload>>{
 		]);
 
 		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.error.toString());
-
-
-		const userExistsByEmail = await this.userRepository.exists({
-			email
-		});
-
-		if (!userExistsByEmail) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
-
-
-		const user = await this.userRepository.findOne({ email });
-
-		const passwordsMatch = user.password.compare(password);
-
-		if (!passwordsMatch) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
-
-		const token = this.jwt.sign({ userID: user.id.toString() });
-
-		return Result.ok<JWTPayload>({
-			token
-		});
+		
+		try {
+			const userExistsByEmail = await this.userRepository.exists({
+				email
+			});
+	
+			if (!userExistsByEmail) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
+	
+			const user = await this.userRepository.findOne({ email });
+	
+			const passwordsMatch = user.password.compare(password);
+	
+			if (!passwordsMatch) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
+	
+			const token = this.jwt.sign({ userID: user.id.toString() });
+	
+			return Result.ok<JWTPayload>({
+				token
+			});
+		} catch (err) {
+			return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
+		}
 	}
 
 

@@ -4,6 +4,8 @@ import { GetUserAgent } from '@infra/user/services/decorators/get-user-agent.dec
 import { UserAgentType } from '@infra/user/types/user-agent.type';
 import { UserType } from '@infra/user/types/user.type';
 import { UserService } from '@infra/user/user.service';
+import { UseGuards } from '@nestjs/common';
+import { JWTAuthGuard } from '../services/guards/jwt.guard';
 
 @Resolver(() => UserType)
 export class UserResolver {
@@ -13,6 +15,7 @@ export class UserResolver {
 	) { }
 
 	@Query(() => [UserType])
+	@UseGuards(JWTAuthGuard)
 	async users (): Promise<Array<UserType>> {
 		this.userService;
 		return [
@@ -41,21 +44,16 @@ export class UserResolver {
 			{ email, password, acceptedTerms }: SignUpInput,
 		@GetUserAgent() userAgent: UserAgentType
 	): Promise<boolean> {
-		try {
-			await this.userService.signup({
-				acceptedTerms,
-				email,
-				password,
-				term: {
-					acceptedAt: new Date(),
-					ip: '127.0.0.1',
-					userAgent
-				}
-			});
-			return true;
-		} catch (err: any) {
-			return err.message;
-		}
+		await this.userService.signup({
+			acceptedTerms,
+			email,
+			password,
+			term: {
+				acceptedAt: new Date(),
+				ip: '127.0.0.1',
+				userAgent
+			}
+		});
+		return true;
 	}
-
 }
