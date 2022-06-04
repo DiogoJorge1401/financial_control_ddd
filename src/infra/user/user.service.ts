@@ -1,5 +1,5 @@
-import { SignUpDTO } from '@app/user/use-cases/signup/signup.dto';
-import { SignupUseCase } from '@app/user/use-cases/signup/signup.use-case';
+import { SignUpDTO } from '@app/user/use-cases/sign-up/signup.dto';
+import { SignupUseCase } from '@app/user/use-cases/sign-up/signup.use-case';
 import { Injectable, PreconditionFailedException } from '@nestjs/common';
 
 @Injectable()

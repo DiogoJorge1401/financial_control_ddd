@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { SignupUseCase } from '@app/user/use-cases/signup/signup.use-case';
+import { SignupUseCase } from '@app/user/use-cases/sign-up/signup.use-case';
 import { UserResolver } from './resolver/user.resolver';
 import { UserService } from './user.service';
 import { UserRepository } from './repository/user.repository';
