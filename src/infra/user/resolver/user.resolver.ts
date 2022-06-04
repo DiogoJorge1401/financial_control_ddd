@@ -1,11 +1,11 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { SignUpInput } from '@infra/user/inputs/user.input';
-import { GetUserAgent } from '@infra/user/services/decorators/get-user-agent.decorator';
-import { UserAgentType } from '@infra/user/types/user-agent.type';
-import { UserType } from '@infra/user/types/user.type';
+import { SignUpInput, SignInInput } from '@infra/user/inputs';
+import { GetUserAgent } from '@infra/user/services/decorators';
+import { TokenType, UserAgentType } from '@infra/user/types';
+import { UserType } from '@infra/user/types';
 import { UserService } from '@infra/user/user.service';
 import { UseGuards } from '@nestjs/common';
-import { JWTAuthGuard } from '../services/guards/jwt.guard';
+import { JWTAuthGuard } from '@infra/user/services/guards';
 
 @Resolver(() => UserType)
 export class UserResolver {
@@ -18,24 +18,7 @@ export class UserResolver {
 	@UseGuards(JWTAuthGuard)
 	async users (): Promise<Array<UserType>> {
 		this.userService;
-		return [
-			{
-				id: 'z1t6iyrQVV7o6lM5XfucTQ5YBR',
-				email: 'enja@egejacen.ar',
-				terms: [
-					{
-						acceptedAt: new Date(),
-						ip: '176.64.184.75',
-						userAgent: {
-							name: 'firefox',
-							os: 'LINUX',
-							type: 'browser',
-							version: '80.0.1',
-						}
-					}
-				]
-			}
-		];
+		return [];
 	}
 
 	@Mutation(() => String)
@@ -55,5 +38,10 @@ export class UserResolver {
 			}
 		});
 		return true;
+	}
+
+	@Mutation(() => TokenType)
+	async signin (@Args(SignInInput.name) { email, password }: SignInInput){
+		return await this.userService.signin({ email, password });
 	}
 }

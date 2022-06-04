@@ -26,16 +26,26 @@ type UserType {
   terms: [TermType!]!
 }
 
+type TokenType {
+  token: String!
+}
+
 type Query {
   users: [UserType!]!
 }
 
 type Mutation {
   signup(SignUpInput: SignUpInput!): String!
+  signin(SignInInput: SignInInput!): TokenType!
 }
 
 input SignUpInput {
   email: String!
   password: String!
   acceptedTerms: Boolean!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
 }

@@ -1,4 +1,4 @@
-import { Term } from '@infra/user/entities/user.schema';
+import { Term } from '@infra/user/entities';
 
 export interface SignUpDTO {
   email: string

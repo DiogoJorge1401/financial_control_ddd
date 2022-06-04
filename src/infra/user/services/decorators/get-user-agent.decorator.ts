@@ -1,6 +1,6 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { UserAgentType } from '@infra/user/types/user-agent.type';
+import { UserAgentType } from '@infra/user/types';
 import { UAParser } from 'ua-parser-js';
 
 export const GetUserAgent = createParamDecorator(

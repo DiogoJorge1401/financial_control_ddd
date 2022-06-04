@@ -1,8 +1,8 @@
 import { UserAggregate } from '@domain/user/aggregates';
 import { IpValueObject, TermValueObject } from '@domain/user/value-objects';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { User, Term } from '@infra/user/entities/user.schema';
-import { UserMapper } from './user.mapper';
+import { User, Term } from '@infra/user/entities';
+import { UserMapper } from '.';
 
 describe('user.mapper', () => {
 	const currentDate = new Date();

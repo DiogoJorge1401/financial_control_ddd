@@ -1,4 +1,4 @@
-import { Term } from '@infra/user/entities/user.schema';
+import { Term } from '@infra/user/entities';
 import { IUserRepository } from '@repository/user.repository.interface';
 import { SignUpDTO } from './signup.dto';
 import { SignupUseCase } from './signup.use-case';
