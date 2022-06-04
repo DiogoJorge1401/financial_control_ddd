@@ -3,16 +3,20 @@ import { IUserRepository } from '@repository/user.repository.interface';
 import { EmailValueObject, IUseCase, PasswordValueObject, Result } from 'types-ddd';
 import { ERROR_MESSAGES } from '@domain/shared/utils';
 import { SignInDTO } from './signin.dto';
+import { JWTPayload } from './jwt-payload.interface';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
-export class SignInUseCase implements IUseCase<SignInDTO, Result<void>>{
+export class SignInUseCase implements IUseCase<SignInDTO, Result<JWTPayload>>{
 	constructor (
 		@Inject('UserRepository')
-		private readonly userRepository: IUserRepository
+		private readonly userRepository: IUserRepository,
+		@Inject()
+		private readonly jwt: JwtService
 	) {
 		this.userRepository;
 	}
-	async execute (dto: SignInDTO): Promise<Result<void, string>> {
+	async execute (dto: SignInDTO): Promise<Result<JWTPayload, string>> {
 		const { email, password } = dto;
 		const emailOnError = EmailValueObject.create(email);
 		const passwordOnError = PasswordValueObject.create(password);
@@ -22,7 +26,7 @@ export class SignInUseCase implements IUseCase<SignInDTO, Result<void>>{
 			passwordOnError
 		]);
 
-		if (validateValueObjects.isFailure) return Result.fail<void>(validateValueObjects.error.toString());
+		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.error.toString());
 
 
 		const userExistsByEmail = await this.userRepository.exists({
@@ -32,13 +36,17 @@ export class SignInUseCase implements IUseCase<SignInDTO, Result<void>>{
 		if (!userExistsByEmail) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
 
 
-		const user = await this.userRepository.findOne({email});
+		const user = await this.userRepository.findOne({ email });
 
 		const passwordsMatch = user.password.compare(password);
 
 		if (!passwordsMatch) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
 
-		return Result.ok(null);
+		const token = this.jwt.sign({ userID: user.id.toString() });
+
+		return Result.ok<JWTPayload>({
+			token
+		});
 	}
 
 
