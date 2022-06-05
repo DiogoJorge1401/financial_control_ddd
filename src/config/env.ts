@@ -1,4 +1,6 @@
-export const JWT_SECRET_KEY = process.env['JWT_SECRET_KEY'] || 'secret';
+import { DEFAULT_SECRET } from './env-token';
+
+export const JWT_SECRET_KEY = process.env['JWT_SECRET_KEY'] || DEFAULT_SECRET;
 
 export const DB_NAME = process.env['DB_NAME'] || 'financial-control';
 
