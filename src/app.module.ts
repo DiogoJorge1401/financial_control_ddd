@@ -4,7 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
 import { MongoDbConfig, MongoURI } from './config/mongo.config';
-import { UserModule } from './infra/user/user.module';
+import { UserModule } from '@user/infra/user.module';
 
 @Module({
 	imports: [

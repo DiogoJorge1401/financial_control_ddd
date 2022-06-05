@@ -1,53 +1,35 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    "declaration": true,
-    "rootDir": ".",
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2022",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "src",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": false,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-    "strict": true,
-    "resolveJsonModule": true,
-    "paths": {
-      "@domain/*": [
-        "domain/*"
-      ],
-      "@shared/*": [
-        "domain/shared/*"
-      ],
-      "@infra/*": [
-        "infra/*"
-      ],
-      "@repositories/*": [
-        "infra/repositories/*"
-      ],
-      "@repository/*": [
-        "repository/*"
-      ],
-      "@app/*": [
-        "app/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@utils/*":[
-        "utils/*"
-      ]
-    },
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipDefaultLibCheck": true
-  }
+	"compilerOptions": {
+		"module": "CommonJS",
+		"declaration": true,
+		"rootDir": ".",
+		"removeComments": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "ES2022",
+		"sourceMap": true,
+		"outDir": "./dist",
+		"incremental": true,
+		"skipLibCheck": true,
+		"strictNullChecks": false,
+		"noImplicitAny": false,
+		"strictBindCallApply": false,
+		"forceConsistentCasingInFileNames": false,
+		"noFallthroughCasesInSwitch": false,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"resolveJsonModule": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": "src",
+		"paths": {
+			"@user/*": ["modules/user/*"],
+			"@budget-box/*": ["modules/budget-box/*"],
+			"@transaction/*": ["modules/transaction/*"],
+			"@shared/*": ["modules/shared/*"],
+			"@config/*": ["config/*"],
+			"@utils/*": ["utils/*"]
+		}
+	}
 }
