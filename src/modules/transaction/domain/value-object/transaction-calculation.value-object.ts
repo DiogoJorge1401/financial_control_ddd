@@ -18,10 +18,12 @@ export class TransactionCalculationValueObject extends ValueObject<TransactionCa
 	get calculation () {
 		return this.props.value;
 	}
-
+	static isTheValueValid (value:number):boolean{
+		const isTheMonetaryValueValid = value > 0;
+		return isTheMonetaryValueValid;
+	}
 	static create (calculation: TransactionCalculation): Result<TransactionCalculationValueObject> {
-		const isValidMonetaryValue = calculation.currency.value > 0;
-		if(!isValidMonetaryValue)
+		if(!this.isTheValueValid(calculation.currency.value))
 			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_CALCULATION_MONETARY_AMOUNT);
 		return Result.ok(new TransactionCalculationValueObject({
 			value: calculation

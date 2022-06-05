@@ -13,10 +13,12 @@ export class TransactionStatusValueObject extends ValueObject<TransactionStatusV
 	get value () {
 		return this.props.value;
 	}
-
+	static isTheValueValid (value:string):boolean{
+		const isTheValueValid = Object.keys(ETransactionStatus).includes(value);
+		return isTheValueValid;
+	}
 	static create (value: TransactionStatus): Result<TransactionStatusValueObject> {
-		const isValidValue = Object.keys(ETransactionStatus).includes(value);
-		if (!isValidValue)
+		if (!this.isTheValueValid(value))
 			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_STATUS);
 		return Result.ok(new TransactionStatusValueObject({ value }));
 	}

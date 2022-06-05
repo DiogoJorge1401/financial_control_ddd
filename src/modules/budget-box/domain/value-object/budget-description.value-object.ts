@@ -13,11 +13,13 @@ export class BudgetDescriptionValueObject extends ValueObject<BudgetDescriptionV
 	get value () {
 		return this.props.value;
 	}
-
+	static isTheValueValid (value:string):boolean{
+		const isTheDescriptionLengthValid = value.length >= 1 && value.length <= 30;
+		return isTheDescriptionLengthValid;
+	}
 	static create (description: string): Result<BudgetDescriptionValueObject> {
 		const descriptionSanitized = description.trim();
-		const isValidDescriptionLength = descriptionSanitized.length >= 1 && descriptionSanitized.length <= 30;
-		if (!isValidDescriptionLength)
+		if (!this.isTheValueValid(descriptionSanitized))
 			return Result.fail<BudgetDescriptionValueObject>(ERROR_MESSAGES.BUDGET_INVALID_DESCRIPTION_LENGTH);
 		return Result.ok<BudgetDescriptionValueObject>(new BudgetDescriptionValueObject({ value: descriptionSanitized.toLowerCase() }));
 	}

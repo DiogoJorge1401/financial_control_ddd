@@ -19,11 +19,9 @@ export class TermValueObject extends ValueObject<TermValueObjectProps>{
 	private constructor (props: TermValueObjectProps) {
 		super(props);
 	}
-
 	get value () {
 		return this.props;
 	}
-
 	static create (props: TermValueObjectProps): Result<TermValueObject> {
 		return Result.ok<TermValueObject>(new TermValueObject(props));
 	}

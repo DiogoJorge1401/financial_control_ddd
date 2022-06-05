@@ -13,10 +13,12 @@ export class BudgetPercentageValueObject extends ValueObject<BudgetPercentageVal
 	get value () {
 		return this.props.value;
 	}
-
+	static isTheValueValid (value:number):boolean{
+		const isTheBudgetPercentageValid = value >= 0 && value <= 100;
+		return isTheBudgetPercentageValid;
+	}
 	static create (budgetPercentage: number): Result<BudgetPercentageValueObject> {
-		const isBudgetPercentageValid = budgetPercentage >= 0 && budgetPercentage <= 100;
-		if (!isBudgetPercentageValid)
+		if (!this.isTheValueValid(budgetPercentage))
 			return Result.fail(ERROR_MESSAGES.BUDGET_INVALID_PERCENTAGE_VALUE);
 		return Result.ok(new BudgetPercentageValueObject({ value: budgetPercentage }));
 	}
