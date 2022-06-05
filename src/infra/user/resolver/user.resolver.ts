@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { SignUpInput, SignInInput } from '@infra/user/inputs';
-import { GetUserAgent } from '@infra/user/services/decorators';
+import { GetUserAgent, GetUserId } from '@infra/user/services/decorators';
 import { TokenType, UserAgentType } from '@infra/user/types';
 import { UserType } from '@infra/user/types';
 import { UserService } from '@infra/user/user.service';
@@ -14,11 +14,11 @@ export class UserResolver {
 		private readonly userService: UserService
 	) { }
 
-	@Query(() => [UserType])
+	@Query(() => UserType)
 	@UseGuards(JWTAuthGuard)
-	async users (): Promise<Array<UserType>> {
-		this.userService;
-		return [];
+	async whoAmI (@GetUserId() userId: string): Promise<UserType> {
+		console.log(userId);
+		return null;
 	}
 
 	@Mutation(() => String)
@@ -41,7 +41,7 @@ export class UserResolver {
 	}
 
 	@Mutation(() => TokenType)
-	async signin (@Args(SignInInput.name) { email, password }: SignInInput){
+	async signin (@Args(SignInInput.name) { email, password }: SignInInput) {
 		return await this.userService.signin({ email, password });
 	}
 }

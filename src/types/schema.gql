@@ -31,7 +31,7 @@ type TokenType {
 }
 
 type Query {
-  users: [UserType!]!
+  whoAmI: UserType!
 }
 
 type Mutation {
