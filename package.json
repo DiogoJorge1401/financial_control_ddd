@@ -15,7 +15,7 @@
     "start:prod": "NODE_ENV=production node dist/src/main",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest --maxWorks=25% --runInBand",
-    "test:watch": "jest --maxWorks=25% --runInBand --watch",
+    "test:watch": "jest --maxWorks=25% --runInBand --watch --config ./jest.config.js",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
