@@ -4,13 +4,12 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PassportModule } from '@nestjs/passport';
+import { JWT_SECRET_KEY } from '@config/env';
 import { User, UserSchema } from './entities';
 import { UserMapper, UserRepository } from './repository';
 import { UserResolver } from './resolver/user.resolver';
 import { JWTStrategy } from './services/strategies';
 import { UserService } from './user.service';
-
-
 
 @Module({
 	providers: [
@@ -24,7 +23,7 @@ import { UserService } from './user.service';
 	],
 	imports: [
 		PassportModule,
-		JwtModule.register({ secret: 'secret', signOptions: { expiresIn: '1h' }, }),
+		JwtModule.register({ secret: JWT_SECRET_KEY, signOptions: { expiresIn: '1h' }, }),
 		MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
 	],
 })

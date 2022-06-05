@@ -38,6 +38,9 @@
       ],
       "@app/*": [
         "app/*"
+      ],
+      "@config/*": [
+        "config/*"
       ]
     },
     "noUnusedLocals": true,
