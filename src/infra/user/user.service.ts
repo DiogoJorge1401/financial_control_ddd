@@ -1,7 +1,7 @@
 import { JWTPayload, SignInDTO, SignInUseCase } from '@app/user/use-cases/sign-in';
-import { SignUpDTO } from '@app/user/use-cases/sign-up';
-import { SignupUseCase } from '@app/user/use-cases/sign-up/signup.use-case';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { SignUpDTO, SignupUseCase } from '@app/user/use-cases/sign-up';
+import { Injectable } from '@nestjs/common';
+import { CheckResultInterceptor } from '@utils/check-result.interceptor';
 
 @Injectable()
 export class UserService {
@@ -12,18 +12,12 @@ export class UserService {
 	) { }
 
 	async signup (dto: SignUpDTO): Promise<void> {
-		const result = await this.signupUseCase.execute(dto);
-
-		if (result.isFailure) throw new BadRequestException(result.error);
-
+		CheckResultInterceptor(await this.signupUseCase.execute(dto));
 		return;
 	}
 
 	async signin (dto: SignInDTO): Promise<JWTPayload> {
-		const result = await this.signinUseCase.execute(dto);
-
-		if(result.isFailure) throw new BadRequestException(result.error);
-		
+		const result = CheckResultInterceptor(await this.signinUseCase.execute(dto));		
 		return result.getResult();
 	}
 }
