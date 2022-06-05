@@ -1,3 +1,4 @@
+import { JWT_SECRET_KEY } from '@config/env';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { IUserRepository } from '@repository/user.repository.interface';
@@ -13,7 +14,7 @@ export class JWTStrategy extends PassportStrategy(Strategy) {
 		super({
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			ignoreExpiration: false,
-			secretOrKey: 'secret'
+			secretOrKey: JWT_SECRET_KEY
 		});
 	}
 
