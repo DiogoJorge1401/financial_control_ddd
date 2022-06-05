@@ -14,10 +14,12 @@ export class IpValueObject extends ValueObject<IpValueObjectProps>{
 	get value () {
 		return this.props.value;
 	}
-
+	static isTheValueValid (value:string):boolean{
+		const isTheIpValid = isIP(value);
+		return isTheIpValid;
+	}
 	static create (ip: string): Result<IpValueObject> {
-		const isValidIP = isIP(ip);
-		if (!isValidIP)
+		if (!this.isTheValueValid(ip))
 			return Result.fail(ERROR_MESSAGES.USER_INVALID_TERM_IP_FORMAT);
 		return Result.ok(new IpValueObject({ value: ip }));
 	}

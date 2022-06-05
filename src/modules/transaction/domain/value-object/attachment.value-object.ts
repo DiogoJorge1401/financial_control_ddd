@@ -14,12 +14,15 @@ export class AttachmentValueObject extends ValueObject<AttachmentValueObjectProp
 	get value () {
 		return this.props.value;
 	}
-
-	static create (path: string): Result<AttachmentValueObject> {
+	static isTheValueValid (path:string):boolean{
 		const regexValidation = /^(.+)\/([^\/]+)$/;
-		const isValidPath = regexValidation.test(path);
-		const isValidurl = isURL(path);
-		if (!isValidPath && !isValidurl)
+		const isThePathValid = regexValidation.test(path);
+		const isTheUrlValid = isURL(path);
+
+		return !isThePathValid&&!isTheUrlValid;
+	}
+	static create (path: string): Result<AttachmentValueObject> {
+		if (this.isTheValueValid(path))
 			return Result.fail(ERROR_MESSAGES.TRANSACTION_INVALID_ATTACHMENT_PATH);
 		return Result.ok(new AttachmentValueObject({ value: path }));
 	}
