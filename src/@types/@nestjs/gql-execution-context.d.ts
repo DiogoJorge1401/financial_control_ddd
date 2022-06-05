@@ -1,4 +1,5 @@
 import * as gql from '@nestjs/graphql';
+import { Socket } from 'net';
 
 /**
   Defining the type of the user object that is passed in the context. 
@@ -18,6 +19,7 @@ type Headers = {
 */
 interface Request {
   headers: Headers
+  connection: Socket
   user?: UserRequest
 }
 /**

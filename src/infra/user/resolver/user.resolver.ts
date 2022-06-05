@@ -1,11 +1,10 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { SignUpInput, SignInInput } from '@infra/user/inputs';
-import { GetUserAgent, GetUserId } from '@infra/user/services/decorators';
-import { TokenType, UserAgentType } from '@infra/user/types';
-import { UserType } from '@infra/user/types';
+import { SignInInput, SignUpInput } from '@infra/user/inputs';
+import { GetUserAgent, GetUserId, GetUserIp } from '@infra/user/services/decorators';
+import { JWTAuthGuard } from '@infra/user/services/guards';
+import { TokenType, UserAgentType, UserType } from '@infra/user/types';
 import { UserService } from '@infra/user/user.service';
 import { UseGuards } from '@nestjs/common';
-import { JWTAuthGuard } from '@infra/user/services/guards';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 
 @Resolver(() => UserType)
 export class UserResolver {
@@ -14,18 +13,19 @@ export class UserResolver {
 		private readonly userService: UserService
 	) { }
 
-	@Query(() => UserType)
+	@Query(() => String)
 	@UseGuards(JWTAuthGuard)
-	async whoAmI (@GetUserId() userId: string): Promise<UserType> {
-		console.log(userId);
-		return null;
+	async whoAmI (@GetUserId() userId: string): Promise<string> {
+		userId;
+		return 'user';
 	}
 
 	@Mutation(() => String)
 	async signup (
 		@Args(SignUpInput.name)
 			{ email, password, acceptedTerms }: SignUpInput,
-		@GetUserAgent() userAgent: UserAgentType
+		@GetUserAgent() userAgent: UserAgentType,
+		@GetUserIp() ip: string
 	): Promise<boolean> {
 		await this.userService.signup({
 			acceptedTerms,
@@ -33,7 +33,7 @@ export class UserResolver {
 			password,
 			term: {
 				acceptedAt: new Date(),
-				ip: '127.0.0.1',
+				ip,
 				userAgent
 			}
 		});
