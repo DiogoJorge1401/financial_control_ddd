@@ -1,15 +1,17 @@
 import { ERROR_MESSAGES } from '@shared/utils';
-import { DomainId } from 'types-ddd';
+import { CurrencyValueObject, DomainId } from 'types-ddd';
 import { TransactionCalculationValueObject } from './transaction-calculation.value-object';
 
 describe('transaction-calculation.value-object', () => {
 	it('should create a valid transaction calculation', () => {
 		const budgetBoxId = DomainId.create('valid_id');
-		const value = 50;
+		const value = CurrencyValueObject.create(
+			{ value: 50, currency: 'BRL' }
+		).getResult();
 		const calculation = TransactionCalculationValueObject.create(
 			{
 				budgetBoxId,
-				'monetaryValue': value
+				'currency': value
 			}
 		);
 
@@ -17,20 +19,22 @@ describe('transaction-calculation.value-object', () => {
 		expect(
 			calculation
 				.getResult()
-				.value
+				.calculation
 				.budgetBoxId
 				.toValue()
 		)
 			.toEqual('valid_id');
-		expect(calculation.getResult().value.monetaryValue).toBe(50);
+		expect(calculation.getResult().calculation.currency.value).toBe(50);
 	});
-	it('should fail if provide a monetary value less than or equal 0', () => {
+	it('should fail if provide a currency value less than or equal 0', () => {
 		const budgetBoxId = DomainId.create('valid_id');
-		const value = 0;
+		const value = CurrencyValueObject.create(
+			{ value: 0, currency: 'BRL' }
+		).getResult();
 		const calculation = TransactionCalculationValueObject.create(
 			{
 				budgetBoxId,
-				'monetaryValue': value
+				'currency': value
 			}
 		);
 

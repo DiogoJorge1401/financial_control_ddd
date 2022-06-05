@@ -13,11 +13,11 @@
   "transactionCalculations": [
     {
       "budgetBoxId": "uuid",
-      "monetaryValue": 50
+      "currency": 50
     },
     {
       "budgetBoxId": "uuid",
-      "monetaryValue": 50
+      "currency": 50
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { AggregateRoot, BaseDomainEntity, DateValueObject, DomainId, Result } from 'types-ddd';
+import { AggregateRoot, BaseDomainEntity, CurrencyValueObject, DateValueObject, DomainId, Result } from 'types-ddd';
 import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import {
 	AttachmentValueObject,
@@ -25,6 +25,15 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 		super(props, TransactionAggregate.name);
 		this._totalAmount = this.calculateTotalAmount();
 	}
+	private calculateTotalAmount (): number {
+		const aux = CurrencyValueObject
+			.create({ currency: 'BRL', value: 0 })
+			.getResult();
+
+		this.transactionCalculations.forEach((cal) => aux.add(cal.calculation.currency.value));
+
+		return aux.value;
+	}
 	get userID (): DomainId { return this.props.userID; }
 	get reason (): ReasonDescriptionValueObject { return this.props.reason; }
 	get paymentDate (): DateValueObject { return this.props.paymentDate; }
@@ -44,10 +53,6 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 		return this.props.transactionCalculations;
 	}
 	get totalAmount (): number { return this._totalAmount; }
-	private calculateTotalAmount (): number {
-		return this.transactionCalculations
-			.reduce((acc, el) => el.value.monetaryValue + acc, 0);
-	}
 	static create (props: TransactionAggregateProps): Result<TransactionAggregate> {
 		return Result.ok(new TransactionAggregate(props));
 	}

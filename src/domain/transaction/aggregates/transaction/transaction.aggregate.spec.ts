@@ -1,4 +1,4 @@
-import { DateValueObject, DomainId } from 'types-ddd';
+import { CurrencyValueObject, DateValueObject, DomainId } from 'types-ddd';
 import { ReasonDescriptionValueObject } from '@domain/budget-box/value-objects';
 import {
 	AttachmentValueObject,
@@ -28,11 +28,11 @@ describe('transaction.aggregate', () => {
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					monetaryValue: 100
+					currency: CurrencyValueObject.create({ value: 100, currency: 'BRL' }).getResult()
 				}).getResult(),
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					monetaryValue: 200
+					currency: CurrencyValueObject.create({ value: 200, currency: 'BRL' }).getResult()
 				}).getResult(),
 			]
 		});
@@ -58,11 +58,11 @@ describe('transaction.aggregate', () => {
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					monetaryValue: 100
+					currency: CurrencyValueObject.create({ value: 100, currency: 'BRL' }).getResult()
 				}).getResult(),
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					monetaryValue: 200
+					currency: CurrencyValueObject.create({ value: 200, currency: 'BRL' }).getResult()
 				}).getResult(),
 			]
 		});
