@@ -7,6 +7,7 @@ import {
 	TransactionStatusValueObject,
 	TransactionTypeValueObject
 } from '@domain/transaction/value-objects';
+import { CURRENCY } from '@config/env';
 
 interface TransactionAggregateProps extends BaseDomainEntity {
 	userID: DomainId
@@ -20,23 +21,29 @@ interface TransactionAggregateProps extends BaseDomainEntity {
 }
 
 export class TransactionAggregate extends AggregateRoot<TransactionAggregateProps>{
-	private _totalAmount = 0;
+	private _totalAmount: CurrencyValueObject;
 	private constructor (props: TransactionAggregateProps) {
 		super(props, TransactionAggregate.name);
 		this._totalAmount = this.calculateTotalAmount();
 	}
-	private calculateTotalAmount (): number {
+	private calculateTotalAmount (): CurrencyValueObject {
 		const aux = CurrencyValueObject
-			.create({ currency: 'BRL', value: 0 })
+			.create({ currency: CURRENCY, value: 0 })
 			.getResult();
 
 		this.transactionCalculations.forEach((cal) => aux.add(cal.calculation.currency.value));
 
-		return aux.value;
+		return aux;
 	}
-	get userID (): DomainId { return this.props.userID; }
-	get reason (): ReasonDescriptionValueObject { return this.props.reason; }
-	get paymentDate (): DateValueObject { return this.props.paymentDate; }
+	get userID (): DomainId {
+		return this.props.userID;
+	}
+	get reason (): ReasonDescriptionValueObject {
+		return this.props.reason;
+	}
+	get paymentDate (): DateValueObject {
+		return this.props.paymentDate;
+	}
 	get transactionType (): TransactionTypeValueObject {
 		return this.props.transactionType;
 	}
@@ -52,7 +59,9 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 	get transactionCalculations (): Array<TransactionCalculationValueObject> {
 		return this.props.transactionCalculations;
 	}
-	get totalAmount (): number { return this._totalAmount; }
+	get totalAmount (): number {
+		return this._totalAmount.value;
+	}
 	static create (props: TransactionAggregateProps): Result<TransactionAggregate> {
 		return Result.ok(new TransactionAggregate(props));
 	}

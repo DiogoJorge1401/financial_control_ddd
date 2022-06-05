@@ -1,12 +1,13 @@
 import { ERROR_MESSAGES } from '@shared/utils';
 import { CurrencyValueObject, DomainId } from 'types-ddd';
+import { CURRENCY } from '@config/env';
 import { TransactionCalculationValueObject } from './transaction-calculation.value-object';
 
 describe('transaction-calculation.value-object', () => {
 	it('should create a valid transaction calculation', () => {
 		const budgetBoxId = DomainId.create('valid_id');
 		const value = CurrencyValueObject.create(
-			{ value: 50, currency: 'BRL' }
+			{ value: 50, currency: CURRENCY }
 		).getResult();
 		const calculation = TransactionCalculationValueObject.create(
 			{
@@ -29,7 +30,7 @@ describe('transaction-calculation.value-object', () => {
 	it('should fail if provide a currency value less than or equal 0', () => {
 		const budgetBoxId = DomainId.create('valid_id');
 		const value = CurrencyValueObject.create(
-			{ value: 0, currency: 'BRL' }
+			{ value: 0, currency: CURRENCY }
 		).getResult();
 		const calculation = TransactionCalculationValueObject.create(
 			{

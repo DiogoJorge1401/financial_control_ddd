@@ -8,6 +8,7 @@ import {
 	TransactionTypeValueObject
 } from '@domain/transaction/value-objects';
 import { TransactionAggregate } from './transaction.aggregate';
+import { CURRENCY } from '@config/env';
 
 describe('transaction.aggregate', () => {
 	it('should create a valid transaction', () => {
@@ -28,11 +29,11 @@ describe('transaction.aggregate', () => {
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					currency: CurrencyValueObject.create({ value: 100, currency: 'BRL' }).getResult()
+					currency: CurrencyValueObject.create({ value: 100, currency: CURRENCY }).getResult()
 				}).getResult(),
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					currency: CurrencyValueObject.create({ value: 200, currency: 'BRL' }).getResult()
+					currency: CurrencyValueObject.create({ value: 200, currency: CURRENCY }).getResult()
 				}).getResult(),
 			]
 		});
@@ -58,11 +59,11 @@ describe('transaction.aggregate', () => {
 			transactionCalculations: [
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					currency: CurrencyValueObject.create({ value: 100, currency: 'BRL' }).getResult()
+					currency: CurrencyValueObject.create({ value: 100, currency: CURRENCY }).getResult()
 				}).getResult(),
 				TransactionCalculationValueObject.create({
 					budgetBoxId: DomainId.create(),
-					currency: CurrencyValueObject.create({ value: 200, currency: 'BRL' }).getResult()
+					currency: CurrencyValueObject.create({ value: 200, currency: CURRENCY }).getResult()
 				}).getResult(),
 			]
 		});
