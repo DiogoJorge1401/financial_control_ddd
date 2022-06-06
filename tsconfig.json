@@ -24,6 +24,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": "src",
 		"paths": {
+			"@/*": ["./*"],
 			"@user/*": ["modules/user/*"],
 			"@budget-box/*": ["modules/budget-box/*"],
 			"@transaction/*": ["modules/transaction/*"],

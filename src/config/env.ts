@@ -17,3 +17,5 @@ export const APP_PORT = process.env['APP_PORT'] || 3000;
 type ICurrency = 'BRL'|'USD'|'EUR'|'JPY';
 
 export const CURRENCY = process.env['CURRENCY'] as ICurrency || 'BRL';
+
+export const TESTING_HOST = process.env['TESTING_HOST'] || 'http://localhost:3000/graphql';
