@@ -10,13 +10,14 @@ import { UserService } from '@user/infra/user.service';
 export class UserResolver {
 
 	constructor (
-		private readonly userService: UserService
+		private readonly userService: UserService,
 	) { }
 
-	@Query(() => String)
+	@Query(() => UserType,{nullable:true})
 	@UseGuards(JWTAuthGuard)
-	async whoAmI (@GetUserId() userId: string): Promise<string> {;
-		return userId;
+	async whoAmI (@GetUserId() userId: string): Promise<UserType> {;
+		const user = await this.userService.query.getUserById(userId);
+		return user;
 	}
 
 	@Mutation(() => String)
