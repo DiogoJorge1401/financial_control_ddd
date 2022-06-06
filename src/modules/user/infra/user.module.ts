@@ -10,16 +10,18 @@ import { UserMapper, UserRepository } from './repository';
 import { UserResolver } from './resolver/user.resolver';
 import { JWTStrategy } from './services/strategies';
 import { UserService } from './user.service';
+import { UserQueryService } from './services/queries';
 
 @Module({
 	providers: [
-		{ provide: 'UserRepository', useClass: UserRepository },
-		JWTStrategy,
 		UserMapper,
-		SignupUseCase,
+		{ provide: 'UserRepository', useClass: UserRepository },
+		{ provide: 'UserQueryService', useClass: UserQueryService },
+		SignupUseCase, 
 		SignInUseCase,
 		UserService,
-		UserResolver
+		UserResolver,
+		JWTStrategy,
 	],
 	imports: [
 		PassportModule,
