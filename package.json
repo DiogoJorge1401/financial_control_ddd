@@ -18,7 +18,9 @@
     "test:watch": "jest --maxWorks=25% --runInBand --watch --config ./jest.config.ts",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "generate:gql":"graphql-codegen --config code-gen.yml",
+    "postinstall": "yarn generate:gql"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.14",
@@ -45,6 +47,9 @@
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript-resolvers": "^2.6.4",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
