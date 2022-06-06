@@ -10,17 +10,23 @@ export interface IUserAgent {
 }
 
 export interface TermValueObjectProps {
-	ip: IpValueObject,
-	acceptedAt: DateValueObject,
-	userAgent: IUserAgent,
+	ip: IpValueObject
+	acceptedAt: DateValueObject
+	userAgent: IUserAgent
 }
 
 export class TermValueObject extends ValueObject<TermValueObjectProps>{
 	private constructor (props: TermValueObjectProps) {
 		super(props);
 	}
-	get value () {
-		return this.props;
+	get ip (): IpValueObject{
+		return this.props.ip;
+	}
+	get acceptedAt (): DateValueObject{
+		return this.props.acceptedAt;
+	}
+	get userAgent (): IUserAgent{
+		return this.props.userAgent;
 	}
 	static create (props: TermValueObjectProps): Result<TermValueObject> {
 		return Result.ok<TermValueObject>(new TermValueObject(props));
