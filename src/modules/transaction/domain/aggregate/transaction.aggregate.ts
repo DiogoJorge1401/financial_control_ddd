@@ -31,7 +31,7 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 			.create({ currency: CURRENCY, value: 0 })
 			.getResult();
 
-		this.transactionCalculations.forEach((cal) => aux.add(cal.calculation.currency.value));
+		this.transactionCalculations.forEach((cal) => aux.add(cal.currency.value));
 
 		return aux;
 	}

@@ -20,12 +20,11 @@ describe('transaction-calculation.value-object', () => {
 		expect(
 			calculation
 				.getResult()
-				.calculation
 				.budgetBoxId
-				.toValue()
+				.uid
 		)
 			.toEqual('valid_id');
-		expect(calculation.getResult().calculation.currency.value).toBe(50);
+		expect(calculation.getResult().currency.value).toBe(50);
 	});
 	it('should fail if provide a currency value less than or equal 0', () => {
 		const budgetBoxId = DomainId.create('valid_id');

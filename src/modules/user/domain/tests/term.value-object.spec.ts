@@ -36,6 +36,9 @@ describe('term.value-object', () => {
 		const { acceptedAt, ip, userAgent } = makeFakeTerm({ userAgent: {} });
 		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
 		expect(term.isSuccess).toBe(true);
-		expect(term.getResult().value).toEqual({ acceptedAt, ip, userAgent });
+		const result = term.getResult();
+		expect(result.acceptedAt).toEqual( acceptedAt);
+		expect(result.ip).toEqual(ip);
+		expect(result.userAgent).toEqual(userAgent);
 	});
 });

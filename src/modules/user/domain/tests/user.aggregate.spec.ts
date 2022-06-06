@@ -44,8 +44,8 @@ describe('user.aggregate', () => {
 		}).getResult();
 		expect(user.email.value).toBe('valid_mail@domain.com');
 		expect(user.password.value).toBe('valid_password');
-		expect(user.terms[0].value.ip.value).toBe('45.192.110.42');
-		expect(user.terms[0].value.userAgent).toEqual({
+		expect(user.terms[0].ip.value).toBe('45.192.110.42');
+		expect(user.terms[0].userAgent).toEqual({
 			name: 'firefox',
 			os: 'LINUX',
 			type: 'browser',

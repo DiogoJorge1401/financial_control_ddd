@@ -26,7 +26,7 @@ export class UserAggregate extends AggregateRoot<UserAggregateProps>{
 			id:this.id,
 			email: this.email.value,
 			password: this.password.value,
-			terms: this.terms.map(({ value: { acceptedAt, ip, userAgent } }) => ({
+			terms: this.terms.map(({acceptedAt,ip,userAgent}) => ({
 				acceptedAt: acceptedAt.value,
 				ip: ip.value,
 				userAgent: userAgent
