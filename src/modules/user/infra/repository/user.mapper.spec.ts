@@ -1,7 +1,7 @@
 import { UserAggregate } from '@user/domain/aggregate';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { Term } from '@user/infra/entities';
+import { ITerm } from '@shared/interfaces/user-model-interface';
 import { UserMapper } from '.';
 import { IUser } from '@shared/interfaces/user-model-interface';
 
@@ -10,7 +10,7 @@ describe('user.mapper', () => {
 	const email = 'valid@mail.com';
 	const id = 'valid_id';
 	const password = 'validpassword345';
-	const terms: Array<Term> = [
+	const terms: Array<ITerm> = [
 		{
 			acceptedAt: currentDate,
 			ip: '127.0.0.1',

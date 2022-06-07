@@ -10,7 +10,7 @@ export class UserMock implements IMockEntity<UserAggregate, IUser>{
 		const ID = DomainId.create(props?.id ?? 'valid_id');
 		const email = EmailValueObject.create(props?.email ?? 'validmail@mail.com');
 		const password = PasswordValueObject.create(props?.password ?? 'validPassword');
-		const ips = props?.terms.map(term => IpValueObject.create(term.ip));
+		const ips = props?.terms?.map(term => IpValueObject.create(term.ip));
 
 		const observer = ChangesObserver.init<unknown>(ips);
 		observer.add(email);
@@ -28,7 +28,7 @@ export class UserMock implements IMockEntity<UserAggregate, IUser>{
 		};
 		const ipValueObject = IpValueObject.create('127.0.0.1').getResult();
 
-		const terms = props?.terms.map(
+		const terms = props?.terms?.map(
 			(term, index) => TermValueObject.create({
 				ip: ips?.[index]?.getResult() ?? ipValueObject,
 				acceptedAt: DateValueObject.create(term?.acceptedAt ?? new Date('2022-01-01')).getResult(),
