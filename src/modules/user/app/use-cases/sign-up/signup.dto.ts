@@ -1,8 +1,8 @@
-import { Term } from '@user/infra/entities';
+import { ITerm } from '@shared/interfaces/user-model-interface';
 
 export interface SignUpDTO {
   email: string
   password: string
-  term: Term
+  term: ITerm
   acceptedTerms: boolean;
 }

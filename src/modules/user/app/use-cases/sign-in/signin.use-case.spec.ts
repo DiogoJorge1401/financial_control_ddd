@@ -1,9 +1,9 @@
 import { ERROR_MESSAGES } from '@shared/utils';
 import { UserAggregate } from '@user/domain/aggregate';
 import { JwtService } from '@nestjs/jwt';
-import { DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
 import { SignInUseCase } from './signin.use-case';
 import { IUserRepository } from '@user/domain/interfaces';
+import { UserMock } from '@user/domain/tests/mock/user.mock';
 
 describe('SignInUseCase', () => {
 	let signInUseCase: SignInUseCase;
@@ -12,12 +12,9 @@ describe('SignInUseCase', () => {
 	let jwtService: JwtService;
 
 	beforeAll(() => {
-		user = UserAggregate.create({
-			ID: DomainId.create(),
-			email: EmailValueObject.create('validmail@mail.com').getResult(),
-			password: PasswordValueObject.create('validPassword123').getResult(),
-			terms: []
-		}).getResult();
+		const userMock = new UserMock();
+
+		user = userMock.domain().getResult();
 
 		jwtService = {
 			sign: () => 'token'
@@ -88,7 +85,7 @@ describe('SignInUseCase', () => {
 
 		const result = await signInUseCase.execute({
 			email: 'validmail@mail.com',
-			password: 'validPassword123'
+			password: 'validPassword'
 		});
 
 		expect(result.isSuccess).toBe(true);
@@ -101,7 +98,7 @@ describe('SignInUseCase', () => {
 
 		const result = await signInUseCase.execute({
 			email: 'validmail@mail.com',
-			password: 'validPassword123'
+			password: 'validPassword'
 		});
 
 		expect(result.errorValue()).toBe('Internal Server Error');
