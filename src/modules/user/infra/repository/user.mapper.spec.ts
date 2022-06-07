@@ -1,8 +1,9 @@
 import { UserAggregate } from '@user/domain/aggregate';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { User, Term } from '@user/infra/entities';
+import { Term } from '@user/infra/entities';
 import { UserMapper } from '.';
+import { IUser } from '@shared/interfaces/user-model-interface';
 
 describe('user.mapper', () => {
 	const currentDate = new Date();
@@ -36,7 +37,7 @@ describe('user.mapper', () => {
 	}).getResult();
 
 
-	const persistence: User = {
+	const persistence: IUser = {
 		email,
 		id,
 		password,

@@ -1,4 +1,5 @@
-import { User} from '@user/infra/entities';
-export interface IUserQueryService{
-   getUserById(ui:string):Promise<User|null>
+import { IUser } from '@shared/interfaces/user-model-interface';
+
+export interface IUserQueryService {
+   getUserById(ui: string): Promise<IUser | null>
 }
