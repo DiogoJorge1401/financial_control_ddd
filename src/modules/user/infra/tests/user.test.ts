@@ -1,5 +1,5 @@
 import { AppModule } from '@/app.module';
-import { Mutation, MutationSigninArgs, MutationSignupArgs } from '@/types/code-gen.types';
+import { Mutation, MutationSigninArgs, MutationSignupArgs, Query } from '@/types/code-gen.types';
 import { APP_PORT, TESTING_HOST } from '@config/env';
 import { MongoDbConfig, MongoURI } from '@config/mongo.config';
 import { INestApplication } from '@nestjs/common';
@@ -8,6 +8,7 @@ import { GraphQLClient } from 'graphql-request';
 import mongoose, { Connection } from 'mongoose';
 import { UserSchema } from '../entities';
 import { SIGNIN_MUTATION, SIGNUP_MUTATION } from './user.mutation';
+import { AUTH_QUERY } from './user.query';
 
 describe('user module', () => {
 	let app: INestApplication;
@@ -74,4 +75,15 @@ describe('user module', () => {
 		client.setHeaders({ authorization: `Bearer ${payload.signin.token}` });
 	});
 
+	it('should query user for authentication token successfully', async () => {
+		type RequestType = Pick<Query, 'whoAmI'>;
+
+		const payload = await client.request<RequestType>(AUTH_QUERY);
+
+		expect(payload.whoAmI).toBeDefined()
+		expect(payload.whoAmI).toHaveProperty('id')
+		expect(payload.whoAmI).toHaveProperty('email')
+		expect(payload.whoAmI).toHaveProperty('terms')
+		expect(payload.whoAmI.terms[0]).toHaveProperty('ip')
+	});
 });
