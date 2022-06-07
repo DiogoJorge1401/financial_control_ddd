@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -16,7 +16,7 @@
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest --maxWorks=25% --runInBand -c ./jest.config.ts",
     "test:watch": "jest --maxWorks=25% --runInBand --watch -c ./jest.config.ts",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --coverage --maxWorks=25% --runInBand -c ./jest.config.ts",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand -c ./jest.config.ts",
     "test:e2e": "jest --maxWorks=25% --runInBand --watch -c ./jest.e2e.config.ts",
     "generate:gql": "graphql-codegen -c code-gen.yml",

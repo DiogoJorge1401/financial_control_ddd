@@ -21,19 +21,6 @@ export class UserAggregate extends AggregateRoot<UserAggregateProps>{
 		return this.props.terms;
 	}
 
-	ToObject (){
-		return {
-			id:this.id,
-			email: this.email.value,
-			password: this.password.value,
-			terms: this.terms.map(({acceptedAt,ip,userAgent}) => ({
-				acceptedAt: acceptedAt.value,
-				ip: ip.value,
-				userAgent: userAgent
-			}))
-		};
-	}
-
 	static create (props: UserAggregateProps): Result<UserAggregate> {
 		return Result.ok(new UserAggregate(props));
 	}
