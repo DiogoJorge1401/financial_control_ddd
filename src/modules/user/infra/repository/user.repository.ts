@@ -37,7 +37,7 @@ export class UserRepository implements IUserRepository {
 	}
 	async save (target: UserAggregate): Promise<void> {
 		try {
-			const user = new this.connection(target.ToObject());
+			const user = new this.connection(target.toObject());
 			await user.save();
 		} catch (err) {
 			console.log(err);

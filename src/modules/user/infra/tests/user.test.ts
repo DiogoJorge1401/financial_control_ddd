@@ -80,10 +80,10 @@ describe('user module', () => {
 
 		const payload = await client.request<RequestType>(AUTH_QUERY);
 
-		expect(payload.whoAmI).toBeDefined()
-		expect(payload.whoAmI).toHaveProperty('id')
-		expect(payload.whoAmI).toHaveProperty('email')
-		expect(payload.whoAmI).toHaveProperty('terms')
-		expect(payload.whoAmI.terms[0]).toHaveProperty('ip')
+		expect(payload.whoAmI).toBeDefined();
+		expect(payload.whoAmI).toHaveProperty('id');
+		expect(payload.whoAmI).toHaveProperty('email');
+		expect(payload.whoAmI).toHaveProperty('terms');
+		expect(payload.whoAmI.terms[0]).toHaveProperty('ip');
 	});
 });

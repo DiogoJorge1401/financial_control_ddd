@@ -16,9 +16,15 @@ export default {
 		"^.+\\.(t|j)s$": "ts-jest"
 	},
 	collectCoverageFrom: [
-		"**/*.(t|j)s"
+		'<rootDir>/modules/**/*.ts',
+		'!<rootDir>/modules/**/infra/*.ts',
+		'!**/index.ts',
+		'!<rootDir>/modules/**/infra/**/*.ts',
+		'!<rootDir>/modules/**/domain/tests/mock/**/*.ts',
+		'!<rootDir>/modules/**/app/use-cases/**/*.dto.ts',
+		'!**/test/**',
 	],
-	coverageDirectory: "../coverage",
+	coverageDirectory: '../coverage',
 	testEnvironment: "node",
 	preset: 'ts-jest',
 };

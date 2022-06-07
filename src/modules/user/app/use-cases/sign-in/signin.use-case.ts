@@ -29,25 +29,23 @@ export class SignInUseCase implements IUseCase<SignInDTO, Result<JWTPayload>>{
 		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.error.toString(), 'BAD_REQUEST');
 
 		try {
-			const userExistsByEmail = await this.userRepository.exists({
+			const userExistsByEmail = await this.userRepository.findOne({
 				email
 			});
 
 			if (!userExistsByEmail) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS, 'BAD_REQUEST');
 
-			const user = await this.userRepository.findOne({ email });
-
-			const passwordsMatch = user.password.compare(password);
+			const passwordsMatch = userExistsByEmail.password.compare(password);
 
 			if (!passwordsMatch) return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS, 'BAD_REQUEST');
 
-			const token = this.jwt.sign({ userID: user.id.toString() });
+			const token = this.jwt.sign({ userID: userExistsByEmail.id.toString() });
 
 			return Result.ok<JWTPayload>({
 				token
 			});
 		} catch (err) {
-			return Result.fail(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS, 'BAD_REQUEST');
+			return Result.fail('Internal Server Error', 'INTERNAL_SERVER_ERROR');
 		}
 	}
 

@@ -50,10 +50,10 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 	get transactionStatus (): TransactionStatusValueObject {
 		return this.props.transactionStatus;
 	}
-	get transactionNote (): TransactionNoteValueObject {
+	get transactionNote (): TransactionNoteValueObject | null {
 		return this.props.transactionNote ?? null;
 	}
-	get attachment (): AttachmentValueObject {
+	get attachment (): AttachmentValueObject | null {
 		return this.props.attachment ?? null;
 	}
 	get transactionCalculations (): Array<TransactionCalculationValueObject> {
