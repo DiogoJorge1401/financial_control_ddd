@@ -1,10 +1,10 @@
 import { UserAggregate } from '@user/domain/aggregate';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject, Result, TMapper } from 'types-ddd';
-import { User } from '@user/infra/entities';
+import { IUser } from '@shared/interfaces/user-model-interface';
 
-export class UserMapper implements TMapper<User, UserAggregate>{
-	map ({ id, email, password, terms, createdAt, updatedAt }: User): Result<UserAggregate, string> {
+export class UserMapper implements TMapper<IUser, UserAggregate>{
+	map ({ id, email, password, terms, createdAt, updatedAt }: IUser): Result<UserAggregate, string> {
 		return UserAggregate.create({
 			ID: DomainId.create(id),
 			email: EmailValueObject.create(email).getResult(),

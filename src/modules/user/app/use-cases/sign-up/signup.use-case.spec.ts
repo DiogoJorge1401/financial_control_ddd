@@ -1,5 +1,5 @@
 import { IUserRepository } from '@user/domain/interfaces';
-import { Term } from '@user/infra/entities';
+import { ITerm } from '@shared/interfaces/user-model-interface';
 import { ERROR_MESSAGES } from '@shared/utils';
 import { SignUpDTO } from './signup.dto';
 import { SignupUseCase } from './signup.use-case';
@@ -8,11 +8,11 @@ describe('signup.use-case', () => {
 	let userRepository: IUserRepository;
 	let signupUseCase: SignupUseCase;
 
-	type termProps = Partial<Term>;
+	type termProps = Partial<ITerm>;
 	interface dtoProps {
 		email?: string
 		password?: string
-		term?: Term
+		term?: ITerm
 		acceptedTerms?: boolean;
 	}
 	const makeDto = (dto?: dtoProps, termProps?: termProps): SignUpDTO => {

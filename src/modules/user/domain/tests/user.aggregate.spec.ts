@@ -1,77 +1,31 @@
-import { IpValueObject, TermValueObject } from '@user/domain/value-object';
-import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { UserAggregate } from '@user/domain/aggregate';
+import { UserMock } from './mock/user.mock';
 ;
 
 describe('user.aggregate', () => {
+
+	const userMock = new UserMock();
+
 	it('should create a valid user', () => {
-		const user = UserAggregate.create({
-			ID: DomainId.create(),
-			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
-			password: PasswordValueObject.create('valid_password').getResult(),
-			terms: [
-				TermValueObject.create({
-					acceptedAt: DateValueObject.create(new Date()).getResult(),
-					ip: IpValueObject.create('45.192.110.42').getResult(),
-					userAgent: {
-						name: 'firefox',
-						os: 'LINUX',
-						type: 'browser',
-						version: '80.0.1',
-					},
-				}).getResult(),
-			]
-		});
+		const user = userMock.domain();
 		expect(user.isSuccess).toBe(true);
 	});
 	it('should be able get valid values', () => {
-		const user = UserAggregate.create({
-			ID: DomainId.create(),
-			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
-			password: PasswordValueObject.create('valid_password').getResult(),
-			terms: [
-				TermValueObject.create({
-					acceptedAt: DateValueObject.create(new Date()).getResult(),
-					ip: IpValueObject.create('45.192.110.42').getResult(),
-					userAgent: {
-						name: 'firefox',
-						os: 'LINUX',
-						type: 'browser',
-						version: '80.0.1',
-					},
-				}).getResult(),
-			]
-		}).getResult();
-		expect(user.email.value).toBe('valid_mail@domain.com');
-		expect(user.password.value).toBe('valid_password');
-		expect(user.terms[0].ip.value).toBe('45.192.110.42');
-		expect(user.terms[0].userAgent).toEqual({
+		const user = userMock.domain();
+		const userResult = user.getResult();
+
+		expect(userResult.email.value).toBe('validmail@mail.com');
+		expect(userResult.password.value).toBe('validPassword');
+		expect(userResult.terms[0].ip.value).toBe('127.0.0.1');
+		expect(userResult.terms[0].userAgent).toEqual({
 			name: 'firefox',
 			os: 'LINUX',
 			type: 'browser',
-			version: '80.0.1',
+			version: "86.0.1",
 		});
 	});
 	it('should create a valid user with provided id', () => {
-		const ID = DomainId.create();
-		const user = UserAggregate.create({
-			ID,
-			email: EmailValueObject.create('valid_mail@domain.com').getResult(),
-			password: PasswordValueObject.create('valid_password').getResult(),
-			terms: [
-				TermValueObject.create({
-					acceptedAt: DateValueObject.create(new Date()).getResult(),
-					ip: IpValueObject.create('45.192.110.42').getResult(),
-					userAgent: {
-						name: 'firefox',
-						os: 'LINUX',
-						type: 'browser',
-						version: '80.0.1',
-					},
-				}).getResult(),
-			]
-		});
+		const user = userMock.domain({ id: 'valid_id' });
 		expect(user.isSuccess).toBe(true);
-		expect(user.getResult().id.toValue()).toBe(ID.toValue());
+		expect(user.getResult().id.toValue()).toBe('valid_id');
 	});
 });
