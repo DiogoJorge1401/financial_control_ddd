@@ -1,6 +1,6 @@
 import { Result } from 'types-ddd';
 
 export interface IMockEntity<Domain, Model> {
-  domain(props?: Partial<Domain>): Result<Domain>
+  domain(props?: Partial<Model>): Result<Domain>
   model(props?: Partial<Model>): Model
 }
