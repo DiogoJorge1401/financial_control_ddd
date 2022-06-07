@@ -1,5 +1,6 @@
-import { Term } from '@user/infra/entities';
 import { IUserRepository } from '@user/domain/interfaces';
+import { Term } from '@user/infra/entities';
+import { ERROR_MESSAGES } from '@shared/utils';
 import { SignUpDTO } from './signup.dto';
 import { SignupUseCase } from './signup.use-case';
 
@@ -67,5 +68,17 @@ describe('signup.use-case', () => {
 		const result = await signupUseCase.execute(makeDto());
 		expect(result.isSuccess).toBe(true);
 		expect(save).toBeCalled();
+	});
+	it('should fail if some value provided is invalid', async () => {
+		jest.spyOn(userRepository, 'exists').mockResolvedValueOnce(true);
+		const dto = makeDto();
+		const result = await signupUseCase.execute(
+			{
+				...dto,
+				term: { ...dto.term, ip: 'invalid_ip' }
+			}
+		);
+		expect(result.isFailure).toBe(true);
+		expect(result.errorValue()).toBe(ERROR_MESSAGES.USER_INVALID_TERM_IP_FORMAT);
 	});
 });

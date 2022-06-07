@@ -40,7 +40,7 @@ describe('SignInUseCase', () => {
 	it('should be defined', () => {
 		expect(signInUseCase).toBeDefined();
 	});
-	
+
 	it('should fail if provide an invalid email', async () => {
 		const result = await signInUseCase.execute({
 			email: '',
@@ -49,7 +49,7 @@ describe('SignInUseCase', () => {
 		expect(result.isFailure).toBe(true);
 		expect(result.error).toBe('Invalid email');
 	});
-	
+
 	it('should fail if provide an invalid password', async () => {
 		const result = await signInUseCase.execute({
 			email: 'validemail@mail.com',
@@ -58,7 +58,7 @@ describe('SignInUseCase', () => {
 		expect(result.isFailure).toBe(true);
 		expect(result.error).toBe('Password must has min 5 and max 21 chars');
 	});
-	
+
 	it('should fail if not found user by email', async () => {
 		jest.spyOn(userRepository, 'exists').mockResolvedValueOnce(false);
 		const result = await signInUseCase.execute({
@@ -68,7 +68,7 @@ describe('SignInUseCase', () => {
 		expect(result.isFailure).toBe(true);
 		expect(result.error).toBe(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
 	});
-	
+
 	it('should fail if provided password does not match', async () => {
 		jest.spyOn(userRepository, 'exists').mockResolvedValueOnce(true);
 		jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce(user);
@@ -81,7 +81,7 @@ describe('SignInUseCase', () => {
 		expect(result.isFailure).toBe(true);
 		expect(result.error).toBe(ERROR_MESSAGES.SIGNIN_INVALID_CREDENTIALS);
 	});
-	
+
 	it('should return a token payload if provide valid credentials', async () => {
 		jest.spyOn(userRepository, 'exists').mockResolvedValueOnce(true);
 		jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce(user);
@@ -94,5 +94,17 @@ describe('SignInUseCase', () => {
 		expect(result.isSuccess).toBe(true);
 		expect(result.getResult().token).toBe('token');
 	});
-	
+
+	it('should return internal server error if use case throws', async () => {
+		jest.spyOn(userRepository, 'findOne').mockImplementationOnce(async () => { throw new Error(); });
+
+
+		const result = await signInUseCase.execute({
+			email: 'validmail@mail.com',
+			password: 'validPassword123'
+		});
+
+		expect(result.errorValue()).toBe('Internal Server Error');
+	});
+
 });
