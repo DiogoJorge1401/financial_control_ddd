@@ -5,7 +5,7 @@ import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { ChangesObserver, DateValueObject, DomainId, EmailValueObject, PasswordValueObject, Result } from 'types-ddd';
 
 export class UserMock implements IMockEntity<UserAggregate, IUser>{
-	domain(props?: Partial<IUser>): Result<UserAggregate, string> {
+	domain (props?: Partial<IUser>): Result<UserAggregate, string> {
 
 		const ID = DomainId.create(props?.id ?? 'valid_id');
 		const email = EmailValueObject.create(props?.email ?? 'validmail@mail.com');
@@ -36,13 +36,13 @@ export class UserMock implements IMockEntity<UserAggregate, IUser>{
 				userAgent: term?.userAgent ?? userAgent
 			})
 		) ?? [
-				TermValueObject.create({
-					ip: ipValueObject,
-					isAccepted: true,
-					acceptedAt: DateValueObject.create(new Date('2022-01-01')).getResult(),
-					userAgent
-				})
-			];
+			TermValueObject.create({
+				ip: ipValueObject,
+				isAccepted: true,
+				acceptedAt: DateValueObject.create(new Date('2022-01-01')).getResult(),
+				userAgent
+			})
+		];
 
 		terms.map(term => observer.add(term));
 
@@ -61,7 +61,7 @@ export class UserMock implements IMockEntity<UserAggregate, IUser>{
 		});
 
 	}
-	model(props?: Partial<IUser>): IUser {
+	model (props?: Partial<IUser>): IUser {
 		return {
 			id: props?.id ?? 'valid_id',
 			email: props?.email ?? 'valid_mail@mail.com',

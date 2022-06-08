@@ -8,12 +8,12 @@ import { SignUpDTO } from './signup.dto';
 @Injectable()
 export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
-	constructor(
+	constructor (
 		@Inject('UserRepository')
 		private readonly userRepository: IUserRepository
 	) { }
 
-	async execute(dto: SignUpDTO): Promise<Result<void, string>> {
+	async execute (dto: SignUpDTO): Promise<Result<void, string>> {
 		const emailOnError = EmailValueObject.create(dto.email);
 		const passwordOnError = PasswordValueObject.create(dto.password);
 		const acceptedAtOnError = DateValueObject.create(dto.term.acceptedAt);

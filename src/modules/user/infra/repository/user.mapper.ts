@@ -4,7 +4,7 @@ import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject, Resul
 import { IUser } from '@shared/interfaces/user-model-interface';
 
 export class UserMapper implements TMapper<IUser, UserAggregate>{
-	map({ id, email, password, terms, createdAt, updatedAt, }: IUser): Result<UserAggregate, string> {
+	map ({ id, email, password, terms, createdAt, updatedAt, }: IUser): Result<UserAggregate, string> {
 		return UserAggregate.create({
 			ID: DomainId.create(id),
 			email: EmailValueObject.create(email).getResult(),
