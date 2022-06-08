@@ -1,53 +1,31 @@
-import { CurrencyValueObject, DomainId } from 'types-ddd';
-import { ReasonDomainEntity } from '@budget-box/domain/entity';
-import { BudgetBoxAggregate } from '@budget-box/domain/aggregate';
-import { BudgetDescriptionValueObject, BudgetPercentageValueObject, ReasonDescriptionValueObject} from '@budget-box/domain/value-object';
-import { CURRENCY } from '@config/env';
+import { BudgetBoxMock } from './mock/budget-box.mock';
+import { ReasonMock } from './mock/reason.mock';
 
 
 describe('budget-box.aggregate', () => {
+
+	const reasonMock = new ReasonMock();
+	const budgetBoxMock = new BudgetBoxMock()
+
 	it('should create a valid budget box', () => {
-		const budgetBox = BudgetBoxAggregate.create({
-			ID: DomainId.create(),
-			ownerId: DomainId.create('valid_id'),
-			description: BudgetDescriptionValueObject.create('budget description').getResult(),
-			balanceAvailable: CurrencyValueObject.create({ value: 0, currency: CURRENCY }).getResult(),
-			isPercentage: true,
-			budgetPercentage: BudgetPercentageValueObject.create(87).getResult(),
-			reasons: [
-				ReasonDomainEntity.create({
-					ID: DomainId.create(),
-					description: ReasonDescriptionValueObject
-						.create('reason description')
-						.getResult()
-				}).getResult()
-			]
+		const budgetBox = budgetBoxMock.domain({
+			budgetPercentage: 20,
+			isPercentage: false
 		});
 		expect(budgetBox.isSuccess).toBe(true);
-		expect(budgetBox.getResult().ownerId.uid).toBe('valid_id');
-		expect(budgetBox.getResult().description.value).toBe('budget description');
-		expect(budgetBox.getResult().balanceAvailable).toBe(0);
-		expect(budgetBox.getResult().isPercentage).toBe(true);
-		expect(budgetBox.getResult().budgetPercentage.value).toBe(87);
-		expect(budgetBox.getResult().reasons[0].description.value).toBe('reason description');
+		expect(budgetBox.getResult().ownerId.uid).toBe('valid_owner_id');
+		expect(budgetBox.getResult().description.value).toBe('valid_description');
+		expect(budgetBox.getResult().balanceAvailable).toBe(100);
+		expect(budgetBox.getResult().isPercentage).toBe(false);
+		expect(budgetBox.getResult().budgetPercentage.value).toBe(100);
+		expect(budgetBox.getResult().reasons[0].description.value).toBe('valid_description');
 	});
 	it('should set budget percentage to 100% if not percentage', () => {
-		const budgetBox = BudgetBoxAggregate.create({
-			ID: DomainId.create(),
-			ownerId: DomainId.create(),
-			description: BudgetDescriptionValueObject.create('budget description').getResult(),
-			balanceAvailable: CurrencyValueObject.create({ value: 0, currency: CURRENCY }).getResult(),
-			isPercentage: false,
-			budgetPercentage: BudgetPercentageValueObject.create(10).getResult(),
-			reasons: [
-				ReasonDomainEntity.create({
-					ID: DomainId.create(),
-					description: ReasonDescriptionValueObject
-						.create('reason description')
-						.getResult()
-				}).getResult()
-			]
+		const budgetBox = budgetBoxMock.domain({
+			budgetPercentage: 70,
+			isPercentage: true,
+			reasons: [reasonMock.model({ id: 'valid_id' })]
 		});
-		expect(budgetBox.getResult().budgetPercentage.value).toBe(100);
+		expect(budgetBox.getResult().budgetPercentage.value).toBe(70);
 	});
 });
