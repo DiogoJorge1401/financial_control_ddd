@@ -3,7 +3,7 @@ import { ITransaction } from '@shared/interfaces/transaction-model.interface';
 import { TransactionAggregate } from '@transaction/domain/aggregate';
 import { ChangesObserver, CurrencyValueObject, DateValueObject, DomainId, Result } from 'types-ddd';
 import { TransactionCalculationValueObject, TransactionNoteValueObject, TransactionStatusValueObject, TransactionTypeValueObject } from '@transaction/domain/value-object';
-import { TransactionReasonDescriptionValueObject } from '@transaction/domain/value-object/';
+import { TransactionReasonDescriptionValueObject } from '@transaction/domain/value-object';
 import { CURRENCY } from '@config/env';
 
 export class TransactionMock implements IMockEntity<TransactionAggregate, ITransaction>{

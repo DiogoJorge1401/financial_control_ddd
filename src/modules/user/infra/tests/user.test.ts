@@ -6,7 +6,7 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { GraphQLClient } from 'graphql-request';
 import mongoose, { Connection } from 'mongoose';
-import { UserSchema } from '../entities';
+import { UserSchema } from '@user/infra/entities';
 import { SIGNIN_MUTATION, SIGNUP_MUTATION } from './user.mutation';
 import { AUTH_QUERY } from './user.query';
 
