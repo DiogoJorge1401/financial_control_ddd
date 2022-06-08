@@ -1,21 +1,19 @@
+import { Inject, Injectable } from '@nestjs/common';
+import { UserAggregate } from '@user/domain/aggregate';
+import { IUserRepository } from '@user/domain/interfaces';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { DateValueObject, DomainId, EmailValueObject, IUseCase, PasswordValueObject, Result } from 'types-ddd';
-import { UserAggregate } from '@user/domain/aggregate';
 import { SignUpDTO } from './signup.dto';
-import { Inject, Injectable } from '@nestjs/common';
-import { IUserRepository } from '@user/domain/interfaces';
 
 @Injectable()
 export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
-	constructor (
+	constructor(
 		@Inject('UserRepository')
 		private readonly userRepository: IUserRepository
 	) { }
 
-	async execute (dto: SignUpDTO): Promise<Result<void, string>> {
-		if (!dto.acceptedTerms) return Result.fail('Unaccepted terms', 'BAD_GATEWAY');
-
+	async execute(dto: SignUpDTO): Promise<Result<void, string>> {
 		const emailOnError = EmailValueObject.create(dto.email);
 		const passwordOnError = PasswordValueObject.create(dto.password);
 		const acceptedAtOnError = DateValueObject.create(dto.term.acceptedAt);
@@ -30,11 +28,14 @@ export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 
 		if (validateValueObjects.isFailure) return Result.fail(validateValueObjects.errorValue(), 'BAD_REQUEST');
 
-		const term = TermValueObject.create({
+		const termOrError = TermValueObject.create({
+			isAccepted: dto.acceptedTerms,
 			acceptedAt: acceptedAtOnError.getResult(),
 			ip: ipOnError.getResult(),
 			userAgent: dto.term.userAgent
 		});
+
+		if (termOrError.isFailure) return Result.fail(termOrError.error);
 
 		const password = passwordOnError.getResult();
 
@@ -44,7 +45,7 @@ export class SignupUseCase implements IUseCase<SignUpDTO, Result<void>>{
 			ID: DomainId.create(),
 			email: emailOnError.getResult(),
 			password,
-			terms: [term.getResult()],
+			terms: [termOrError.getResult()],
 		}).getResult();
 
 		const userExistsByEmail = await this.userRepository.exists({

@@ -11,16 +11,19 @@ interface IFakeUserAgent {
 interface MakeFakeProps {
 	ipData?: string
 	acceptedAtData?: Date
+	isAccepted?: boolean
 	userAgent: IFakeUserAgent
 }
 interface MakeFakeResult {
 	ip: IpValueObject
 	acceptedAt: DateValueObject
 	userAgent: IUserAgent
+	isAccepted: boolean
 }
 const makeFakeTerm = ({
 	acceptedAtData = new Date('2022-05-28T20:55:00'),
 	ipData = '127.0.0.1',
+	isAccepted = true,
 	userAgent: {
 		name = "firefox", os = 'LINUX', type = "browser", version = "86.0.0"
 	}
@@ -28,16 +31,16 @@ const makeFakeTerm = ({
 	const ip = IpValueObject.create(ipData).getResult();
 	const acceptedAt = DateValueObject.create(acceptedAtData).getResult();
 	const userAgent = { name, version, os: os as any, type };
-	return { acceptedAt, ip, userAgent };
+	return { acceptedAt, ip, userAgent, isAccepted };
 };
 
 describe('term.value-object', () => {
 	it('should create a valid term', () => {
-		const { acceptedAt, ip, userAgent } = makeFakeTerm({ userAgent: {} });
-		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent });
+		const { acceptedAt, ip, userAgent, isAccepted } = makeFakeTerm({ userAgent: {} });
+		const term = TermValueObject.create({ ip, acceptedAt: acceptedAt, userAgent, isAccepted });
 		expect(term.isSuccess).toBe(true);
 		const result = term.getResult();
-		expect(result.acceptedAt).toEqual( acceptedAt);
+		expect(result.acceptedAt).toEqual(acceptedAt);
 		expect(result.ip).toEqual(ip);
 		expect(result.userAgent).toEqual(userAgent);
 	});

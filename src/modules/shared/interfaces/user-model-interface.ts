@@ -14,6 +14,8 @@ export interface ITerm{
   acceptedAt: Date
 
   userAgent: IUserAgent
+
+  isAccepted: boolean;
 }
 
 export interface IUser {

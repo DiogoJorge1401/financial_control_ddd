@@ -11,24 +11,27 @@ export interface IUserAgent {
 
 export interface TermValueObjectProps {
 	ip: IpValueObject
+	isAccepted: boolean
 	acceptedAt: DateValueObject
 	userAgent: IUserAgent
 }
 
 export class TermValueObject extends ValueObject<TermValueObjectProps>{
-	private constructor (props: TermValueObjectProps) {
+	private constructor(props: TermValueObjectProps) {
 		super(props);
 	}
-	get ip (): IpValueObject{
+	get ip(): IpValueObject {
 		return this.props.ip;
 	}
-	get acceptedAt (): DateValueObject{
+	get acceptedAt(): DateValueObject {
 		return this.props.acceptedAt;
 	}
-	get userAgent (): IUserAgent{
+	get userAgent(): IUserAgent {
 		return this.props.userAgent;
 	}
-	static create (props: TermValueObjectProps): Result<TermValueObject> {
+	static create(props: TermValueObjectProps): Result<TermValueObject> {
+		if (!props.isAccepted)
+			return Result.fail('Terms must be accepted');
 		return Result.ok<TermValueObject>(new TermValueObject(props));
 	}
 }

@@ -14,6 +14,7 @@ describe('user.mapper', () => {
 		{
 			acceptedAt: currentDate,
 			ip: '127.0.0.1',
+			isAccepted: true,
 			userAgent: {
 				name: 'firefox',
 				os: 'LINUX',
@@ -29,6 +30,7 @@ describe('user.mapper', () => {
 		password: PasswordValueObject.create(password).getResult(),
 		terms: terms.map(({ acceptedAt, ip, userAgent }) => TermValueObject.create({
 			acceptedAt: DateValueObject.create(acceptedAt).getResult(),
+			isAccepted: true,
 			ip: IpValueObject.create(ip).getResult(),
 			userAgent
 		}).getResult()),
