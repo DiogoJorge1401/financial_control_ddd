@@ -1,15 +1,10 @@
-import { DomainId } from 'types-ddd';
-import { ReasonDescriptionValueObject } from '@budget-box/domain/value-object';
-import { ReasonDomainEntity } from '@budget-box/domain/entity';
+import { ReasonMock } from './mock/reason.mock';
 
 describe('reason.domain-entity', () => {
+	const mockReason = new ReasonMock();
+
 	it('should create a valid reason entity', () => {
-		const reasonEntity = ReasonDomainEntity.create({
-			ID: DomainId.create(),
-			description: ReasonDescriptionValueObject
-				.create('valid_description')
-				.getResult()
-		});
+		const reasonEntity = mockReason.domain()
 		expect(reasonEntity.isSuccess).toBe(true);
 		expect(reasonEntity.getResult().isDeleted).toBe(false);
 		expect(reasonEntity.getResult().description.value).toBe(
@@ -18,18 +13,12 @@ describe('reason.domain-entity', () => {
 	});
 
 	it('should create a valid reason entity with provided id', () => {
-		const ID = DomainId.create();
-		const reasonEntity = ReasonDomainEntity.create({
-			ID,
-			description: ReasonDescriptionValueObject
-				.create('valid_description')
-				.getResult()
-		});
+		const reasonEntity = mockReason.domain()
 		expect(reasonEntity.isSuccess).toBe(true);
 		expect(reasonEntity.getResult().isDeleted).toBe(false);
 		expect(reasonEntity.getResult().description.value).toBe(
 			'valid_description',
 		);
-		expect(reasonEntity.getResult().id.toValue()).toBe(ID.toValue());
+		expect(reasonEntity.getResult().id.toValue()).toBe('valid_id');
 	});
 });
