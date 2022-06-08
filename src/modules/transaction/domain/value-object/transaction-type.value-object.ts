@@ -1,8 +1,8 @@
 import { ValueObject, Result } from "types-ddd";
 import { ERROR_MESSAGES } from '@shared/utils';
 
-enum ETransactionType { ENTRADA, SAIDA }
-type TransactionType = keyof typeof ETransactionType;
+enum ETransactionType { ENTRADA, SAIDA, ESTORNO, TRANSFERENCIA }
+export type TransactionType = keyof typeof ETransactionType;
 interface TransactionTypeValueObjectProps { value: TransactionType }
 
 export class TransactionTypeValueObject extends ValueObject<TransactionTypeValueObjectProps>{
@@ -13,7 +13,7 @@ export class TransactionTypeValueObject extends ValueObject<TransactionTypeValue
 	get value (): TransactionType {
 		return this.props.value;
 	}
-	static isTheValueValid (value:string):boolean{
+	static isTheValueValid (value: string): boolean {
 		const isTheValueValid = Object.keys(ETransactionType).includes(value);
 		return isTheValueValid;
 	}

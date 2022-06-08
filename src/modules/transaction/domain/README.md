@@ -3,7 +3,7 @@
 ```json
 {
   "userID": "uuid",
-  "totalAmount": 100,
+  "totalValue": 100,
   "reasonId": "uuid",
   "paymentDate": "2021-01-01 10:00:00",
   "transactionType": ["ENTRADA","SAIDA"],

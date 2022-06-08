@@ -8,5 +8,6 @@ export const ERROR_MESSAGES = {
 	TRANSACTION_INVALID_NOTE_LENGTH: 'Invalid note length, must have minimum 4 and max 144 characters',
 	TRANSACTION_INVALID_STATUS: 'Invalid transaction status',
 	TRANSACTION_INVALID_TYPE: 'Invalid transaction type',
+	TRANSACTION_REASON_DESCRIPTION_LENGTH: `Invalid reason description length, must have min 3 and max 50 characters`,
 	SIGNIN_INVALID_CREDENTIALS:'Invalid Credentials'
 };

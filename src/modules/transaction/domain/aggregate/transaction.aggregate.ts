@@ -18,23 +18,18 @@ interface TransactionAggregateProps extends BaseDomainEntity {
 	transactionCalculations: Array<TransactionCalculationValueObject>
 	transactionNote?: TransactionNoteValueObject
 	attachment?: AttachmentValueObject
+	totalValue?: CurrencyValueObject
 }
 
 export class TransactionAggregate extends AggregateRoot<TransactionAggregateProps>{
-	private _totalAmount: CurrencyValueObject;
 	private constructor (props: TransactionAggregateProps) {
 		super(props, TransactionAggregate.name);
-		this._totalAmount = this.calculateTotalAmount();
 	}
-	private calculateTotalAmount (): CurrencyValueObject {
-		const aux = CurrencyValueObject
-			.create({ currency: CURRENCY, value: 0 })
-			.getResult();
 
-		this.transactionCalculations.forEach((cal) => aux.add(cal.currency.value));
-
-		return aux;
+	get totalValue (): CurrencyValueObject {
+		return this.props.totalValue;
 	}
+
 	get userID (): DomainId {
 		return this.props.userID;
 	}
@@ -59,10 +54,37 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 	get transactionCalculations (): Array<TransactionCalculationValueObject> {
 		return this.props.transactionCalculations;
 	}
-	get totalAmount (): number {
-		return this._totalAmount.value;
+
+	private static isValid (props: TransactionAggregateProps): boolean {
+		const transactions = props.transactionCalculations;
+		const hasTransaction = transactions.length > 0;
+		const isTransaction = transactions[0] instanceof TransactionCalculationValueObject;
+		return hasTransaction && isTransaction;
 	}
+
+	private static calculateTotalAmount (calculation: TransactionCalculationValueObject[]): CurrencyValueObject {
+		const total = CurrencyValueObject.create({
+			currency: CURRENCY,
+			value: 0
+		}).getResult();
+
+		calculation.forEach((cur) => total.add(cur.currency.value));
+
+		return total;
+	}
+
 	static create (props: TransactionAggregateProps): Result<TransactionAggregate> {
-		return Result.ok(new TransactionAggregate(props));
+		const isValid = this.isValid(props);
+
+		if (!isValid)
+			return Result.fail('Calculation is required');
+
+		const currency = this.calculateTotalAmount(props.transactionCalculations);
+
+		props.totalValue = currency;
+
+		const transaction = new TransactionAggregate(props);
+
+		return Result.ok(transaction);
 	}
 }
