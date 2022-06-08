@@ -1,5 +1,5 @@
-import { IReason } from './reason-model.interface'
-import { ICurrency } from './transaction-model.interface'
+import { IReason } from './reason-model.interface';
+import { ICurrency } from './transaction-model.interface';
 
 export interface IBudgetBox {
   readonly id: string

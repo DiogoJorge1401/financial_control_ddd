@@ -1,15 +1,17 @@
 import { JWT_SECRET_KEY } from '@config/env';
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { PassportStrategy } from '@nestjs/passport';
-import { IUserRepository } from '@user/domain/interfaces';
+import { Model } from 'mongoose';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PayloadDecoded } from '.';
+import { User, UserDocument } from '@user/infra/entities';
 
 @Injectable()
 export class JWTStrategy extends PassportStrategy(Strategy) {
 	constructor (
-		@Inject('UserRepository')
-		private readonly userRepository:IUserRepository
+		@InjectModel(User.name)
+		private readonly conn: Model<UserDocument>
 	) {
 		super({
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -18,9 +20,9 @@ export class JWTStrategy extends PassportStrategy(Strategy) {
 		});
 	}
 
-	async validate ({ userID }: PayloadDecoded){
-		const userExists = await this.userRepository.findOne({ id: userID });
-		if(!userExists)
+	async validate ({ userID }: PayloadDecoded) {
+		const userExists = await this.conn.findOne({ id: userID });
+		if (!userExists)
 			throw new UnauthorizedException();
 		return { userID };
 	}

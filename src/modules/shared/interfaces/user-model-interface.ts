@@ -15,7 +15,7 @@ export interface ITerm{
 
   userAgent: IUserAgent
 
-  isAccepted: boolean;
+  isAccepted?: boolean;
 }
 
 export interface IUser {

@@ -5,7 +5,7 @@ import { ReasonMock } from './mock/reason.mock';
 describe('budget-box.aggregate', () => {
 
 	const reasonMock = new ReasonMock();
-	const budgetBoxMock = new BudgetBoxMock()
+	const budgetBoxMock = new BudgetBoxMock();
 
 	it('should create a valid budget box', () => {
 		const budgetBox = budgetBoxMock.domain({

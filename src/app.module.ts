@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
 import { MongoDbConfig, MongoURI } from './config/mongo.config';
 import { UserModule } from '@user/infra/user.module';
+import { BudgetBoxModule } from '@budget-box/infra/budget-box.module';
 
 @Module({
 	imports: [
@@ -13,7 +14,8 @@ import { UserModule } from '@user/infra/user.module';
 			driver: ApolloDriver,
 			autoSchemaFile: join(process.cwd(), 'src/types/schema.gql'),
 		}),
-		UserModule
+		UserModule,
+		BudgetBoxModule
 	]
 })
 export class AppModule { }

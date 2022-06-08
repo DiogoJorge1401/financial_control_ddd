@@ -1,4 +1,4 @@
-import { TransactionReasonDescriptionValueObject } from '../value-object/transaction-reason-description.value-object';
+import { TransactionReasonDescriptionValueObject } from '@transaction/domain/value-object';
 
 describe('transaction-reason.value-object', () => {
 	it('should create a valid value object', () => {
