@@ -1,4 +1,4 @@
-import { ITerm } from '@shared/interfaces/user-model-interface';
+import { ITerm } from '@shared/interfaces';
 
 export interface SignUpDTO {
   email: string

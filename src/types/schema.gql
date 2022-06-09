@@ -30,6 +30,18 @@ type TokenType {
   token: String!
 }
 
+type ReasonType {
+  id: String!
+  description: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BudgetBoxCurrencyType {
+  value: Float!
+  currency: String!
+}
+
 type Query {
   whoAmI: UserType
 }

@@ -62,7 +62,7 @@ export class TransactionAggregate extends AggregateRoot<TransactionAggregateProp
 		return hasTransaction && isTransaction;
 	}
 
-	private static calculateTotalAmount (calculation: TransactionCalculationValueObject[]): CurrencyValueObject {
+	private static calculateTotalAmount (calculation: Array<TransactionCalculationValueObject>): CurrencyValueObject {
 		const total = CurrencyValueObject.create({
 			currency: CURRENCY,
 			value: 0

@@ -3,7 +3,7 @@ import { IBudgetBoxRepository } from '@budget-box/domain/interfaces';
 import { BudgetBox, BudgetBoxDocument } from '@budget-box/infra/entities';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { IBudgetBox } from '@shared/interfaces/budget-box-model.interface';
+import { IBudgetBox } from '@shared/interfaces';
 import { Model } from 'mongoose';
 import { Filter } from 'types-ddd';
 
@@ -15,7 +15,7 @@ export class BudgetBoxRepository implements IBudgetBoxRepository {
     private readonly conn: Model<BudgetBoxDocument>
 	) { }
 
-	async find (filter: Filter<Partial<IBudgetBox>>): Promise<BudgetBoxAggregate[]> {
+	async find (filter: Filter<Partial<IBudgetBox>>): Promise<Array<BudgetBoxAggregate>> {
 		filter;
 		throw new Error('Method not implemented!');
 	}

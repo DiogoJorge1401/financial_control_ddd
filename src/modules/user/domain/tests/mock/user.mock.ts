@@ -1,5 +1,4 @@
-import { IMockEntity } from '@shared/interfaces/entity-mock.interface';
-import { IUser } from '@shared/interfaces/user-model-interface';
+import { IMockEntity, IUser } from '@shared/interfaces';
 import { UserAggregate } from '@user/domain/aggregate';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { ChangesObserver, DateValueObject, DomainId, EmailValueObject, PasswordValueObject, Result } from 'types-ddd';

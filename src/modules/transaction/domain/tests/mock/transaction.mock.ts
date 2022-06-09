@@ -1,5 +1,4 @@
-import { IMockEntity } from '@shared/interfaces/entity-mock.interface';
-import { ITransaction } from '@shared/interfaces/transaction-model.interface';
+import { IMockEntity, ITransaction } from '@shared/interfaces';
 import { TransactionAggregate } from '@transaction/domain/aggregate';
 import { ChangesObserver, CurrencyValueObject, DateValueObject, DomainId, Result } from 'types-ddd';
 import { TransactionCalculationValueObject, TransactionNoteValueObject, TransactionStatusValueObject, TransactionTypeValueObject } from '@transaction/domain/value-object';

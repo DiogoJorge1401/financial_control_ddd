@@ -22,6 +22,5 @@ describe('budget-box.mapper', () => {
 		expect(result.isSuccess).toBeTruthy();
 		expect(result.statusCodeNumber).toBe(200);
 		expect(result.getResult()).toEqual(aggregate.getResult());
-		console.log(result.getResult().toObject())
 	});
 });

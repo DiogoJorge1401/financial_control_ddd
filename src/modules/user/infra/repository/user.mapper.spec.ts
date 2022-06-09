@@ -1,9 +1,8 @@
 import { UserAggregate } from '@user/domain/aggregate';
 import { IpValueObject, TermValueObject } from '@user/domain/value-object';
 import { DateValueObject, DomainId, EmailValueObject, PasswordValueObject } from 'types-ddd';
-import { ITerm } from '@shared/interfaces/user-model-interface';
+import { ITerm, IUser } from '@shared/interfaces';
 import { UserMapper } from '.';
-import { IUser } from '@shared/interfaces/user-model-interface';
 
 describe('user.mapper', () => {
 	const currentDate = new Date('2022-01-01');

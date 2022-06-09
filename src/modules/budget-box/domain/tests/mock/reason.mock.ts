@@ -1,6 +1,5 @@
 import { ReasonDomainEntity } from '@budget-box/domain/entity';
-import { IMockEntity } from '@shared/interfaces/entity-mock.interface';
-import { IReason } from '@shared/interfaces/reason-model.interface';
+import { IMockEntity, IReason } from '@shared/interfaces';
 import { DomainId, Result } from 'types-ddd';
 import { ReasonDescriptionValueObject } from '@budget-box/domain/value-object';
 

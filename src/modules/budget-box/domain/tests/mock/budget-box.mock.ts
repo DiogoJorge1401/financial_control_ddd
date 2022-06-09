@@ -1,6 +1,5 @@
 import { BudgetBoxAggregate } from '@budget-box/domain/aggregate';
-import { IBudgetBox } from '@shared/interfaces/budget-box-model.interface';
-import { IMockEntity } from '@shared/interfaces/entity-mock.interface';
+import { IBudgetBox, IMockEntity } from '@shared/interfaces';
 import { ChangesObserver, CurrencyValueObject, DomainId, Result } from 'types-ddd';
 import { CURRENCY } from '@config/env';
 import { ReasonMock } from './';
