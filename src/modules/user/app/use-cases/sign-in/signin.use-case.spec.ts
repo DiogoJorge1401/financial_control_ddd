@@ -3,7 +3,7 @@ import { UserAggregate } from '@user/domain/aggregate';
 import { JwtService } from '@nestjs/jwt';
 import { SignInUseCase } from './signin.use-case';
 import { IUserRepository } from '@user/domain/interfaces';
-import { UserMock } from '@user/domain/tests/mock/user.mock';
+import { UserMock } from '@user/domain/tests/mock';
 
 describe('SignInUseCase', () => {
 	let signInUseCase: SignInUseCase;

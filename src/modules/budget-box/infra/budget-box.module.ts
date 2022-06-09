@@ -5,12 +5,12 @@ import { BudgetBox, BudgetBoxSchema } from './entities';
 import { BudgetBoxRepository } from './repository';
 
 @Module({
-  providers: [
-    { provide: 'BudgetBoxRepository', useClass: BudgetBoxRepository },
-    BudgetBoxService
-  ],
-  imports: [
-    MongooseModule.forFeature([{ name: BudgetBox.name, schema: BudgetBoxSchema }]),
-  ]
+	providers: [
+		{ provide: 'BudgetBoxRepository', useClass: BudgetBoxRepository },
+		BudgetBoxService
+	],
+	imports: [
+		MongooseModule.forFeature([{ name: BudgetBox.name, schema: BudgetBoxSchema }]),
+	]
 })
 export class BudgetBoxModule { }

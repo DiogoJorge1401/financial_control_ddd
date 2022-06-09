@@ -21,7 +21,7 @@ interface MakeFakeResult {
 	isAccepted: boolean
 }
 const makeFakeTerm = ({
-	acceptedAtData = new Date('2022-05-28T20:55:00'),
+	acceptedAtData = new Date('2022-01-01'),
 	ipData = '127.0.0.1',
 	isAccepted = true,
 	userAgent: {

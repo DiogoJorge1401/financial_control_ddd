@@ -1,4 +1,4 @@
-import { UserMock } from './mock/user.mock';
+import { UserMock } from './mock';
 ;
 
 describe('user.aggregate', () => {
