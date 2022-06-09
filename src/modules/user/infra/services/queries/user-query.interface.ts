@@ -1,4 +1,4 @@
-import { IUser } from '@shared/interfaces/user-model-interface';
+import { IUser } from '@shared/interfaces';
 
 export interface IUserQueryService {
    getUserById(ui: string): Promise<IUser | null>

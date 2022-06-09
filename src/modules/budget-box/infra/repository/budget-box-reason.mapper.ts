@@ -1,6 +1,6 @@
 import { ReasonDomainEntity } from '@budget-box/domain/entity';
 import { ReasonDescriptionValueObject } from '@budget-box/domain/value-object';
-import { IReason } from '@shared/interfaces/reason-model.interface';
+import { IReason } from '@shared/interfaces';
 import { DomainId, Result, TMapper } from 'types-ddd';
 
 export class BudgetBoxReasonMapperToDomain implements TMapper<IReason, ReasonDomainEntity>{

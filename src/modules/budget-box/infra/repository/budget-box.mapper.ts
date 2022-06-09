@@ -1,9 +1,8 @@
 import { BudgetBoxAggregate } from '@budget-box/domain/aggregate';
 import { ReasonDomainEntity } from '@budget-box/domain/entity';
 import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '@budget-box/domain/value-object';
-import { IBudgetBox } from '@shared/interfaces/budget-box-model.interface';
+import { IBudgetBox, IReason } from '@shared/interfaces';
 import { ChangesObserver, CurrencyValueObject, DomainId, Result, TMapper } from 'types-ddd';
-import { IReason } from '@shared/interfaces/reason-model.interface';
 
 export class BudgetBoxMapperToDomain implements TMapper<IBudgetBox, BudgetBoxAggregate>{
 	constructor (

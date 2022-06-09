@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { ITerm, IUser } from '@shared/interfaces/user-model-interface';
+import { ITerm, IUser } from '@shared/interfaces';
 
 
 @Schema({ autoCreate: true, timestamps: true, autoIndex: true })
