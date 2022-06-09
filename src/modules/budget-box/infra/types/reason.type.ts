@@ -3,14 +3,14 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @ObjectType()
 export class ReasonType {
   @Field()
-  id!: string;
+  	id!: string;
 
   @Field()
-  description!: string
+  	description!: string;
 
   @Field()
-  createdAt!: Date;
+  	createdAt!: Date;
 
   @Field()
-  updatedAt!: Date;
+  	updatedAt!: Date;
 }

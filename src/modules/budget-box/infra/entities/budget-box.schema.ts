@@ -1,42 +1,42 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import {
-  IBudgetBox, IReason, ICurrency
+	IBudgetBox, IReason, ICurrency
 } from '@shared/interfaces';
 
 @Schema({ autoCreate: true, timestamps: true, autoIndex: true })
 export class BudgetBox implements IBudgetBox {
   @Prop({ immutable: true, required: true, index: true })
-  id!: string;
+  	id!: string;
 
   @Prop({ required: true })
-  ownerId!: string;
+  	ownerId!: string;
 
   @Prop({ required: true })
-  description!: string;
+  	description!: string;
 
   @Prop({ required: true, type: Object })
-  balanceAvailable!: ICurrency;
+  	balanceAvailable!: ICurrency;
 
   @Prop({ required: true })
-  isPercentage!: boolean;
+  	isPercentage!: boolean;
 
   @Prop({ required: true })
-  budgetPercentage!: number;
+  	budgetPercentage!: number;
 
   @Prop({ required: true, default: [] })
-  reasons!: IReason[];
+  	reasons!: IReason[];
 
   @Prop({ default: () => new Date() })
-  createdAt!: Date;
+  	createdAt!: Date;
 
   @Prop({ default: () => new Date() })
-  updatedAt!: Date;
+  	updatedAt!: Date;
 
   @Prop()
-  isDeleted?: boolean;
+  	isDeleted?: boolean;
 
   @Prop()
-  deletedAt?: Date;
+  	deletedAt?: Date;
 }
 
 export const BudgetBoxSchema = SchemaFactory.createForClass(BudgetBox);
