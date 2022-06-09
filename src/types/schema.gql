@@ -30,6 +30,22 @@ type TokenType {
   token: String!
 }
 
+type BudgetBoxCurrencyType {
+  value: Float!
+  currency: String!
+}
+
+type BudgetBoxType {
+  id: ID!
+  description: String!
+  balanceAvailable: BudgetBoxCurrencyType!
+  isPercentage: Boolean!
+  budgetPercentage: Float!
+  reasons: [ReasonType!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type ReasonType {
   id: String!
   description: String!
@@ -37,18 +53,15 @@ type ReasonType {
   updatedAt: DateTime!
 }
 
-type BudgetBoxCurrencyType {
-  value: Float!
-  currency: String!
-}
-
 type Query {
   whoAmI: UserType
+  getBudgetBoxes: [BudgetBoxType!]!
 }
 
 type Mutation {
   signup(SignUpInput: SignUpInput!): String!
   signin(SignInInput: SignInInput!): TokenType!
+  createBudgetBox: Boolean!
 }
 
 input SignUpInput {

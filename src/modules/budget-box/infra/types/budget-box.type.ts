@@ -1,40 +1,40 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
 import { ICurrency, IReason } from '@shared/interfaces';
-import { ReasonType } from './reason.type';
+import { ReasonType } from '.';
 
 @ObjectType()
 export class BudgetBoxCurrencyType {
   @Field()
-  value!: number
+  	value!: number;
 
   @Field(() => String)
-  currency: ICurrency['currency']
+  	currency: ICurrency['currency'];
 }
 
 @ObjectType()
 export class BudgetBoxType {
   @Field(() => ID)
-  id!: string;
+  	id!: string;
 
   @Field()
-  description!: string;
+  	description!: string;
 
   @Field(() => BudgetBoxCurrencyType)
-  balanceAvailable!: ICurrency;
+  	balanceAvailable!: ICurrency;
 
   @Field()
-  isPercentage!: boolean;
+  	isPercentage!: boolean;
 
   @Field()
-  budgetPercentage!: number;
+  	budgetPercentage!: number;
 
   @Field(() => [ReasonType])
-  reasons!: Array<IReason>;
+  	reasons!: Array<IReason>;
 
   @Field()
-  createdAt!: Date;
+  	createdAt!: Date;
 
   @Field()
-  updatedAt!: Date;
+  	updatedAt!: Date;
 
 }
