@@ -23,7 +23,7 @@ export class BudgetBox implements IBudgetBox {
   @Prop({ required: true })
   	budgetPercentage!: number;
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: [] })
   	reasons!: IReason[];
 
   @Prop({ default: () => new Date() })

@@ -1,4 +1,4 @@
-import { TransactionMock } from './mock/transaction.mock';
+import { TransactionMock } from './mock';
 
 
 describe('transaction.aggregate', () => {

@@ -27,7 +27,7 @@ export class TransactionMock implements IMockEntity<TransactionAggregate, ITrans
 
 		const status = TransactionStatusValueObject.create(props?.transactionStatus ?? 'CONCLUIDO');
 
-		const paymentDate = DateValueObject.create(props?.paymentDate ?? new Date('2022-01-01 00:00:00'));
+		const paymentDate = DateValueObject.create(props?.paymentDate ?? new Date('2022-01-01'));
 
 		const observer = ChangesObserver.init<unknown>(transactionCalculations);
 		note && observer.add(note);
@@ -45,9 +45,9 @@ export class TransactionMock implements IMockEntity<TransactionAggregate, ITrans
 
 		return TransactionAggregate.create({
 			ID,
-			updatedAt: props?.updatedAt ?? new Date('2022-01-01 00:00:00'),
+			updatedAt: props?.updatedAt ?? new Date('2022-01-01'),
 			transactionNote: note?.getResult(),
-			createdAt: props?.createdAt ?? new Date('2022-01-01 00:00:00'),
+			createdAt: props?.createdAt ?? new Date('2022-01-01'),
 			attachment: attachment?.getResult(),
 			userID: userId,
 			transactionType: transactionType.getResult(),
@@ -68,9 +68,9 @@ export class TransactionMock implements IMockEntity<TransactionAggregate, ITrans
 			reason: props?.reason ?? 'valid_reason_id',
 			transactionStatus: props?.transactionStatus ?? 'CONCLUIDO',
 			attachment: props?.attachment ?? 'http://s3-us-east-1.amazonaws.com/bucket/file.pdf',
-			createdAt: props?.createdAt ?? new Date('2022-01-01 00:00:00'),
+			createdAt: props?.createdAt ?? new Date('2022-01-01'),
 			transactionNote: props?.transactionNote ?? 'valid_note',
-			paymentDate: props?.paymentDate ?? new Date('2022-01-01 00:00:00'),
+			paymentDate: props?.paymentDate ?? new Date('2022-01-01'),
 			totalValue: props?.totalValue ?? {
 				currency: 'BRL',
 				value: 1000
@@ -85,7 +85,7 @@ export class TransactionMock implements IMockEntity<TransactionAggregate, ITrans
 				}
 			],
 			transactionType: props?.transactionType ?? 'ENTRADA',
-			updatedAt: props?.updatedAt ?? new Date('2022-01-01 00:00:00'),
+			updatedAt: props?.updatedAt ?? new Date('2022-01-01'),
 			isDeleted: false,
 			deletedAt: undefined,
 		};

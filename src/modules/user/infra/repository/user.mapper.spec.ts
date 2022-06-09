@@ -6,7 +6,7 @@ import { UserMapper } from '.';
 import { IUser } from '@shared/interfaces/user-model-interface';
 
 describe('user.mapper', () => {
-	const currentDate = new Date();
+	const currentDate = new Date('2022-01-01');
 	const email = 'valid@mail.com';
 	const id = 'valid_id';
 	const password = 'validpassword345';

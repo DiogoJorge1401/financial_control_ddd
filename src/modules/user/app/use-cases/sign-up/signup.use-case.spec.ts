@@ -24,7 +24,7 @@ describe('signup.use-case', () => {
 			email: props.email ?? 'valid_email@domain.com',
 			password: props.password ?? 'valid_password',
 			term: {
-				acceptedAt: props.acceptedAt ?? new Date(),
+				acceptedAt: props.acceptedAt ?? new Date('2022-01-01'),
 				isAccepted: undefined,
 				ip: props.ip ?? '123.123.123.123',
 				userAgent: {

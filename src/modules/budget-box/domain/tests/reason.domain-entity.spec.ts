@@ -1,4 +1,4 @@
-import { ReasonMock } from './mock/reason.mock';
+import { ReasonMock } from './mock/';
 
 describe('reason.domain-entity', () => {
 	const mockReason = new ReasonMock();

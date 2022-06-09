@@ -3,7 +3,7 @@ import { IBudgetBox } from '@shared/interfaces/budget-box-model.interface';
 import { IMockEntity } from '@shared/interfaces/entity-mock.interface';
 import { ChangesObserver, CurrencyValueObject, DomainId, Result } from 'types-ddd';
 import { CURRENCY } from '@config/env';
-import { ReasonMock } from './reason.mock';
+import { ReasonMock } from './';
 import { BudgetDescriptionValueObject, BudgetPercentageValueObject } from '@budget-box/domain/value-object';
 
 export class BudgetBoxMock implements IMockEntity<BudgetBoxAggregate, IBudgetBox>{
@@ -62,8 +62,8 @@ export class BudgetBoxMock implements IMockEntity<BudgetBoxAggregate, IBudgetBox
 			isPercentage: props?.isPercentage ?? false,
 			ownerId: props?.ownerId ?? 'valid_owner_id',
 			reasons: props?.reasons ?? [this.reasonMock.model()],
-			createdAt: props?.createdAt ?? new Date('2022-01-01 00:00:00'),
-			updatedAt: props?.updatedAt ?? new Date('2022-01-01 00:00:00'),
+			createdAt: props?.createdAt ?? new Date('2022-01-01'),
+			updatedAt: props?.updatedAt ?? new Date('2022-01-01'),
 			deletedAt: undefined,
 			isDeleted: false,
 		};

@@ -1,4 +1,4 @@
-import { UserMock } from './user.mock';
+import { UserMock } from '.';
 
 describe('user.mock', () => {
 	const userMock = new UserMock();

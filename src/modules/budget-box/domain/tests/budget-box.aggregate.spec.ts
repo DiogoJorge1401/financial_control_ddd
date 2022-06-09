@@ -1,5 +1,5 @@
-import { BudgetBoxMock } from './mock/budget-box.mock';
-import { ReasonMock } from './mock/reason.mock';
+import { BudgetBoxMock } from './mock';
+import { ReasonMock } from './mock/';
 
 
 describe('budget-box.aggregate', () => {
