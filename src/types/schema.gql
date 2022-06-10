@@ -61,7 +61,7 @@ type Query {
 type Mutation {
   signup(SignUpInput: SignUpInput!): String!
   signin(SignInInput: SignInInput!): TokenType!
-  createBudgetBox: Boolean!
+  createBudgetBox(CreateBudgetBoxInput: CreateBudgetBoxInput!): Boolean!
 }
 
 input SignUpInput {
@@ -73,4 +73,10 @@ input SignUpInput {
 input SignInInput {
   email: String!
   password: String!
+}
+
+input CreateBudgetBoxInput {
+  description: String!
+  isPercentage: Boolean!
+  budgetPercentage: Float!
 }

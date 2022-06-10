@@ -1,4 +1,4 @@
-import { BadRequestException, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, InternalServerErrorException, UnprocessableEntityException } from '@nestjs/common';
 import { Result } from 'types-ddd';
 
 export const CheckResultInterceptor = <T, F>(result: Result<T, F>): Result<T, F> => {
@@ -6,6 +6,8 @@ export const CheckResultInterceptor = <T, F>(result: Result<T, F>): Result<T, F>
 		switch (result.statusCode) {
 		case 'BAD_REQUEST':
 			throw new BadRequestException(result.errorValue());
+		case 'UNPROCESSABLE_ENTITY':
+			throw new UnprocessableEntityException(result.errorValue());
 		default:
 			throw new InternalServerErrorException(result.errorValue());
 		}
