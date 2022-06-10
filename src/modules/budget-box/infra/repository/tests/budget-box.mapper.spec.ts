@@ -1,6 +1,5 @@
 import { BudgetBoxMock } from '@budget-box/domain/tests/mock';
-import { BudgetBoxReasonMapperToDomain } from '../budget-box-reason.mapper';
-import { BudgetBoxMapperToDomain } from '../budget-box.mapper';
+import { BudgetBoxReasonMapperToDomain, BudgetBoxMapperToDomain } from '@budget-box/infra/repository';
 
 describe('budget-box.mapper', () => {
 	const budgetBoxMapperToDomain = new BudgetBoxMapperToDomain(new BudgetBoxReasonMapperToDomain());

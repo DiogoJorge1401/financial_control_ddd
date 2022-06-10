@@ -13,9 +13,10 @@ export class UserResolver {
 		private readonly userService: UserService,
 	) { }
 
-	@Query(() => UserType,{nullable:true})
+	@Query(() => UserType, { nullable: true })
 	@UseGuards(JWTAuthGuard)
-	async whoAmI (@GetUserId() userId: string): Promise<UserType> {;
+	async whoAmI (@GetUserId() userId: string): Promise<UserType> {
+		;
 		const user = await this.userService.query.getUserById(userId);
 		return user;
 	}
