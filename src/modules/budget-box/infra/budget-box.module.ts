@@ -1,3 +1,4 @@
+import { CreateBudgetBoxUseCase } from '@budget-box/app/use-cases/create-budget-box/create-budget-box.use-case';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BudgetBoxService } from './budget-box.service';
@@ -9,6 +10,7 @@ import { BudgetBoxResolver } from './resolver/budget-box.resolver';
 	providers: [
 		{ provide: 'BudgetBoxRepository', useClass: BudgetBoxRepository },
 		BudgetBoxService,
+		CreateBudgetBoxUseCase,
 		BudgetBoxResolver
 	],
 	imports: [
